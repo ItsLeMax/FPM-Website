@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" type="image/x-icon" href="https://media.fpm-studio.de/assets/icons/Settings.png">
+    <link rel="stylesheet" href="settings.css">
+    <title>Countdown - Einstellungen</title>
+
+    <script type="text/javascript" src="settings.js"></script>
+</head>
+
+<body>
+    <h1>Einstellungen des Countdowns</h1>
+    <p>Dieses Fenster muss in der Streamingsoftware bedient werden.</p>
+
+    <div>
+        <div>
+            <p>Countdown</p>
+            <input id="minutes" type="number" minlength="5" placeholder="&lt;46 || 10">
+        </div>
+
+        <div>
+            <p>Textfarbe</p>
+            <input type="color" id="picker" value="#ffffff">
+        </div>
+
+        <div>
+            <p>Ausrichtung</p>
+            <select>
+                <option value="left">Linksbündig</option>
+                <option value="center">Zentriert</option>
+                <option value="right" selected>Rechtsbündig</option>
+            </select>
+        </div>
+    </div>
+
+    <div>
+        <button id="toggle">Countdown beginnen</button>
+        <button id="update">Update</button>
+    </div>
+
+</body>
+
+</html>

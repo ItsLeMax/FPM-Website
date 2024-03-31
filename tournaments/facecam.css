@@ -1,0 +1,40 @@
+body {
+    gap: 2vmin;
+    margin: 4vmin;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: var(--gray20);
+}
+
+body>div {
+    gap: 1vmin;
+    display: flex;
+}
+
+a {
+    top: 4vmin;
+    right: 4vmin;
+    position: absolute;
+}
+
+input {
+    font-size: 2.5vmin;
+    background-color: var(--gray10);
+}
+
+input, h1, p {
+    text-align: center;
+}
+
+video {
+    width: calc(16vmin * 6);
+    height: calc(9vmin * 6);
+    border: 1vmin solid black;
+}
+
+button {
+    color: black;
+    font-size: 3vmin;
+    background-color: var(--success);
+}

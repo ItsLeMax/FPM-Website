@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" href="https://media.fpm-studio.de/assets/icons/FPM Team.png">
+    <link rel="stylesheet" href="apply.css" />
+    <title>FPM | Bewerbung</title>
+
+    <script type="text/javascript" src="apply.js"></script>
+</head>
+
+<body>
+    <h1>Das Senden der Bewerbung funktioniert noch nicht!</h1>
+    <p>Zurzeit bitte bei @ItsLeMax auf Discord melden.</p>
+
+    <div>
+        <button id="cache">Cache löschen</button>
+        <button id="dark">🌑</button>
+    </div>
+
+    <div>
+        <h1>Vorweg</h1>
+        <p>
+            Stelle sicher, dass du <a href="https://team.fpm-studio.de/">diesen Text</a> bereits gelesen und
+            verinnerlicht hast. Dieser wurde in der entsprechenden Discord-Nachricht erwähnt.
+        </p>
+    </div>
+
+    <div>
+        <h1>Tipps</h1>
+        <div id="hints">
+            <div>
+                <h2>Gehe auf den Aufgabenbereich ein</h2>
+                <ul>
+                    <li>Welche Erfahrungen hast du gemacht und womit?</li>
+                    <li>Welche Fähigkeiten hast du dir angeeignet?</li>
+                    <li>Wie könntest du deine Fähigkeiten in unsere Projekte einbringen?</li>
+                    <li>Rede über das, was dir wichtig ist.</li>
+                </ul>
+            </div>
+
+            <div id="text">
+                <div>
+                    <h2>Redundanz vermeiden</h2>
+                    <p>
+                        Redundante Charaktereigenschaften lassen dich in der Masse untergehen. Lege daher
+                        Wert auf deine Individualität!
+                    </p>
+                </div>
+                <div>
+                    <h2>Vermeide ein krampfhaftes Füllen der Box</h2>
+                    <p>
+                        Du musst bei weitem nicht alle Zeichen der Textfelder ausschöpfen. Die Qualität der Bewerbung
+                        ist wichtig, nicht dessen Quantität.
+                    </p>
+                </div>
+                <div>
+                    <h2>Nimm die Sache locker</h2>
+                    <p>
+                        Womöglich fühlst du dich unter Druck gesetzt und nervös. Das musst du aber nicht sein. Du wirst
+                        von
+                        ItsLeMax mit viel Liebe empfangen. ❤
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="job">
+        <h1>Das Bewerbungsschreiben</h1>
+        <h2>Als was möchtest du tätig sein?</h2>
+        <div id="builder">
+            <p>Builder</p>
+            <input type="checkbox">
+        </div>
+
+        <div id="editor">
+            <p>Editor</p>
+            <input type="checkbox">
+        </div>
+    </div>
+
+    <div id="about">
+        <div id="application">
+            <h2>Über dich</h2>
+            <p>
+                Bitte schreibe in diese Box eine Bewerbung.
+            </p>
+            <span>...</span>
+            <textarea maxlength="5000"></textarea>
+        </div>
+
+        <div id="upload">
+            <h2>Dateianhang</h2>
+            <p>
+                Du kannst hier Dateien hochladen, um z.B. deine Projekte zur Einsicht zur Verfügung zu stellen. Die
+                maximale Uploadgröße beträgt 20MB.
+            </p>
+            <input type="file" accept=".png, .jpg, .jpeg" multiple>
+        </div>
+    </div>
+
+    <div id="time">
+        <h2>Beschreibung der verfügbaren Zeit</h2>
+        <p>
+            Gibt es einen Zeitraum, in dem du so gut wie immer Zeit hast? Wenn ja, wann? Alternativ kannst du auch
+            darauf eingehen, wann du keine Zeit hast. Du kannst zudem eine Stundenanzahl pro Tag oder Woche angeben. Du
+            musst in der von dir angegebenen Zeit natürlich nicht immer erreichbar und tätig sein.
+        </p>
+        <span>...</span>
+        <textarea maxlength="1000"></textarea>
+    </div>
+
+    <div id="contact">
+        <h1>Kontaktaufnahme</h1>
+        <div id="email">
+            <p>
+                Deine E-Mail ist nötig, um eine Rückmeldung über den Status der Bewerbung zu geben.
+            </p>
+            <input type="text" maxlength="500" placeholder="username@domain.tld"></input>
+        </div>
+        <div id="discord">
+            <p>
+                Discord ist unsere Hauptkommunikationsplattform. Bitte gib ggf. deinen Discord-Namen an. Falls du keinen
+                Discord-Account hast, solltest du dir einen erstellen. Discord kannst du
+                <a href="https://discord.com/">sowohl in der App als auch im Browser</a> verwenden.
+            </p>
+            <input type="text" maxlength="33" placeholder="@discordname"></input>
+        </div>
+    </div>
+
+    <button id="send">Absenden</button>
+</body>

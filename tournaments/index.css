@@ -1,0 +1,14 @@
+body {
+    gap: 2vmin;
+    margin: 4vmin;
+    display: flex;
+    flex-direction: column;
+}
+
+img {
+    width: 90vmin;
+}
+
+h1 {
+    text-align: center;
+}

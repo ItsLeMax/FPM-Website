@@ -1,0 +1,149 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-size: 3vmin;
+    text-align: justify;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+::selection {
+    background-color: rgba(200, 255, 115, 0.5);
+}
+
+body {
+    margin: 5vmin;
+    color: white;
+    background-size: cover;
+    background-color: black;
+    background-attachment: fixed;
+    background-image: url("https://media.fpm-studio.de/assets/backgrounds/Palm Tree.png");
+}
+
+body>div {
+    padding: 3vmin;
+    border-top: 6vmin;
+    border-style: solid;
+    background-color: rgba(15, 15, 15, .5);
+}
+
+body>div:not(:first-of-type) {
+    margin-top: 10vmin;
+}
+
+button {
+    width: 100%;
+    float: left;
+    border: none;
+    height: 6vmin;
+    color: white;
+    text-align: center;
+    background-color: rgba(0, 0, 0, .5);
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+hr {
+    border: none;
+    height: .1vmin;
+    margin: 3vmin 0;
+    background-color: white;
+}
+
+img {
+    width: calc(16vmin * 4);
+    height: calc(9vmin * 4);
+}
+
+a {
+    font-weight: bold;
+    color: aquamarine;
+    text-decoration: none;
+}
+
+h1 {
+    font-size: 7vmin;
+}
+
+h2 {
+    font-size: 5vmin;
+}
+
+h3 {
+    font-size: 4vmin;
+}
+
+h1, h2 {
+    text-align: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+ul {
+    padding: 0;
+    list-style: inside;
+}
+
+#start {
+    border-color: black;
+}
+
+#start p, #apply p {
+    text-align: center;
+}
+
+#dubbing {
+    border-color: rgb(255, 255, 60);
+}
+
+#builder {
+    border-color: greenyellow;
+}
+
+#editor {
+    border-color: rgb(255, 100, 255);
+}
+
+#process {
+    border-color: rgb(255, 199, 95);
+}
+
+#production {
+    border-color: salmon;
+}
+
+#important {
+    border-color: rgb(255, 94, 35);
+}
+
+#apply {
+    border-color: rgb(110, 110, 255);
+}
+
+#dubbing, #builder, #editor, #important {
+    gap: 5vmin;
+    display: flex;
+    align-items: center;
+}
+
+@media (max-aspect-ratio: 4/3) or (min-aspect-ratio: 12/3) {
+    * {
+        font-size: 4vmin;
+    }
+
+    div:has(img) {
+        flex-direction: column;
+    }
+
+    img {
+        order: -1;
+    }
+
+    h2 {
+        font-size: 6vmin;
+    }
+
+    h3 {
+        font-size: 5vmin;
+    }
+}

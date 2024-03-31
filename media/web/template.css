@@ -1,0 +1,70 @@
+* {
+    margin: 0;
+    padding: 0;
+    color: white;
+    font-size: 2vmin;
+    box-sizing: border-box;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+:root {
+    --gray10: rgb(10, 10, 10);
+    --gray20: rgb(20, 20, 20);
+    --gray50: rgb(50, 50, 50);
+    --danger: rgb(255, 90, 90);
+    --success: rgb(215, 255, 150);
+    --accent_fpm: rgb(180, 160, 30);
+}
+
+:disabled {
+    cursor: not-allowed;
+}
+
+::marker {
+    color: var(--accent_fpm);
+}
+
+body {
+    background-color: var(--gray50);
+}
+
+button {
+    cursor: pointer;
+}
+
+input {
+    cursor: text;
+}
+
+button, input {
+    border: none;
+    padding: 1vmin;
+}
+
+video {
+    object-fit: fill;
+    background-color: var(--gray);
+}
+
+hr {
+    /* width: 100%; */
+    margin: 3vmin 0;
+    /* border-width: .1vmin 0; */
+    border-color: var(--accent_fpm);
+}
+
+li {
+    list-style-position: inside;
+}
+
+a {
+    color: var(--accent_fpm);
+}
+
+h1 {
+    font-size: 3vmin;
+}
+
+h2 {
+    font-size: 2.5vmin;
+}

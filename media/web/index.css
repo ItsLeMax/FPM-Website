@@ -1,0 +1,62 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+:root {
+	--gray: rgb(20, 20, 20);
+}
+
+html {
+	background-color: var(--gray);
+}
+
+body {
+	height: 100vh;
+	color: white;
+	font-size: 2vmin;
+	background-color: var(--gray);
+}
+
+h1 {
+	padding: 1vh;
+	color: white;
+	font-size: 4vmin;
+}
+
+a {
+	font-size: 2vmin;
+	text-decoration: none;
+}
+
+a[href="../"] {
+	filter: brightness(1.5);
+}
+
+a:hover {
+	color: unset;
+	filter: brightness(.75);
+}
+
+thead a {
+	font-size: 3vmin;
+}
+
+table {
+	border-spacing: unset;
+	border: unset !important;
+	background-color: var(--gray);
+}
+
+th {
+	border-bottom: .25vmin solid gray;
+	background-color: rgb(40, 40, 40);
+}
+
+th, td {
+	padding: 1vh;
+}
+
+tr:nth-child(even) {
+	background-color: rgb(30, 30, 30);
+}

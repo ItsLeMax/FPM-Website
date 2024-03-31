@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" href="https://media.fpm-studio.de/assets/icons/Movie.png">
+    <link rel="stylesheet" href="galery.css" />
+    <title>FPM | Galerie</title>
+
+    <script type="text/javascript" src="galery.js"></script>
+    <script type="text/javascript" src="galery_config.js"></script>
+    <script type="text/javascript" src="https://media.fpm-studio.de/web/XMLHttpRequests.js"></script>
+</head>
+
+<body>
+    <div id="selector">
+        <h1>Filmgalerie</h1>
+        <select>
+            <option selected disabled>Wähle hier den Film aus.</option>
+            <option>Dora und die albanische Staatsgrenze</option>
+            <option>Weihnachtsmann und KoksKG</option>
+            <option>Dora und Micky im Bandenkrieg</option>
+            <option>Outer Space</option>
+        </select>
+
+        <b id="index">1/0</b>
+        <div><img borderless></div>
+        <b id="caption">Caption</b>
+    </div>
+    <div id="buttons">
+        <button id="previous" disabled>&#60;</button>
+        <button id="next" disabled>></button>
+    </div>
+</body>

@@ -1,0 +1,40 @@
+body {
+    margin: 3vmin 6vmin;
+}
+
+#align {
+    gap: 1vmin;
+    display: flex;
+    flex-direction: column;
+}
+
+#align div {
+    gap: 2vmin;
+    display: flex;
+    justify-content: center;
+}
+
+#align div * {
+    width: 35vmin;
+}
+
+#align div p {
+    margin: 0 1vmin;
+    text-align: center;
+}
+
+input[type="text"] {
+    color: var(--gray20);
+}
+
+button {
+    color: var(--gray20);
+    width: 37vmin !important;
+    background-color: var(--success);
+}
+
+@media (min-aspect-ratio: 21/9) {
+    #align div {
+        justify-content: unset;
+    }
+}
