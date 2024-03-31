@@ -1,5 +1,5 @@
 # FPM-Website
-Website of Filmproduktion Maximus
+This is the frontend of the [Filmproduktion Maximus](https://www.fpm-studio.de/) website.
 
 > [!NOTE]
 > This website is a hobby project. Although i have somewhat of a respectable amount of knowledge I am not familiar with some common and recommended work flows.
