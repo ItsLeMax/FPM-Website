@@ -2,6 +2,15 @@ body {
     margin: 3vmin 6vmin;
 }
 
+button {
+    color: var(--gray20);
+    background-color: var(--success);
+}
+
+input[type="text"] {
+    color: var(--gray20);
+}
+
 #align {
     gap: 1vmin;
     display: flex;
@@ -19,22 +28,12 @@ body {
 }
 
 #align div p {
-    margin: 0 1vmin;
     text-align: center;
 }
 
-input[type="text"] {
-    color: var(--gray20);
-}
-
-button {
-    color: var(--gray20);
-    width: 37vmin !important;
-    background-color: var(--success);
-}
-
 @media (min-aspect-ratio: 21/9) {
-    #align div {
-        justify-content: unset;
+    body>p, body>b {
+        display: block;
+        text-align: center;
     }
 }

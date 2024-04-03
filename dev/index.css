@@ -1,0 +1,63 @@
+body {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--gray20);
+}
+
+body>a {
+    display: flex;
+    padding-top: 12.5vh;
+    align-items: center;
+    padding-bottom: 12.5vh;
+}
+
+div {
+    display: flex;
+    flex-direction: column;
+}
+
+div>a {
+    text-align: center;
+    padding-top: 5vh;
+    padding-bottom: 5vh;
+}
+
+a {
+    font-size: 4vmin;
+    padding-left: 5vmin;
+    padding-right: 5vmin;
+    text-decoration: none;
+    filter: brightness(90%);
+    background-color: var(--gray20);
+    background-blend-mode: multiply;
+}
+
+a:hover {
+    transition: .1s;
+    font-size: 4.5vmin;
+    color: var(--success);
+    filter: brightness(80%);
+}
+
+span {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    box-shadow: 0 0 200px rgba(0, 0, 0, 0.9) inset;
+}
+
+#github {
+    background-image: url("https://media.fpm-studio.de/assets/icons/GitHub.png");
+}
+
+#countdown-main {
+    background-image: url("https://media.fpm-studio.de/assets/backgrounds/Clock.png");
+}
+
+#countdown-settings {
+    background-image: url("https://media.fpm-studio.de/assets/backgrounds/Gear.png");
+}

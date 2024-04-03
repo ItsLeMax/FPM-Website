@@ -7,7 +7,7 @@ body {
     background-color: var(--gray20);
 }
 
-body>div {
+body div {
     gap: 1vmin;
     display: flex;
 }
@@ -23,13 +23,13 @@ input {
     background-color: var(--gray10);
 }
 
-input, h1, p {
+p, input {
     text-align: center;
 }
 
 video {
-    width: calc(16vmin * 6);
-    height: calc(9vmin * 6);
+    width: calc(16vmin * 5);
+    height: calc(9vmin * 5);
     border: 1vmin solid black;
 }
 

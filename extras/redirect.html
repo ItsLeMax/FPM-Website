@@ -10,14 +10,13 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            switch (document.location.hash.substring(1)) {
-                case "4nMx834kRs":
-                    document.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ&t=43s";
-                    break;
-                default:
-                    document.location.href = "https://fpm-studio.de"
-                    break;
+            if (document.location.hash.substring(1) == "4nMx834kRs") {
+                document.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ&t=43s";
+                return;
             }
+
+            alert("Der Code ist ungültig.");
+            document.location.href = "https://www.fpm-studio.de/";
         })
     </script>
 </head>
