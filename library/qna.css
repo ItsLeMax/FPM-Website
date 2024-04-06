@@ -1,16 +1,9 @@
-* {
-    margin: 0;
-    padding: 0;
-    color: white;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-}
-
 body {
     gap: 5vmin;
     margin: 5vmin;
     display: flex;
     flex-direction: column;
-    background-color: rgb(20, 20, 20);
+    background-color: var(--gray20);
 }
 
 h1 {
@@ -23,10 +16,6 @@ h2 {
 
 h1, h2 {
     text-align: center;
-}
-
-li {
-    list-style-position: inside;
 }
 
 p, li {

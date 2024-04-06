@@ -1,10 +1,5 @@
-* {
-	margin: 0;
-	padding: 0;
-}
-
 :root {
-	--gray: rgb(20, 20, 20);
+	--gray: var(--gray20);
 }
 
 html {
@@ -13,19 +8,15 @@ html {
 
 body {
 	height: 100vh;
-	color: white;
-	font-size: 2vmin;
 	background-color: var(--gray);
 }
 
 h1 {
 	padding: 1vh;
-	color: white;
 	font-size: 4vmin;
 }
 
 a {
-	font-size: 2vmin;
 	text-decoration: none;
 }
 

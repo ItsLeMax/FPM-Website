@@ -1,24 +1,14 @@
-* {
-    margin: 0;
-    padding: 0;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-}
-
-:root {
-    --gray: rgb(240, 240, 240);
-}
-
 body {
     gap: 2vmin;
     margin: 5vmin;
     display: flex;
     flex-direction: column;
+    background-color: var(--background);
 }
 
 input[type="checkbox"] {
     width: 2.5vmin;
     height: 2.5vmin;
-    cursor: pointer;
 }
 
 textarea {
@@ -27,14 +17,9 @@ textarea {
 }
 
 input, textarea {
-    padding: 0;
     width: 100%;
-    border: none;
-    outline: none;
-    font-size: 2vmin;
-    box-sizing: border-box;
     border: 2vmin solid #0000;
-    background-color: var(--gray);
+    background-color: var(--background);
 }
 
 h1 {
@@ -46,34 +31,26 @@ h2 {
     font-size: 3vmin;
 }
 
-p, li {
-    font-size: 2vmin;
-}
-
-ul {
-    padding: 0;
-    list-style: inside;
+h1, h2, p, li {
+    color: var(--text);
 }
 
 span {
     float: right;
     display: block;
     padding: .5vmin;
-    font-size: 2vmin;
+    color: var(--text);
     text-align: center;
-    background-color: var(--gray);
+    background-color: var(--background);
 }
 
 button {
-    border: none;
-    cursor: pointer;
     padding: .5vmin;
-    font-size: 2vmin;
-    background-color: var(--gray);
+    background-color: var(--background);
 }
 
 button:active {
-    filter: brightness(75%);
+    filter: brightness(120%) !important;
 }
 
 #hints {
@@ -113,16 +90,20 @@ button:active {
 }
 
 #upload input {
-    cursor: pointer;
-    background-color: var(--gray);
-    border: 1vmin solid var(--gray);
+    background-color: var(--background);
+    border: 1vmin solid var(--background);
+}
+
+#dark {
+    width: 5%;
+    background-color: var(--danger);
 }
 
 #send {
-    width: 50%;
+    width: 25%;
     height: 5vmin;
     font-size: 3vmin;
-    margin-left: 25%;
+    margin-left: 37.5%;
 }
 
 @media (max-aspect-ratio: 4/3) {

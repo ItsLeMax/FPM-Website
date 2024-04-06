@@ -1,11 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
 
-* {
-    margin: 0;
-    padding: 0;
-
-}
-
 body {
     top: 50%;
     left: 50%;
@@ -14,8 +8,8 @@ body {
     position: absolute;
     align-items: center;
     flex-direction: column;
+    background-color: var(--gray20);
     transform: translate(-50%, -50%);
-    background-color: rgb(20, 20, 20);
 }
 
 body>div {
@@ -29,12 +23,10 @@ h1 {
 }
 
 p {
-    font-size: 2vmin;
     text-align: center;
 }
 
 h1, p {
-    color: white;
     user-select: none;
     font-family: 'Poppins', sans-serif;
 }
@@ -49,12 +41,6 @@ input:focus {
 
 button {
     height: 6vmin;
-    cursor: pointer;
-    font-size: 2vmin;
-}
-
-button:disabled {
-    cursor: not-allowed;
 }
 
 button:active:not(button:disabled) {
