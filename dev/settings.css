@@ -1,20 +1,20 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
-
 body {
+    background-color: var(--gray20);
+
+    position: absolute;
     top: 50%;
     left: 50%;
-    gap: 1vmin;
-    display: flex;
-    position: absolute;
-    align-items: center;
-    flex-direction: column;
-    background-color: var(--gray20);
     transform: translate(-50%, -50%);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1vmin;
 }
 
 body>div {
-    gap: 3vmin;
     display: flex;
+    gap: 3vmin;
 }
 
 h1 {
@@ -28,7 +28,6 @@ p {
 
 h1, p {
     user-select: none;
-    font-family: 'Poppins', sans-serif;
 }
 
 input {
@@ -41,6 +40,7 @@ input:focus {
 
 button {
     height: 6vmin;
+    color: black;
 }
 
 button:active:not(button:disabled) {
@@ -48,20 +48,23 @@ button:active:not(button:disabled) {
 }
 
 select {
+    color: black;
     text-align: center;
 }
 
 input, button, select {
+    border: .5vmin solid black;
+
     width: 15vmin;
     height: 6vmin;
-    border: .5vmin solid black;
 }
 
 #minutes {
     width: 14vmin;
-    color: black;
+
     font-size: 3vmin;
     text-align: center;
+    color: black;
 }
 
 #picker {

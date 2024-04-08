@@ -12,15 +12,15 @@ input[type="text"] {
 }
 
 #align {
-    gap: 1vmin;
     display: flex;
     flex-direction: column;
+    gap: 1vmin;
 }
 
 #align div {
-    gap: 2vmin;
     display: flex;
     justify-content: center;
+    gap: 2vmin;
 }
 
 #align div * {

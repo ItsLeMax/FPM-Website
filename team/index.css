@@ -4,16 +4,18 @@
 
 body {
     margin: 5vmin;
-    background-size: cover;
+
     background-color: black;
+    background-size: cover;
     background-attachment: fixed;
     background-image: url("https://media.fpm-studio.de/assets/backgrounds/Palm Tree.png");
 }
 
 body>div {
-    padding: 3vmin;
     border-top: 6vmin;
     border-style: solid;
+
+    padding: 3vmin;
     background-color: rgba(15, 15, 15, .5);
 }
 
@@ -22,16 +24,17 @@ body>div:not(:first-of-type) {
 }
 
 body>a {
-    width: 100%;
-    float: left;
     text-align: center;
     line-height: 6vmin;
+
+    width: 100%;
+    float: left;
 }
 
 div:has(img) {
-    gap: 5vmin;
     display: flex;
     align-items: center;
+    gap: 5vmin;
 }
 
 hr {
@@ -44,8 +47,8 @@ img {
 }
 
 a {
-    font-weight: bold;
     color: aquamarine;
+    font-weight: bold;
     text-decoration: none;
 }
 
@@ -62,8 +65,8 @@ h3 {
 }
 
 h1, h2 {
-    text-align: center;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-align: center;
 }
 
 p, a {
@@ -111,19 +114,19 @@ p, a {
         font-size: 3vmin;
     }
 
-    div:has(img) {
-        flex-direction: column;
-    }
-
-    img {
-        order: -1;
-    }
-
     h2 {
         font-size: 6vmin;
     }
 
     h3 {
         font-size: 5vmin;
+    }
+
+    img {
+        order: -1;
+    }
+
+    div:has(img) {
+        flex-direction: column;
     }
 }

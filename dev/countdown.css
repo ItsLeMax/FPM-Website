@@ -1,15 +1,17 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
-
-* {
+body {
+    background-color: unset;
     text-align: right;
+
     user-select: none;
 }
 
 b {
     transition: .2s;
-    font-size: 16.6vmin;
-    text-transform: uppercase;
+
     color: rgb(240, 240, 240);
+    font-size: 16.6vmin;
     font-family: 'Poppins', sans-serif;
+
+    text-transform: uppercase;
     text-shadow: .25vmin .25vmin .25vmin rgba(0, 0, 0, .25);
 }

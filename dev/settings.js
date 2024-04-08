@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     start.addEventListener("click", () => {
         start.style.backgroundColor = start.innerText == initialText ? "rgb(255, 110, 110)" : initialColor;
-        start.innerText = start.innerText == initialText ? "Countdown beenden" : initialText;
+        start.innerText = start.innerText == initialText ? "Stop" : initialText;
 
         localStorage.setItem("toggle", JSON.stringify({
             init: start.innerText != initialText,

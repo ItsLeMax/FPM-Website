@@ -11,7 +11,11 @@ document.addEventListener('DOMContentLoaded', () => {
     })
 
     /**
-     * @description Überprüft nach einer Interaktion mit dem Button, ob der Code im Inputfeld valide ist
+     * @description
+     * Überprüft nach einer Interaktion mit dem Button, ob der Code im Input valide ist
+     * 
+     * Checks after an interaction with the button whether the code of the input is valid
+
      * @author ItsLeMax
      */
     function validateInput() {
@@ -33,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 setTimeout(() => {
                     button.disabled = false;
                     input.disabled = false;
-                }, 1000);
+                }, 2000);
             },
             error: () => {
                 const button = document.querySelector("button");
@@ -46,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }, {
             subdomain: "secrets",
-            apiPath: `secrets/${code}`
+            apiPath: code
         });
     }
 })

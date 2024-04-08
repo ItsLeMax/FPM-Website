@@ -19,7 +19,11 @@ window.addEventListener("DOMContentLoaded", () => {
             const countdownDate = new Date().addMinutes(toggle.time || 10).getTime();
 
             /**
-             * @description Aktualisiert den Countdown
+             * @description
+             * Aktualisiert den Countdown
+             * 
+             * Updates the countdown
+
              * @author ItsLeMax
             */
             const updateCountdown = () => {
@@ -48,7 +52,11 @@ window.addEventListener("DOMContentLoaded", () => {
     }, 100)
 
     /**
-     * @description Beendet und löscht den Intervall
+     * @description
+     * Beendet und löscht den Intervall
+     * 
+     * Ends and deletes the interval
+
      * @author ItsLeMax
      */
     function clearAndDeleteInterval() {
@@ -56,11 +64,18 @@ window.addEventListener("DOMContentLoaded", () => {
         localStorage.removeItem("interval");
     }
     /**
-     * @description Fügt einem Datum Minuten hinzu
+     * @description
+     * Fügt einem Datum Minuten hinzu
+     * 
+     * Adds minutes to a date
+
      * @author StackOverflow
-     * @param { Number } minutes Minuten, um welche das Datum erweitert wird
+
      * @see [StackOverflow](https://stackoverflow.com/)
-     * @returns { Date } Datum, welches in der Zukunft liegt
+     * @returns { Date }
+     * Datum, welches in der Zukunft liegt
+     * 
+     * Date, which lies in the future
      */
     Date.prototype.addMinutes = function (minutes) {
         this.setTime(this.getTime() + (minutes * 1000 * 60) + 500);

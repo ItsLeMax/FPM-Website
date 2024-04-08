@@ -1,26 +1,27 @@
 body {
-    gap: 2vmin;
-    margin: 4vmin;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
     background-color: var(--gray20);
+    margin: 4vmin;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2vmin;
 }
 
 body div {
-    gap: 1vmin;
     display: flex;
+    gap: 1vmin;
 }
 
 a {
+    position: absolute;
     top: 4vmin;
     right: 4vmin;
-    position: absolute;
 }
 
 input {
-    font-size: 2.5vmin;
     background-color: var(--gray10);
+    font-size: 2.5vmin;
 }
 
 p, input {
@@ -30,11 +31,13 @@ p, input {
 video {
     width: calc(16vmin * 5);
     height: calc(9vmin * 5);
+
     border: 1vmin solid black;
 }
 
 button {
-    color: black;
     font-size: 3vmin;
+
+    color: black;
     background-color: var(--success);
 }

@@ -1,9 +1,10 @@
 body {
-    gap: 5vmin;
+    background-color: var(--gray20);
     margin: 5vmin;
+
     display: flex;
     flex-direction: column;
-    background-color: var(--gray20);
+    gap: 5vmin;
 }
 
 h1 {

@@ -1,9 +1,10 @@
 body {
-    gap: 2vmin;
+    background-color: var(--background);
     margin: 5vmin;
+
     display: flex;
     flex-direction: column;
-    background-color: var(--background);
+    gap: 2vmin;
 }
 
 input[type="checkbox"] {
@@ -12,12 +13,13 @@ input[type="checkbox"] {
 }
 
 textarea {
-    resize: none;
     height: 20vmin;
+    resize: none;
 }
 
 input, textarea {
     width: 100%;
+
     border: 2vmin solid #0000;
     background-color: var(--background);
 }
@@ -36,17 +38,19 @@ h1, h2, p, li {
 }
 
 span {
-    float: right;
-    display: block;
-    padding: .5vmin;
     color: var(--text);
-    text-align: center;
     background-color: var(--background);
+
+    padding: .5vmin;
+    text-align: center;
+
+    display: block;
+    float: right;
 }
 
 button {
-    padding: .5vmin;
     background-color: var(--background);
+    padding: .5vmin;
 }
 
 button:active {
@@ -54,29 +58,28 @@ button:active {
 }
 
 #hints {
+    display: flex;
     gap: 5vmin;
-    display: flex;
-}
-
-#text {
-    display: flex;
-    flex-direction: column;
 }
 
 #job {
     gap: 1vmin;
+}
+
+#text, #job {
     display: flex;
     flex-direction: column;
 }
 
 #job div {
     width: 10vmin;
-    display: flex;
-    justify-content: space-between;
 }
 
 #about {
     gap: 5vmin;
+}
+
+#job div, #about {
     display: flex;
     justify-content: space-between;
 }
@@ -95,15 +98,16 @@ button:active {
 }
 
 #dark {
-    width: 5%;
     background-color: var(--danger);
+    width: 5%;
 }
 
 #send {
     width: 25%;
     height: 5vmin;
-    font-size: 3vmin;
     margin-left: 37.5%;
+
+    font-size: 3vmin;
 }
 
 @media (max-aspect-ratio: 4/3) {
@@ -154,8 +158,8 @@ button:active {
     }
 
     #upload input {
-        height: 0%;
         width: 133.33%;
+        height: 0%;
     }
 
     #send {

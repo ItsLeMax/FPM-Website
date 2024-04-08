@@ -1,19 +1,15 @@
-:root {
-	--gray: var(--gray20);
-}
-
 html {
-	background-color: var(--gray);
+	background-color: var(--gray20);
 }
 
 body {
+	background-color: var(--gray20);
 	height: 100vh;
-	background-color: var(--gray);
 }
 
 h1 {
-	padding: 1vh;
 	font-size: 4vmin;
+	padding: 1vh;
 }
 
 a {
@@ -34,14 +30,15 @@ thead a {
 }
 
 table {
-	border-spacing: unset;
+	background-color: var(--gray20);
+
 	border: unset !important;
-	background-color: var(--gray);
+	border-spacing: unset;
 }
 
 th {
-	border-bottom: .25vmin solid gray;
 	background-color: rgb(40, 40, 40);
+	border-bottom: .25vmin solid gray;
 }
 
 th, td {
@@ -49,5 +46,5 @@ th, td {
 }
 
 tr:nth-child(even) {
-	background-color: rgb(30, 30, 30);
+	background-color: var(--gray30);
 }

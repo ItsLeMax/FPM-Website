@@ -1,16 +1,17 @@
 body {
-    gap: 5vmin;
+    background-color: var(--gray20);
     margin: 5vmin;
+
     display: flex;
     flex-direction: column;
-    background-color: var(--gray20);
+    gap: 5vmin;
 }
 
 h1 {
     font-size: 6vmin;
+    color: rgb(190, 120, 255);
     text-transform: uppercase;
     text-decoration: underline;
-    color: rgb(190, 120, 255);
 }
 
 h2 {
@@ -20,8 +21,8 @@ h2 {
 
 h3 {
     font-size: 4vmin;
-    text-transform: uppercase;
     color: rgb(255, 255, 100);
+    text-transform: uppercase;
 }
 
 p {
