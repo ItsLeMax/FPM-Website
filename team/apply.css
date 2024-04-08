@@ -99,13 +99,12 @@ button:active {
 
 #dark {
     background-color: var(--danger);
-    width: 5%;
+    width: 5vmin;
 }
 
 #send {
-    width: 25%;
+    width: 40vmin;
     height: 5vmin;
-    margin-left: 37.5%;
 
     font-size: 3vmin;
 }
@@ -120,6 +119,10 @@ button:active {
     }
 
     p, li {
+        font-size: 4vmin;
+    }
+
+    a {
         font-size: 4vmin;
     }
 
@@ -160,6 +163,10 @@ button:active {
     #upload input {
         width: 133.33%;
         height: 0%;
+    }
+
+    #dark {
+        width: 10vmin;
     }
 
     #send {

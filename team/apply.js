@@ -1,21 +1,17 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const slightlyDarker = "brightness(90%)";
     updatePage();
 
-    for (const query of ["#application textarea", "#time textarea", "#email input", "#discord input"]) {
-        const textElement = document.querySelector(query);
+    for (const query of ["#application textarea", "#time textarea", "#email input", "#discord input", "#builder input", "#editor input"]) {
+        const input = document.querySelector(query);
         const divID = query.split(" ")[0];
+        const isCheck = (divID == "#builder" || divID == "#editor");
 
-        textElement.value = localStorage.getItem(divID) || null;
+        input[isCheck ? "checked" : "value"] = isCheck ? localStorage.getItem(divID) == "true" : localStorage.getItem(divID);
+        setRemainingChars(input, divID);
 
-        setRemainingChars(textElement, textElement.value.length, divID);
-
-        textElement.addEventListener("input", (text) => {
-            localStorage.setItem(divID, text.target.value);
-
-            if (divID == "#application" || divID == "#time") {
-                setRemainingChars(textElement, text.target.value.length, divID);
-            }
+        input.addEventListener("input", (input) => {
+            localStorage.setItem(divID, isCheck ? input.target.checked : input.target.value);
+            setRemainingChars(input.target, divID);
         })
     }
 
@@ -36,10 +32,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
      * @author ItsLeMax
      */
-    function setRemainingChars(textElement, textLength, divId) {
+    function setRemainingChars(textElement, divId) {
         const textAreaMaxLength = textElement.maxLength;
         const span = document.querySelector(`${divId} span`);
-        const remainingLetters = textAreaMaxLength - textLength;
+        const remainingLetters = textAreaMaxLength - textElement.value.length;
 
         if (!span) return;
         span.innerText = remainingLetters;
@@ -61,7 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
      */
     function updatePage(buttonPressed) {
         const darkModeButton = document.getElementById("dark");
-        let textColor, backgroundColor, isDarkMode;
+        let textColor, backgroundColor, slightlyDarker, isDarkMode;
 
         if (buttonPressed) darkModeButton.innerText = darkModeButton.innerText == "🌞" ? "🌑" : "🌞";
         else darkModeButton.innerText = localStorage.getItem("darkmode") == "true" ? "🌞" : "🌑";
@@ -70,11 +66,13 @@ document.addEventListener("DOMContentLoaded", () => {
             case "🌞":
                 textColor = "white";
                 backgroundColor = "var(--gray20)";
+                slightlyDarker = "brightness(50%)";
                 isDarkMode = true;
                 break;
             case "🌑":
                 textColor = "black";
                 backgroundColor = "white";
+                slightlyDarker = "brightness(90%)";
                 isDarkMode = false;
                 break;
         }
@@ -91,11 +89,13 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         for (const textArea of [...document.getElementsByTagName("textarea"), ...document.getElementsByTagName("input")]) {
+            if (textArea.type == "checkbox") continue;
             textArea.style.color = textColor;
             textArea.style.filter = slightlyDarker;
         }
 
         for (const button of document.getElementsByTagName("button")) {
+            if (button.id == "dark") continue;
             button.style.color = textColor;
             button.style.filter = slightlyDarker;
         }
