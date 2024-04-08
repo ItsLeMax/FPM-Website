@@ -2,6 +2,7 @@ body {
     background-color: unset;
     text-align: right;
 
+    width: fit-content;
     user-select: none;
 }
 
