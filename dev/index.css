@@ -16,10 +16,6 @@ div {
     flex-direction: column;
 }
 
-div>a {
-    text-align: center;
-}
-
 a {
     font-size: 4vmin;
     text-decoration: none;
@@ -27,7 +23,7 @@ a {
 
     padding: var(--padding);
 
-    background-color: var(--gray20);
+    background-color: rgb(51, 39, 83);
     background-position: center;
     background-blend-mode: multiply;
 }
@@ -52,13 +48,10 @@ span {
 }
 
 #github {
-    display: flex;
-    align-items: center;
-
-    background-size: 33vmin;
+    background-size: 40vmin;
     background-image: url("https://media.fpm-studio.de/assets/icons/GitHub Black.png");
 
-    padding: calc(var(--padding) * 2.53) var(--padding);
+    padding: calc(var(--padding) * 2.8) var(--padding);
 }
 
 #countdown-main {
