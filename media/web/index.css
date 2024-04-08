@@ -1,15 +1,23 @@
+:root {
+	--gray: rgb(20, 20, 20);
+}
+
 html {
-	background-color: var(--gray20);
+	background-color: var(--gray);
 }
 
 body {
-	background-color: var(--gray20);
+	background-color: var(--gray);
 	height: 100vh;
 }
 
 h1 {
 	font-size: 4vmin;
 	padding: 1vh;
+}
+
+h1, td {
+	color: white;
 }
 
 a {
@@ -21,8 +29,7 @@ a[href="../"] {
 }
 
 a:hover {
-	color: unset;
-	filter: brightness(.75);
+	filter: brightness(50%);
 }
 
 thead a {
@@ -30,7 +37,7 @@ thead a {
 }
 
 table {
-	background-color: var(--gray20);
+	background-color: var(--gray);
 
 	border: unset !important;
 	border-spacing: unset;
@@ -46,5 +53,5 @@ th, td {
 }
 
 tr:nth-child(even) {
-	background-color: var(--gray30);
+	background-color: rgb(30, 30, 30);
 }
