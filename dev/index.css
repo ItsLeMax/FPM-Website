@@ -58,6 +58,19 @@ span {
     background-image: url("https://media.fpm-studio.de/assets/backgrounds/Clock.png");
 }
 
+#winrate-main {
+    background-image: url("https://media.fpm-studio.de/assets/icons/Trophy.png");
+}
+
 #countdown-settings {
-    background-image: url("https://media.fpm-studio.de/assets/backgrounds/Gear.png");
+    background-image: url("https://media.fpm-studio.de/assets/backgrounds/Gear-1.png");
+}
+
+#winrate-settings {
+    background-size: 40vmin;
+    background-image: url("https://media.fpm-studio.de/assets/backgrounds/Gear-2.png");
+}
+
+#countdown-settings, #winrate-settings {
+    color: rgb(60, 160, 125);
 }

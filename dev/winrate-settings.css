@@ -1,0 +1,93 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+emoji {
+    width: 8vmin;
+    font-size: 6vmin;
+}
+
+b {
+    width: 42vmin;
+
+    color: white;
+    font-size: 8vmin;
+    font-weight: 200;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+body {
+    background-color: rgb(20, 20, 20);
+}
+
+body>div {
+    height: 35vmin;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+html {
+    height: 100%;
+    -webkit-app-region: drag;
+}
+
+button {
+    width: 15vmin;
+
+    color: white;
+    background-color: rgb(33, 33, 33);
+
+    font-size: 7vmin;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: rgb(255, 80, 80);
+}
+
+input {
+    font-size: 6vmin;
+    text-align: center;
+}
+
+button, input {
+    border: none;
+    -webkit-app-region: no-drag;
+}
+
+#wl-wins, #wl-losses, #wl-average {
+    width: 75vmin;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#wl-wins input, #wl-losses input {
+    width: 10vmin;
+    height: 10vmin;
+}
+
+#wl-average b {
+    width: auto;
+
+    font-size: 6vmin;
+    text-align: right;
+}
+
+#wl-average span {
+    width: 57.5vmin;
+    height: 3vmin;
+
+    display: block;
+    background-color: gray;
+    border-radius: 3vmin;
+}
