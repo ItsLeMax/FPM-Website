@@ -26,10 +26,6 @@ p {
     text-align: center;
 }
 
-h1, p {
-    user-select: none;
-}
-
 input {
     width: 15vmin;
 }
