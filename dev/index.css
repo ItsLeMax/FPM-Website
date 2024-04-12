@@ -36,15 +36,16 @@ a:hover {
     filter: brightness(80%);
 }
 
+p {
+    white-space: nowrap;
+}
+
 span {
     width: 100%;
     height: 100%;
-
     position: fixed;
-    top: 0;
-    left: 0;
 
-    box-shadow: 0 0 200px rgba(0, 0, 0, 0.9) inset;
+    box-shadow: 0 0 10vmin rgba(0, 0, 0, 0.9) inset;
 }
 
 #github {
@@ -56,14 +57,17 @@ span {
 
 #countdown-main {
     background-image: url("https://media.fpm-studio.de/assets/backgrounds/Clock.png");
+    background-size: 38vmin;
 }
 
 #winrate-main {
     background-image: url("https://media.fpm-studio.de/assets/icons/Trophy.png");
+    background-size: 18vmin;
 }
 
 #countdown-settings {
     background-image: url("https://media.fpm-studio.de/assets/backgrounds/Gear-1.png");
+    background-size: 40vmin;
 }
 
 #winrate-settings {
@@ -73,4 +77,23 @@ span {
 
 #countdown-settings, #winrate-settings {
     color: rgb(60, 160, 125);
+}
+
+@media (max-aspect-ratio: 3/2) {
+    body {
+        flex-direction: column;
+    }
+
+    div {
+        flex-direction: unset;
+    }
+
+    a {
+        width: 40vmin;
+    }
+
+    #github {
+        padding: var(--padding);
+        background-size: 33.33vmin;
+    }
 }
