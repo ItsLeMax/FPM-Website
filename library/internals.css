@@ -1,36 +1,32 @@
 body {
     background-color: var(--gray20);
-    margin: 5vmin;
+    margin: 3vmin;
 
     display: flex;
     flex-direction: column;
-    gap: 5vmin;
+    gap: 3vmin;
 }
 
 h1 {
-    font-size: 6vmin;
+    font-size: 4vmin;
     color: rgb(190, 120, 255);
     text-transform: uppercase;
     text-decoration: underline;
 }
 
 h2 {
-    font-size: 5vmin;
+    font-size: 3vmin;
     font-family: 'Courier New', Arial;
 }
 
 h3 {
-    font-size: 4vmin;
+    font-size: 2.5vmin;
     color: rgb(255, 255, 100);
     text-transform: uppercase;
 }
 
-p {
-    font-size: 3vmin;
-}
-
-li {
-    font-size: 3vmin;
+p, li {
+    font-size: 2vmin;
 }
 
 img {

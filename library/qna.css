@@ -1,18 +1,18 @@
 body {
     background-color: var(--gray20);
-    margin: 5vmin;
+    margin: 3vmin;
 
     display: flex;
     flex-direction: column;
-    gap: 5vmin;
+    gap: 3vmin;
 }
 
 h1 {
-    font-size: 8vmin;
+    font-size: 4vmin;
 }
 
 h2 {
-    font-size: 6vmin;
+    font-size: 3vmin;
 }
 
 h1, h2 {
@@ -20,5 +20,5 @@ h1, h2 {
 }
 
 p, li {
-    font-size: 4vmin;
+    font-size: 2vmin;
 }
