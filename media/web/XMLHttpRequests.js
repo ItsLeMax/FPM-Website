@@ -6,15 +6,15 @@
  
  * @author Kurty00, ItsLeMax
 
- * @param { Object } callback
+ * @param { Object } callbacks
  * Callback-Code bei Rückmeldung des Webservers
  * 
  * Callback code on callback of the webserver
 
- * @param { Function } callback.readystate
+ * @param { Function } callbacks.readystate
  * ReadyStateChange-Code
 
- * @param { Function? } callback.error
+ * @param { Function? } callbacks.error
  * Error-Code
 
  * @param { Object } url
@@ -27,21 +27,21 @@
  * 
  * Subdomain of the targeted website
 
- * @param { String } url.apiPath
- * API-Pfad bzw. Unterordner
+ * @param { String } url.sentData
+ * Gesendete Daten (API-Pfad bzw. Unterordner)
  * 
- * API path or sub directory
+ * Sent Data (API path or sub directory)
  */
-function XMLHttpRequests(callback, url) {
+function XMLHttpRequests(callbacks, url) {
     const xhr = new XMLHttpRequest();
 
     xhr.onreadystatechange = () => {
         if (xhr.readyState != XMLHttpRequest.DONE || !xhr.responseText.length) return;
-        callback.readystate(xhr);
+        callbacks.readystate(xhr);
     };
 
-    if (callback.error) xhr.onerror = () => callback.error();
+    if (callbacks.error) xhr.onerror = () => callbacks.error();
 
-    xhr.open("GET", (window.location.protocol.includes("file") ? "http://localhost:3000" : `https://${url.subdomain}.fpm-studio.de`) + `/api/${url.subdomain}/${url.apiPath}`, true);
+    xhr.open("GET", (window.location.protocol.includes("file") ? "http://localhost:3000" : `https://${url.subdomain}.fpm-studio.de`) + `/api/${url.subdomain}/${url.sentData}`, true);
     xhr.send(null);
 }

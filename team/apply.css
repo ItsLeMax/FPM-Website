@@ -1,6 +1,6 @@
 body {
-    background-color: var(--background);
     margin: 5vmin;
+    background-color: var(--gray20);
 
     display: flex;
     flex-direction: column;
@@ -12,18 +12,6 @@ input[type="checkbox"] {
     height: 2.5vmin;
 }
 
-textarea {
-    height: 20vmin;
-    resize: none;
-}
-
-input, textarea {
-    width: 100%;
-
-    border: 2vmin solid #0000;
-    background-color: var(--background);
-}
-
 h1 {
     font-size: 4vmin;
     text-decoration: underline;
@@ -33,77 +21,37 @@ h2 {
     font-size: 3vmin;
 }
 
-h1, h2, p, li {
-    color: var(--text);
-}
-
-span {
-    color: var(--text);
-    background-color: var(--background);
-
-    padding: .5vmin;
-    text-align: center;
-
-    display: block;
-    float: right;
-}
-
 button {
-    background-color: var(--background);
     padding: .5vmin;
+    background-color: var(--gray10);
 }
 
-button:active {
-    filter: brightness(120%) !important;
+button:disabled {
+    color: gray;
+}
+
+button:active:not(:disabled) {
+    color: black;
+    background-color: var(--danger);
 }
 
 #hints {
-    display: flex;
     gap: 5vmin;
 }
 
-#job {
-    gap: 1vmin;
-}
-
-#text, #job {
-    display: flex;
+#text {
     flex-direction: column;
 }
 
-#job div {
-    width: 10vmin;
+#jobs {
+    gap: 1vmin;
 }
 
-#about {
-    gap: 5vmin;
-}
-
-#job div, #about {
+#hints, #text, #jobs {
     display: flex;
-    justify-content: space-between;
 }
 
-#application {
-    width: 100%;
-}
-
-#upload {
-    width: 75%;
-}
-
-#upload input {
-    background-color: var(--background);
-    border: 1vmin solid var(--background);
-}
-
-#dark {
-    background-color: var(--danger);
-    width: 5vmin;
-}
-
-#send {
-    width: 40vmin;
+#create {
     height: 5vmin;
 
     font-size: 3vmin;
@@ -111,66 +59,28 @@ button:active {
 
 @media (max-aspect-ratio: 4/3) {
     h1 {
-        font-size: 8vmin;
+        font-size: 5vmin;
     }
 
     h2 {
-        font-size: 6vmin;
-    }
-
-    p, li {
         font-size: 4vmin;
     }
 
-    a {
-        font-size: 4vmin;
-    }
-
-    textarea {
-        height: 50vmin;
-    }
-
-    input {
-        height: 10vmin;
+    p, li, a {
+        font-size: 3vmin;
     }
 
     input[type="checkbox"] {
-        width: 7vmin;
-        height: 5vmin;
-    }
-
-    span, input, textarea {
-        font-size: 4vmin;
-    }
-
-    button {
-        font-size: 5vmin;
+        width: 4vmin;
+        height: 4vmin;
     }
 
     #hints {
         display: block;
     }
 
-    #job div {
-        width: 20vmin;
-        align-items: center
-    }
-
-    #about {
-        flex-direction: column;
-    }
-
-    #upload input {
-        width: 133.33%;
-        height: 0%;
-    }
-
-    #dark {
-        width: 10vmin;
-    }
-
-    #send {
+    #create {
         height: 10vmin;
-        font-size: 6vmin;
+        font-size: 4vmin;
     }
 }
