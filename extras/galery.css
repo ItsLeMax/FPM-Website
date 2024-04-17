@@ -34,7 +34,7 @@ img[borderless] {
 }
 
 select {
-    background-color: var(--gray30);
+    background-color: rgb(30, 30, 30);
     font-size: 3vmin;
     text-align: center;
 
