@@ -71,11 +71,17 @@ window.addEventListener("DOMContentLoaded", () => {
 
      * @author StackOverflow
 
-     * @see [StackOverflow](https://stackoverflow.com/)
+     * @param { Number } minutes
+     * Minuten, welches bearbeitet werden soll
+     * 
+     * Minutes to edit
+
      * @returns { Date }
      * Datum, welches in der Zukunft liegt
      * 
      * Date, which lies in the future
+
+     * @see [StackOverflow](https://stackoverflow.com/)
      */
     Date.prototype.addMinutes = function (minutes) {
         this.setTime(this.getTime() + (minutes * 1000 * 60) + 500);
