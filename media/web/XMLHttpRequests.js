@@ -16,7 +16,7 @@
  * 
  * ReadyStateChange code, that is supposed to be executed
 
- * @param { Function|undefined|null } callbacks.error
+ * @param { Function | undefined | null } callbacks.error
  * Error-Code im Falle eines Fehlers
  * 
  * Error code in the case of an error
