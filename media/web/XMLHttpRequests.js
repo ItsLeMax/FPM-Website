@@ -12,15 +12,19 @@
  * Callback code on callback of the webserver
 
  * @param { Function } callbacks.readystate
- * ReadyStateChange-Code
+ * ReadyStateChange-Code, welcher ausgeführt werden soll
+ * 
+ * ReadyStateChange code, that is supposed to be executed
 
- * @param { Function? } callbacks.error
- * Error-Code
+ * @param { Function|undefined|null } callbacks.error
+ * Error-Code im Falle eines Fehlers
+ * 
+ * Error code in the case of an error
 
  * @param { Object } url
- * URL-Objekt
+ * URL-Daten für die Domäne
  * 
- * URL Object
+ * URL data for the domain
 
  * @param { String } url.subdomain
  * Subdomäne der betroffenen Website
@@ -28,9 +32,9 @@
  * Subdomain of the targeted website
 
  * @param { String } url.sentData
- * Gesendete Daten (API-Pfad bzw. Unterordner)
+ * Gesendete Daten an jene Domäne (API-Pfad bzw. Unterordner)
  * 
- * Sent Data (API path or sub directory)
+ * Sent Data to said domain (API path or sub directory)
  */
 function XMLHttpRequests(callbacks, url) {
     const xhr = new XMLHttpRequest();

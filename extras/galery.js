@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     /**
      * @description
-     * Entnimmt den Text oben Links, welcher den Progress darstellt
+     * Entnimmt den Text oben links, welcher den Fortschritt darstellt
      * 
      * Retrieves the text on the top left, which shows the progress
 
@@ -77,9 +77,9 @@ document.addEventListener("DOMContentLoaded", () => {
      * @author ItsLeMax
 
      * @param { Array } splittedIndex
-     * In Array geteilter Index aus dem Objekt der Funktion `indexVariations`
+     * geteilter Index im Array aus dem Objekt der Funktion `indexVariations`
      * 
-     * `I dont want to translate this. What the fuck was i talking about???`
+     * splitted index inside the array from the object of the function `indexVariations`
      */
     function updateText(splittedIndex) {
         splittedIndex[0] = splittedIndex[0].toString();

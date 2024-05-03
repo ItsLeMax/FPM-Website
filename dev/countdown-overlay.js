@@ -72,9 +72,9 @@ window.addEventListener("DOMContentLoaded", () => {
      * @author StackOverflow
 
      * @param { Number } minutes
-     * Minuten, welches bearbeitet werden soll
+     * Minuten, welche hinzugefügt werden soll
      * 
-     * Minutes to edit
+     * Minutes to add
 
      * @returns { Date }
      * Datum, welches in der Zukunft liegt
