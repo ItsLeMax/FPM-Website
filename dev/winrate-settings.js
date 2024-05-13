@@ -1,15 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const socket = new WebSocket("ws://localhost:49722");
-
-    for (const button of document.querySelectorAll("button")) {
-        button.addEventListener("click", () => {
-            socket.send(JSON.stringify({
-                __query: button.id,
-                __value: true
-            }))
-        })
-    }
-
     for (const query of ["#wl-wins input", "#wl-losses input"]) {
         const element = document.querySelector(query);
 
