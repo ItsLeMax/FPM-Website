@@ -76,7 +76,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
      * @author ItsLeMax
 
-     * @param { Array } splittedIndex
+     * @param { Array<String> } splittedIndex
      * geteilter Index im Array aus dem Objekt der Funktion `indexVariations`
      * 
      * splitted index inside the array from the object of the function `indexVariations`
