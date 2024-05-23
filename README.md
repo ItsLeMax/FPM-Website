@@ -1,4 +1,4 @@
-# FPM-Website
+# FPM Website
 Website of Filmproduktion Maximus
 
 > [!NOTE]
