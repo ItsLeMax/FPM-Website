@@ -16,7 +16,13 @@
 
 <body>
     <h1>Einstellungen des Countdowns</h1>
-    <p>Dieses Fenster muss in der Streamingsoftware als Browserquelle hinzugefügt und dort bedient werden.</p>
+    <p>
+        Dieses Fenster muss in der Streamingsoftware als Browserquelle
+        <br>
+        hinzugefügt und dort bedient werden. Unter OBS so z.B. mit dem
+        <br>
+        Klick auf <i>Interagieren</i>.
+    </p>
 
     <div>
         <div>
@@ -25,17 +31,15 @@
         </div>
 
         <div>
-            <p>Textfarbe</p>
-            <input type="color" id="picker" value="#ffffff">
+            <p>Farbe (Hex)</p>
+            <input id="picker" maxlength="6" placeholder="ffffff">
         </div>
 
         <div>
             <p>Ausrichtung</p>
-            <select>
-                <option value="left">Linksbündig</option>
-                <option value="center">Zentriert</option>
-                <option value="right" selected>Rechtsbündig</option>
-            </select>
+            <input type="checkbox" id="left" checked>
+            <input type="checkbox" id="center">
+            <input type="checkbox" id="right">
         </div>
     </div>
 

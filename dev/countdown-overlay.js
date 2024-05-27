@@ -4,8 +4,9 @@ window.addEventListener("DOMContentLoaded", () => {
 
     window.addEventListener("storage", () => {
         const update = JSON.parse(localStorage.getItem("update"));
+
         if (update) {
-            countdownElement.style.color = update.color;
+            countdownElement.style.color = `#${update.color}`;
             document.body.style.textAlign = update.align;
             localStorage.removeItem("update");
             return;
@@ -31,14 +32,12 @@ window.addEventListener("DOMContentLoaded", () => {
                 const distanceMinutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
                 const distanceSeconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-                countdownElement.innerText = ("Die Übertragung startet in" + "\n" +
-                    `${distanceMinutes} ${distanceMinutes == 1 ? "Minute" : "Minuten"} und ` +
-                    `${distanceSeconds} ${distanceSeconds == 1 ? "Sekunde" : "Sekunden"}.`
-                );
+                const countdown = [distanceMinutes, ":", distanceSeconds];
+                if (distanceSeconds < 10) countdown.splice(2, 0, "0");
+                countdownElement.innerText = countdown.join("");
 
                 if (distance < 0) {
                     clearAndDeleteInterval();
-                    countdownElement.innerText = "Die Übertragung beginnt nun.";
                 }
             }
 
@@ -48,7 +47,6 @@ window.addEventListener("DOMContentLoaded", () => {
         }
 
         clearAndDeleteInterval();
-        countdownElement.innerText = countdownInitial;
     }, 100)
 
     /**
@@ -62,6 +60,7 @@ window.addEventListener("DOMContentLoaded", () => {
     function clearAndDeleteInterval() {
         clearInterval(localStorage.getItem("interval"));
         localStorage.removeItem("interval");
+        countdownElement.innerText = countdownInitial;
     }
     /**
      * @description

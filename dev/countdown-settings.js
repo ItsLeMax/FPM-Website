@@ -32,10 +32,31 @@ document.addEventListener("DOMContentLoaded", () => {
         }));
     })
 
+    const alignments = ["left", "center", "right"];
+    for (const alignment_a of alignments) {
+        document.getElementById(alignment_a).addEventListener("click", () => {
+            if (!document.getElementById(alignment_a).checked) {
+                document.getElementById(alignments[0]).checked = true;
+                return;
+            }
+            for (const alignment_b of alignments) {
+                if (alignment_a != alignment_b) {
+                    document.getElementById(alignment_b).checked = false;
+                }
+            }
+        })
+    }
+
     document.getElementById("update").addEventListener("click", () => {
         localStorage.setItem("update", JSON.stringify({
             color: document.getElementById("picker").value,
-            align: document.getElementsByTagName("select")[0].value
+            align: (() => {
+                for (const alignment of alignments) {
+                    if (document.getElementById(alignment).checked) {
+                        return alignment;
+                    }
+                }
+            })()
         }))
     })
 })
