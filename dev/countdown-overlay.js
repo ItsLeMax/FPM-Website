@@ -7,6 +7,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
         if (update) {
             countdownElement.style.color = `#${update.color}`;
+            countdownElement.style.fontFamily = update.font == "Standard" ? null : update.font;
             document.body.style.textAlign = update.align;
             localStorage.removeItem("update");
             return;

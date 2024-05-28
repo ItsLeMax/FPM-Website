@@ -32,12 +32,10 @@ video {
     width: calc(16vmin * 5);
     height: calc(9vmin * 5);
 
-    border: 1vmin solid black;
+    border: 1vmin solid;
 }
 
 button {
     font-size: 3vmin;
-
-    color: black;
     background-color: var(--success);
 }

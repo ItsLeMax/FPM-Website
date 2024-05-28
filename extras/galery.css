@@ -34,6 +34,7 @@ img[borderless] {
 }
 
 select {
+    color: whitesmoke;
     background-color: rgb(30, 30, 30);
     font-size: 3vmin;
     text-align: center;
@@ -47,6 +48,7 @@ select:focus {
 }
 
 button {
+    color: whitesmoke;
     background-color: transparent;
     font-size: 4vmin;
 }

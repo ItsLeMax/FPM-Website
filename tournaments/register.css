@@ -7,12 +7,7 @@ body {
 }
 
 button {
-    color: var(--gray20);
     background-color: var(--success);
-}
-
-input[type="text"] {
-    color: var(--gray20);
 }
 
 #align {

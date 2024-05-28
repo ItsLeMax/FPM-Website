@@ -5,7 +5,6 @@
 body {
     margin: 5vmin;
 
-    background-color: black;
     background-size: cover;
     background-attachment: fixed;
     background-image: url("https://media.fpm-studio.de/assets/backgrounds/Palm Tree.png");
@@ -74,7 +73,7 @@ p, a {
 }
 
 #start {
-    border-color: var(--gray10);
+    border-color: var(--gray20);
 }
 
 #start p, #apply p {

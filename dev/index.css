@@ -31,7 +31,7 @@ a {
 a:hover {
     transition: .1s;
 
-    color: var(--success);
+    color: var(--success) !important;
     font-size: 4.5vmin;
     filter: brightness(80%);
 }
