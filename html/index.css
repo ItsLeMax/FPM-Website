@@ -6,10 +6,6 @@
     background-color: rgb(99, 56, 255);
 }
 
-body {
-    background-color: black;
-}
-
 h1 {
     font-size: 6vmin;
 }
@@ -77,7 +73,7 @@ li {
     object-fit: cover;
 
     background-position: center;
-    background-image: url("https://media.fpm-studio.de/assets/backgrounds/Dark Timeline.png");
+    background-image: url("https://media.fpm-studio.de/movies/dora_und_die_albanische_staatsgrenze/36.png");
 }
 
 #secrets {
@@ -87,7 +83,7 @@ li {
 
     background-size: cover;
     background-position-y: -30vmin;
-    background-image: url("https://media.fpm-studio.de/assets/backgrounds/Stone Wall.png");
+    background-image: url("https://media.fpm-studio.de/assets/backgrounds/Stone Wall.webp");
 }
 
 #secrets img {
@@ -106,7 +102,7 @@ li {
 
     background-size: 150%;
     background-position-y: center;
-    background-image: url("https://media.fpm-studio.de/assets/backgrounds/Propulsion.png");
+    background-image: url("https://media.fpm-studio.de/assets/backgrounds/Propulsion.webp");
 }
 
 #team p {
