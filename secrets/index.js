@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }, {
             subdomain: "secrets",
-            apiPath: code
+            sentData: code
         });
     }
 })

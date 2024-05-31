@@ -6,12 +6,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     for (const buttonID of buttonIDs) {
         document.getElementById(buttonID).addEventListener("click", () => {
-            const split = indexVariations().splittedIndex;
+            const pageNumbers = pageCount().pageNumbers;
 
-            if (split[0] == 1 && buttonID == "previous") return;
-            if (split[0] == split[1] && buttonID == "next") return;
-            split[0] = buttonID == "next" ? split[0] += 1 : split[0] -= 1;
-            updateText(split);
+            if (pageNumbers[0] == 1 && buttonID == "previous") return;
+            if (pageNumbers[0] == pageNumbers[1] && buttonID == "next") return;
+            pageNumbers[0] = buttonID == "next" ? pageNumbers[0] += 1 : pageNumbers[0] -= 1;
+            updateText(pageNumbers);
 
             if (!select.value) return;
             updateImage();
@@ -26,22 +26,27 @@ document.addEventListener("DOMContentLoaded", () => {
                 captionElement.style.display = "block";
             }
         }
-        document.getElementById("index").style.display = "block";
 
+        document.getElementById("index").style.display = "block";
+        const pageNumbers = pageCount().pageNumbers;
+        pageNumbers[0] = 1;
+
+        updateText(pageNumbers);
         updateImage();
+
         XMLHttpRequests({
             readystate: (xhr) => {
                 const response = JSON.parse(xhr.responseText);
                 if (!response) return;
 
-                const split = indexVariations().splittedIndex;
-                split[1] = response.length;
+                const pageNumbers = pageCount().pageNumbers;
+                pageNumbers[1] = response.length;
 
-                updateText(split);
+                updateText(pageNumbers);
             }
         }, {
             subdomain: "extras",
-            apiPath: getSelectId().toLowerCase()
+            sentData: getSelectId().toLowerCase()
         });
     })
 
@@ -58,13 +63,15 @@ document.addEventListener("DOMContentLoaded", () => {
      * 
      * Object with element and array with both numbers, current number and total number or element, unedited
      */
-    function indexVariations() {
-        const index = document.getElementById("index");
-        const splittedIndex = index.innerText.split("/");
-        splittedIndex[0] = parseInt(splittedIndex[0]);
+    function pageCount() {
+        const pageElement = document.getElementById("index");
+
+        const pageNumbers = pageElement.innerText.split("/");
+        pageNumbers[0] = parseInt(pageNumbers[0]);
+
         return {
-            splittedIndex: splittedIndex,
-            index: index
+            pageNumbers: pageNumbers,
+            pageElement: pageElement
         };
     };
 
@@ -76,14 +83,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
      * @author ItsLeMax
 
-     * @param { Array<String> } splittedIndex
-     * geteilter Index im Array aus dem Objekt der Funktion `indexVariations`
+     * @param { Array<String> } pageNumbers
+     * geteilter Index im Array aus dem Objekt der Funktion `pageCount`
      * 
-     * splitted index inside the array from the object of the function `indexVariations`
+     * splitted index inside the array from the object of the function `pageCount`
      */
-    function updateText(splittedIndex) {
-        splittedIndex[0] = splittedIndex[0].toString();
-        indexVariations().index.innerText = splittedIndex.join("/");
+    function updateText(pageNumbers) {
+        pageNumbers[0] = pageNumbers[0].toString();
+        pageCount().pageElement.innerText = pageNumbers.join("/");
     };
 
     /**
@@ -95,8 +102,8 @@ document.addEventListener("DOMContentLoaded", () => {
      * @author ItsLeMax
      */
     function updateImage() {
-        image.setAttribute("src", "https://media.fpm-studio.de/movies/" + getSelectId().toLowerCase() + "/" + indexVariations().splittedIndex[0] + ".png");
-        captionElement.innerText = eval(getSelectId())[indexVariations().splittedIndex[0]] || "";
+        image.setAttribute("src", "https://media.fpm-studio.de/movies/" + getSelectId().toLowerCase() + "/" + pageCount().pageNumbers[0] + ".png");
+        captionElement.innerText = eval(getSelectId())[pageCount().pageNumbers[0]] || "";
     };
 
     /**
