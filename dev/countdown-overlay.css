@@ -1,6 +1,7 @@
 body {
     background-color: unset;
     user-select: none;
+    text-align: right;
 }
 
 b {
