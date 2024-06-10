@@ -2,13 +2,7 @@
 
 !/media/web
 
-node_modules
-
-package-lock.json
-
 secrets/results
-
-/web
 
 redirect.html
 
