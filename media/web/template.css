@@ -38,7 +38,7 @@ button, input, select {
 }
 
 video {
-    background-color: var(--gray);
+    background-color: var(--gray20);
     object-fit: fill;
 }
 
