@@ -198,6 +198,10 @@ li {
     gap: 3vmin;
 }
 
+#links a, #links p {
+    font-size: 2vmin;
+}
+
 #links div {
     display: flex;
     align-items: center;
@@ -209,6 +213,10 @@ li {
 }
 
 @media (max-aspect-ratio: 15/9) {
+    #links a, #links p {
+        font-size: 3vmin;
+    }
+
     #links {
         flex-direction: column;
     }
