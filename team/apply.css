@@ -13,12 +13,7 @@ input[type="checkbox"] {
 }
 
 h1 {
-    font-size: 4vmin;
     text-decoration: underline;
-}
-
-h2 {
-    font-size: 3vmin;
 }
 
 button {
@@ -55,26 +50,12 @@ button:active:not(:disabled) {
 
 #create {
     height: 5vmin;
-
-    font-size: 3vmin;
 }
 
 @media (max-aspect-ratio: 4/3) {
-    h1 {
-        font-size: 5vmin;
-    }
-
-    h2 {
-        font-size: 4vmin;
-    }
-
-    p, li, a {
-        font-size: 3vmin;
-    }
-
     input[type="checkbox"] {
-        width: 4vmin;
-        height: 4vmin;
+        width: 8vmin;
+        height: 8vmin;
     }
 
     #hints {
@@ -83,6 +64,18 @@ button:active:not(:disabled) {
 
     #create {
         height: 10vmin;
-        font-size: 4vmin;
+    }
+
+    #jobs {
+        justify-content: space-between;
+    }
+
+    #jobs p {
+        font-size: 5vmin;
+    }
+
+    #jobs h2 {
+        width: 39vmin;
+        display: block;
     }
 }

@@ -37,6 +37,7 @@ a:hover {
 }
 
 p {
+    font-size: 2vmin;
     white-space: nowrap;
 }
 

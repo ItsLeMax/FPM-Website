@@ -51,18 +51,6 @@ a {
     text-decoration: none;
 }
 
-h1 {
-    font-size: 5vmin;
-}
-
-h2 {
-    font-size: 4vmin;
-}
-
-h3 {
-    font-size: 3vmin;
-}
-
 h1, h2 {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     text-align: center;
@@ -109,18 +97,6 @@ p, a {
 }
 
 @media (max-aspect-ratio: 4/3) or (min-aspect-ratio: 12/3) {
-    p, a {
-        font-size: 3vmin;
-    }
-
-    h2 {
-        font-size: 6vmin;
-    }
-
-    h3 {
-        font-size: 5vmin;
-    }
-
     img {
         order: -1;
     }

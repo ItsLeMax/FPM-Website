@@ -1,3 +1,8 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
 :root {
 	--gray: rgb(20, 20, 20);
 }
@@ -32,7 +37,7 @@ a:hover {
 	filter: brightness(50%);
 }
 
-thead a {
+a, td, thead a {
 	font-size: 3vmin;
 }
 

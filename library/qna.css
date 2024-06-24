@@ -7,18 +7,10 @@ body {
     gap: 3vmin;
 }
 
-h1 {
-    font-size: 4vmin;
-}
-
-h2 {
-    font-size: 3vmin;
-}
-
 h1, h2 {
     text-align: center;
 }
 
-p, li {
-    font-size: 2vmin;
+red {
+    color: red;
 }

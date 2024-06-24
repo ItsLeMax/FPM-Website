@@ -27,6 +27,7 @@ h1 {
 }
 
 p {
+    font-size: 2vmin;
     text-align: center;
 }
 
@@ -51,6 +52,10 @@ input, button {
 
 select {
     width: 48.75vmin;
+}
+
+input, button, select {
+    font-size: 2vmin;
 }
 
 #minutes {

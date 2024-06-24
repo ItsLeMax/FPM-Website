@@ -8,25 +8,18 @@ body {
 }
 
 h1 {
-    font-size: 4vmin;
     color: rgb(190, 120, 255);
     text-transform: uppercase;
     text-decoration: underline;
 }
 
 h2 {
-    font-size: 3vmin;
     font-family: 'Courier New', Arial;
 }
 
 h3 {
-    font-size: 2.5vmin;
     color: rgb(255, 255, 100);
     text-transform: uppercase;
-}
-
-p, li {
-    font-size: 2vmin;
 }
 
 img {
