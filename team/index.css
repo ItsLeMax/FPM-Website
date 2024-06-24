@@ -8,6 +8,7 @@ body {
     background-size: cover;
     background-attachment: fixed;
     background-image: url("https://media.fpm-studio.de/assets/backgrounds/Palm Tree.webp");
+    background-position: 0;
 }
 
 body>div {
@@ -68,28 +69,33 @@ p, a {
     text-align: center;
 }
 
-#dubbing {
-    border-color: rgb(255, 255, 60);
+#direct {
+    border-color: rgb(29, 132, 150);
 }
 
-#builder {
-    border-color: greenyellow;
+#appliable {
+    border-color: rgb(189, 33, 98);
 }
 
-#editor {
-    border-color: rgb(255, 100, 255);
+#appliable div {
+    display: flex;
+    flex-direction: column;
+}
+
+#appliable div:has(img) {
+    align-self: flex-start;
 }
 
 #process {
-    border-color: rgb(255, 200, 95);
+    border-color: rgb(111, 95, 255);
 }
 
 #production {
-    border-color: salmon;
+    border-color: rgb(114, 184, 250);
 }
 
 #important {
-    border-color: rgb(255, 94, 35);
+    border-color: salmon;
 }
 
 #apply {
@@ -103,5 +109,11 @@ p, a {
 
     div:has(img) {
         flex-direction: column;
+    }
+}
+
+@media (max-aspect-ratio: 1/2) {
+    body {
+        background-position-x: -80vmin;
     }
 }
