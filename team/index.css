@@ -78,12 +78,7 @@ p, a {
 }
 
 #appliable div {
-    display: flex;
     flex-direction: column;
-}
-
-#appliable div:has(img) {
-    align-self: flex-start;
 }
 
 #process {
@@ -104,7 +99,7 @@ p, a {
 
 @media (max-aspect-ratio: 4/3) or (min-aspect-ratio: 12/3) {
     img {
-        order: -1;
+        order: 1;
     }
 
     div:has(img) {
