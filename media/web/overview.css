@@ -4,7 +4,8 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
 
-    display: flex;
+    display: grid;
+    grid-template-columns: auto auto;
     gap: 5vmin;
 }
 
@@ -18,7 +19,7 @@ a {
     text-decoration: none;
 
     color: white;
-    background-color: rgb(8, 8, 8);
+    background-color: rgb(208, 74, 74);
 }
 
 a:hover {
@@ -28,6 +29,7 @@ a:hover {
 
 @media (max-aspect-ratio: 4/3) {
     body {
+        display: flex;
         flex-direction: column;
     }
 
