@@ -12,8 +12,10 @@ html {
 }
 
 body {
-	background-color: var(--gray);
 	height: 100vh;
+	margin: 3vmin;
+
+	background-color: var(--gray);
 }
 
 h1 {
