@@ -18,7 +18,6 @@ button {
 
 #align div {
     display: flex;
-    justify-content: center;
     gap: 2vmin;
 }
 

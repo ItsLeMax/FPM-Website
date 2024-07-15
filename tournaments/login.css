@@ -1,0 +1,124 @@
+:root {
+    --selected: rgb(124, 124, 252);
+}
+
+html {
+    overflow: hidden;
+}
+
+body>div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1vmin;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    z-index: 1;
+    padding: 3vmin;
+    border-radius: 3vmin;
+    background-color: rgb(40, 40, 40);
+    filter: drop-shadow(0 0 1vmin black);
+}
+
+#toggle {
+    width: 47vmin;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1vmin;
+}
+
+#password {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 47vmin;
+}
+
+body>img {
+    width: 100vw;
+    height: 100vh;
+
+    object-fit: cover;
+    -webkit-user-drag: none;
+
+    filter: brightness(.75) blur(.35vmin);
+}
+
+div>img {
+    width: 3.69vmin;
+    height: 1.75vmin;
+    cursor: pointer;
+}
+
+h1 {
+    font-size: 3vmin;
+}
+
+.slider {
+    background-color: var(--selected);
+}
+
+.switch input:disabled~span {
+    cursor: not-allowed;
+    background-color: gray;
+}
+
+input[type="password"] {
+    cursor: text;
+}
+
+input:checked+.slider {
+    background-color: var(--selected);
+}
+
+input {
+    width: 42vmin;
+}
+
+button {
+    width: 21.5vmin;
+    margin-top: 1vmin;
+}
+
+button:hover {
+    filter: brightness(.75);
+    transition: .2s;
+}
+
+button:active:not(:disabled) {
+    transform: scale(.9);
+    transition: unset;
+}
+
+#login {
+    color: var(--selected);
+}
+
+#email {
+    width: 47vmin;
+}
+
+@media (max-aspect-ratio: 4/3) {
+    #toggle, #password, #email {
+        width: 84vmin;
+    }
+
+    h1 {
+        font-size: 6vmin;
+    }
+
+    input {
+        width: 70vmin;
+    }
+
+    div>img {
+        width: 7vmin;
+        height: 3.5vmin;
+    }
+}
