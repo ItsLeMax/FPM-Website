@@ -95,6 +95,6 @@ span {
 
     #github {
         padding: var(--padding);
-        background-size: 33.33vmin;
+        background-size: calc(100vmin / 3);
     }
 }

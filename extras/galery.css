@@ -1,5 +1,5 @@
 ::selection {
-    background-color: rgba(164, 255, 60, 0.5);
+    background-color: rgba(164, 255, 60, .5);
 }
 
 body {
@@ -29,8 +29,8 @@ img {
     height: 60vmin;
 }
 
-img[borderless] {
-    min-width: 0;
+img:not([src]) {
+    width: 80vmin;
 }
 
 select {

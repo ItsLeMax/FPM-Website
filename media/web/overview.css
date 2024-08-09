@@ -35,6 +35,6 @@ a:hover {
 
     a {
         width: 75vmin;
-        font-size: 10vmin;
+        font-size: 10vmin !important;
     }
 }

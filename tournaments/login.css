@@ -109,10 +109,6 @@ button:active:not(:disabled) {
         width: 84vmin;
     }
 
-    h1 {
-        font-size: 6vmin;
-    }
-
     input {
         width: 70vmin;
     }

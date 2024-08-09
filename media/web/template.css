@@ -13,7 +13,7 @@
     --danger: rgb(255, 90, 90);
     --accent_fpm: rgb(180, 160, 30);
 
-    --size: .75;
+    --slider-size: .75;
     --transition: .2s;
 }
 
@@ -88,8 +88,8 @@ h1, h2, h3, h4, h5, h6, p, b, a, li, select, button, input, textarea, span {
 .switch {
     position: relative;
     display: inline-block;
-    width: calc(6vmin * var(--size));
-    height: calc(3.4vmin * var(--size));
+    width: calc(6vmin * var(--slider-size));
+    height: calc(3.4vmin * var(--slider-size));
 }
 
 .switch input {
@@ -113,10 +113,10 @@ h1, h2, h3, h4, h5, h6, p, b, a, li, select, button, input, textarea, span {
 .slider:before {
     position: absolute;
     content: "";
-    height: calc(2.6vmin * var(--size));
-    width: calc(2.6vmin * var(--size));
-    left: calc(.4vmin * var(--size));
-    bottom: calc(.4vmin * var(--size));
+    height: calc(2.6vmin * var(--slider-size));
+    width: calc(2.6vmin * var(--slider-size));
+    left: calc(.4vmin * var(--slider-size));
+    bottom: calc(.4vmin * var(--slider-size));
     background-color: white;
     -webkit-transition: var(--transition);
     transition: var(--transition);
@@ -127,17 +127,17 @@ input:checked+.slider {
 }
 
 input:focus+.slider {
-    box-shadow: 0 0 calc(.1vmin * var(--size)) #2196F3;
+    box-shadow: 0 0 calc(.1vmin * var(--slider-size)) #2196F3;
 }
 
 input:checked+.slider:before {
-    -webkit-transform: translateX(calc(2.6vmin * var(--size)));
-    -ms-transform: translateX(calc(2.6vmin * var(--size)));
-    transform: translateX(calc(2.6vmin * var(--size)));
+    -webkit-transform: translateX(calc(2.6vmin * var(--slider-size)));
+    -ms-transform: translateX(calc(2.6vmin * var(--slider-size)));
+    transform: translateX(calc(2.6vmin * var(--slider-size)));
 }
 
 .slider.round {
-    border-radius: calc(3.4vmin * var(--size));
+    border-radius: calc(3.4vmin * var(--slider-size));
 }
 
 .slider.round:before {
@@ -146,22 +146,22 @@ input:checked+.slider:before {
 
 @media (max-aspect-ratio: 4/3) {
     :root {
-        --size: 1.5;
+        --slider-size: 1.5;
     }
 
     h1 {
-        font-size: 7vmin;
+        font-size: 7vmin !important;
     }
 
     h2 {
-        font-size: 6vmin;
+        font-size: 6vmin !important;
     }
 
     h3, h4, h5, h6 {
-        font-size: 5vmin;
+        font-size: 5vmin !important;
     }
 
     p, b, a, li, select, button, input, textarea, span {
-        font-size: 4vmin;
+        font-size: 4vmin !important;
     }
 }

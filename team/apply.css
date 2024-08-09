@@ -70,10 +70,6 @@ button:active:not(:disabled) {
         justify-content: space-between;
     }
 
-    #jobs p {
-        font-size: 5vmin;
-    }
-
     #jobs h2 {
         width: 39vmin;
         display: block;
