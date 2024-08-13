@@ -69,12 +69,20 @@ li {
     padding: var(--padding);
 }
 
-#love {
+#passion {
     object-fit: cover;
 
     background-position: center;
     background-image: linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)),
         url("https://media.fpm-studio.de/movies/dora_und_die_albanische_staatsgrenze/36.png");
+}
+
+#improvement {
+    background-image: url("https://media.fpm-studio.de/assets/backgrounds/Construction.webp");
+}
+
+#passion, #improvement {
+    background-size: 200%;
 }
 
 #secrets {
