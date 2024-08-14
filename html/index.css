@@ -78,7 +78,7 @@ li {
 }
 
 #improvement {
-    background-image: url("https://media.fpm-studio.de/assets/backgrounds/Construction.webp");
+    background-image: url("https://media.fpm-studio.de/assets/backgrounds/construction.webp");
 }
 
 #passion, #improvement {
@@ -92,7 +92,7 @@ li {
 
     background-size: cover;
     background-position-y: -30vmin;
-    background-image: url("https://media.fpm-studio.de/assets/backgrounds/Stone Wall.webp");
+    background-image: url("https://media.fpm-studio.de/assets/backgrounds/stone_wall.webp");
 }
 
 #secrets img {
@@ -111,7 +111,7 @@ li {
 
     background-size: 100%;
     background-position-y: center;
-    background-image: url("https://media.fpm-studio.de/assets/backgrounds/Propulsion.webp");
+    background-image: url("https://media.fpm-studio.de/assets/backgrounds/propulsion.webp");
 }
 
 #team p {
@@ -189,7 +189,7 @@ li {
     background-size: cover;
     background-position-y: center;
     background-image: linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .25)),
-        url("https://media.fpm-studio.de/assets/backgrounds/Rocket League.webp");
+        url("https://media.fpm-studio.de/assets/backgrounds/rocket_league.webp");
 }
 
 #donation {

@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
         console.log(document.getElementById("password").type);
 
         hidePasswordEye.src = passwordHidden
-            ? "https://media.fpm-studio.de/assets/icons/Eye Open.webp"
+            ? "https://media.fpm-studio.de/assets/icons/eye_open.webp"
             : hidePasswordEyeSource;
 
         document.getElementById("password").type = passwordHidden
