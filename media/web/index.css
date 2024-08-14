@@ -12,15 +12,12 @@ html {
 }
 
 body {
-	height: 100vh;
 	margin: 3vmin;
-
 	background-color: var(--gray);
 }
 
 h1 {
 	font-size: 4vmin;
-	padding: 1vh;
 }
 
 h1, td {
@@ -36,7 +33,7 @@ a[href="../"] {
 }
 
 a:hover {
-	filter: brightness(50%);
+	filter: brightness(.5);
 }
 
 a, td, thead a {
@@ -44,19 +41,17 @@ a, td, thead a {
 }
 
 table {
-	background-color: var(--gray);
-
 	border: unset !important;
 	border-spacing: unset;
 }
 
 th {
 	background-color: rgb(40, 40, 40);
-	border-bottom: .25vmin solid gray;
+	border-bottom: unset;
 }
 
 th, td {
-	padding: 1vh;
+	padding: 1vmin;
 }
 
 tr:nth-child(even) {
