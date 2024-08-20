@@ -9,11 +9,18 @@
     <link rel="icon" href="https://media.fpm-studio.de/assets/icons/fpm_library.webp">
     <link rel="stylesheet" href="https://media.fpm-studio.de/web/template.css">
     <link rel="stylesheet" href="internals.css">
+    <link rel="stylesheet" href="builder.css">
     <title>FPM | Bibliothek: Builder</title>
 </head>
 
 <body>
-    <h1>Chisel And Bits:</h1>
+    <h2>Wissenswerte Informationen für Builder - Möglichkeiten der Mods in Hinsicht auf das Bauen</h2>
+    <p>
+        Hier zu finden sind Informationen, welche sich auf verwendete Mods und Plugins beziehen, welche den
+        Entwicklungsprozess der Konstruktion verbessern.
+    </p>
+
+    <h4>Chisel And Bits:</h4>
 
     <p>
         Chisel and Bits ermöglicht das Bauen winziger Bauwerke. Wenn man mit den kleinen Blöcken (Bits) baut, baut man
@@ -38,7 +45,7 @@
         Menü, wo du, genau wie bei dem Chisel-Tool, die Menge auswählen kannst.
     </p>
 
-    <h1>Blockbuster:</h1>
+    <h4>Blockbuster:</h4>
 
     <p>
         Mit Blockbuster kann man Blöcke und sogar Items unabhängig vom Grid platzieren. Diese Mod dient eigentlich mehr
@@ -60,26 +67,26 @@
         Hier sind alle zum dekorieren geeigneten Morphs aufgelistet:
     </p>
 
-    <h2>Unterkategorie Blockbuster Extra</h2>
+    <h5>Unterkategorie Blockbuster Extra</h5>
 
-    <h3>► Text:</h3>
+    <h6>► Text:</h6>
     <p>Was man alles wie bearbeiten kann, ist einfach herauszufinden. Probiere dich hierbei am Besten aus!</p>
 
-    <h3>► Block & Item:</h3>
+    <h6>► Block & Item:</h6>
     <p>
         Bei beiden Morphs musst du im Bearbeitungsfenster nur ein Objekt aus deinem Inventar auswählen. Klicke dazu auf
         das Kästchen mittig unten und wähle das Objekt aus.
     </p>
 
-    <h3>► Partikel:</h3>
+    <h6>► Partikel:</h6>
     <p>
         Bei Pick Particle kannst du die Partikel auswählen. Bei den Properties kannst du Einstellungen zu den Partikeln
         vornehmen.
     </p>
 
-    <h2>Unterkategorie Blockbuster Models</h2>
+    <h5>Unterkategorie Blockbuster Models</h5>
 
-    <h3>► Empty (schwarzer, halbtransp. Kreis):</h3>
+    <h6>► Empty (schwarzer, halbtransp. Kreis):</h6>
     <p>
         Ermöglicht dir, mehrere der oben genannten Morphs in einem Block zu speichern, damit du nicht für jeden Morph
         einen neuen Block brauchst. Im Bearbeitungsmenü musst du unten rechts auf Body part klicken. Du fügst dann mit
@@ -89,19 +96,19 @@
         änderst du die Position des ganzen Blocks.
     </p>
 
-    <h3>► Wichtig:</h3>
+    <h6>► Wichtig:</h6>
     <p>Pass auf, dass, wenn du Morphs in Empty speicherst, du den Block nicht aus Versehen abbaust.</p>
 
-    <h2>Präventive Maßnahme</h2>
+    <h5>Präventive Maßnahme</h5>
 
-    <h3>► CACHE:</h3>
+    <h6>► CACHE:</h6>
     <p>
         Du kannst zudem deine Kreation zwischenspeichern. Gehe dazu in den Modelblock mit deiner Dekoration und klicke
         einfach nur auf Pick. Danach kannst du alles wieder schließen. Im Menü, in denen du alle Morphs findest,
         befindet sich ganz oben nun temporär eine zwischengespeicherte Variante.
     </p>
 
-    <h3>► BACKUPS VON MODELBLÖCKEN:</h3>
+    <h6>► BACKUPS VON MODELBLÖCKEN:</h6>
     <p>
         Du kannst, um das o.g. Problem zu lösen, Backups machen von deiner Deko. Klicke dazu im Model-Block oben auf
         Pick. In Recent Morphs (ganz oben) werden dir deine letzten Morphs (die du mit Pick quasi zwischengespeichert
@@ -117,7 +124,7 @@
         gehst du in die von dir angelegte Kategorie, rechtsklickst deinen Morph und klickst auf Remove the Morph.
     </p>
 
-    <h1>ARCHITECTURECRAFT:</h1>
+    <h4>ARCHITECTURECRAFT:</h4>
     <p>
         Architecturecraft fügt besondere Formen, wie Schrägen oder Säulen in das Spiel hinzu. Diese Mod funktioniert,
         soweit ich weiß, gut über den Sawbench-Block. Ist diese platziert und dessen GUI geöffnet, so kann man sich eine
@@ -125,10 +132,138 @@
         bestehen soll. Danach kann man sich diese herstellen.
     </p>
 
-    <h1>INVISIBLIGHTS:</h1>
+    <h4>INVISIBLIGHTS:</h4>
     <p>
         Diese Mod ermöglicht das Platzieren unsichtbarer Lichtquellen. Suche dazu nach dem Item Rod of Light. Damit
         kannst du mit rechtsklick Lichtquellen platzieren. Wenn du diese entfernen/sehen möchtest, musst du die
         Sneak-Taste gedrückt halten und ebenfalls rechtsklicken. Dann werden die Lichtquellen als Block sichtbar.
+    </p>
+
+    <h4>World Edit</h4>
+    <p>
+        Hierbei handelt es sich um ein Plugin (ebenfalls verfügbar als Mod), welches das Bauen großer Konstrukte
+        deutlich vereinfacht und beschleunigt. Dieses setzt viel auf Befehle.
+    </p>
+
+    <hr>
+
+    <p>Definitionen sind hier:</p>
+    <ul>
+        <li>
+            <h5>&lt;Block&gt;</h5>
+            <p>
+                ID oder Name eines Minecraft Blocks, z.B. "stone" oder "1"
+                <br>
+                Mehrere Blöcke können verwendet werden mit der Verwendung eines Kommas ohne Leerzeile, e.g.
+                "stone,cobblestone" oder "1,34"
+                <br>
+                Die prozentuale Verteilung lässt sich mit Prozenten als Präfix festlegen, e.g. "75%stone" oder "75%1"
+                (Standardmäßig gleich verteilt)
+                <br>
+                Kombinierbar
+            </p>
+        </li>
+
+        <li>
+            <h5>[h]</h5>
+            <p>Steht für Hollow oder Hohl und ermöglicht bei Ergänzung hohle Konstrukte</p>
+        </li>
+    </ul>
+
+    <hr>
+
+    <p>Die essentiellsten Funktionen sind hier aufgelistet:</p>
+    <ul>
+        <li>
+            <h5>Kompass</h5>
+            <p>
+                Ermöglicht mit dem Rechtsklick auf ein Hindernis das Teleportieren dahin. Das Bewegen durch Wände ist
+                ebenfalls möglich.
+            </p>
+        </li>
+
+        <li>
+            <h5>//wand</h5>
+            <p>
+                Gibt eine normale Holzaxt, welche verwendet werden kann, um Bereiche mit Links- und Rechtsklick zu
+                markieren.
+            </p>
+        </li>
+
+        <li>
+            <h5>//pos1 und //pos2</h5>
+            <p>
+                Äquivalent zum Links- und Rechtsklick mit besagter Axt, stattdessen aber mit der Unterleibposition des
+                Spielers, optimal für Lufteinsätze
+            </p>
+        </li>
+
+        <li>
+            <h5>//set &lt;Block&gt;</h5>
+            <p>Füllt den zuvor markierten Bereich mit ausgewählten Blöcken</p>
+        </li>
+
+        <li>
+            <h5>//replace &lt;Alter Block&gt; &lt;Neuer Block&gt;</h5>
+            <p>Ersetzt in jenem Bereich ausgewählte Blöcke gegen Neue, Löschung mit "0" oder "air" als Parameter</p>
+        </li>
+
+        <li>
+            <h5>//undo und //redo</h5>
+            <p>Macht die letzte Aktion rückgängig oder stellt diese wieder her</p>
+        </li>
+
+        <li>
+            <h5>//br &lt;Weitere Parameter&gt;</h5>
+            <p>
+                Ermöglicht das Verbinden von gewissen Befehlen auf ein in der Hand liegendes Tool, welche sich ausführen
+                lassen mit einem Rechtsklick
+                <br>
+                <red>
+                    Die Hand selbst lässt sich auch zuweisen, was bei Interaktionen mit Minecraft-Blöcken wie Truhen
+                    problematisch sein kann.
+                </red>
+            </p>
+        </li>
+
+        <li>
+            <h6>//br [h]sphere &lt;Block&gt; &lt;Radius&gt;</h6>
+            <p>Erstellt eine Sphäre/Kugel</p>
+        </li>
+
+        <li>
+            <h6>//br [h]cyl &lt;Block&gt; &lt;Radius&gt;</h6>
+            <p>Erstellt eine flache Scheibe</p>
+        </li>
+
+        <li>
+            <h6>//br none</h6>
+            <p>Entfernt die Funktion des Werkzeuges</p>
+        </li>
+
+        <li>
+            <h5>/mask &lt;Block&gt;</h5>
+            <p>
+                Limitiert Kreationen, ausgeführt mit einem Werkzeug, auf bestimmte Blöcke und entfernt diese bei
+                Verzicht auf den Block (e.g. "/mask" allein)
+            </p>
+        </li>
+    </ul>
+
+    <hr>
+
+    <p>
+        Für weitere Details ist die offizielle, englische World-Edit-Dokumentation
+        <a href="https://worldedit.enginehub.org/en/latest/">hier</a> empfohlen. Bitte bedenke, dass der FPM-Bauserver
+        die Version 6.1.9 verwendet und die Dokumentation daher einige Funktionen beschreibt, welche nicht verwendbar
+        sind.
+    </p>
+
+    <h4>Schematica</h4>
+    <p>
+        Schematica ermöglicht das Wiederverwenden selbst ausgewählter Ressourcen und kann daher optimal eingesetzt
+        werden bei repetitiven Mustern, wie Bäume von Wäldern oder Häuser einer Stadt. Diese Mod darf auf dem
+        FPM-Netzwerk nur unter dem Vorwand verwendet werden, zeiteffizient und nichtsdestotrotz Qualitätskonform zu
+        arbeiten. Eine Beschreibung zur Verwendung dieser Mod ist in Planung.
     </p>
 </body>

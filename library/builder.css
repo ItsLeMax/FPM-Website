@@ -1,0 +1,12 @@
+red {
+    color: rgb(223, 63, 63);
+}
+
+li h6 {
+    text-transform: none;
+    color: rgb(170, 170, 170);
+}
+
+li h5, li h6 {
+    display: contents;
+}
