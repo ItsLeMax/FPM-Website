@@ -3,8 +3,6 @@
 }
 
 body {
-    margin: 5vmin;
-
     background-size: cover;
     background-attachment: fixed;
     background-image: url("https://media.fpm-studio.de/assets/background-image/oasis.webp");

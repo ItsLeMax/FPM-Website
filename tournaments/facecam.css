@@ -1,6 +1,5 @@
 body {
     background-color: var(--gray20);
-    margin: 4vmin;
 
     display: flex;
     flex-direction: column;

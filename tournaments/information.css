@@ -1,6 +1,4 @@
 body {
-    margin: 4vmin;
-
     display: flex;
     flex-direction: column;
     gap: 2vmin;
