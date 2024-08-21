@@ -8,15 +8,17 @@
 }
 
 html {
+	min-width: fit-content;
 	background-color: var(--gray);
 }
 
 body {
 	background-color: var(--gray);
+	margin: 2rem;
 }
 
 h1 {
-	font-size: 4vmin;
+	font-size: 4rem;
 }
 
 h1, td {
@@ -36,7 +38,7 @@ a:hover {
 }
 
 a, td, thead a {
-	font-size: 3vmin;
+	font-size: 3rem;
 }
 
 table {
@@ -50,7 +52,7 @@ th {
 }
 
 th, td {
-	padding: 1vmin;
+	padding: 1rem;
 }
 
 tr:nth-child(even) {
