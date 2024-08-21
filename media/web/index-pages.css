@@ -94,13 +94,3 @@ a:hover::before, a:hover::after {
         font-size: 4rem !important;
     }
 }
-
-@media (max-height: 270px) {
-    html {
-        align-items: unset;
-    }
-
-    body {
-        margin: unset;
-    }
-}
