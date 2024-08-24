@@ -6,58 +6,41 @@ html {
     overflow: hidden;
 }
 
+body {
+    height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-image: url("https://media.fpm-studio.de/assets/background-image/rocket_league.webp");
+}
+
 body>div {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1vmin;
+    gap: 1rem;
 
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    padding: 2rem;
+    border-radius: 2rem;
 
-    z-index: 1;
-    padding: 3vmin;
-    border-radius: 3vmin;
     background-color: rgb(40, 40, 40);
-    filter: drop-shadow(0 0 1vmin black);
+    filter: drop-shadow(0 0 5rem black);
 }
 
 #toggle {
-    width: 47vmin;
-
     display: flex;
-    justify-content: center;
     align-items: center;
-    gap: 1vmin;
+    gap: 1rem;
 }
 
-#password {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 47vmin;
-}
-
-body>img {
-    width: 100vw;
-    height: 100vh;
-
-    object-fit: cover;
-    -webkit-user-drag: none;
-
-    filter: brightness(.75) blur(.35vmin);
-}
-
-div>img {
-    width: 3.69vmin;
-    height: 1.75vmin;
-    cursor: pointer;
+#login {
+    color: var(--selected);
 }
 
 h1 {
-    font-size: 3vmin;
+    font-size: 3rem;
 }
 
 .slider {
@@ -69,6 +52,11 @@ h1 {
     background-color: gray;
 }
 
+input {
+    height: 4rem;
+    width: 40rem;
+}
+
 input[type="password"] {
     cursor: text;
 }
@@ -77,13 +65,17 @@ input:checked+.slider {
     background-color: var(--selected);
 }
 
-input {
-    width: 42vmin;
+#password>img {
+    height: 1.75rem;
+    cursor: pointer;
+
+    position: absolute;
+    bottom: 13.1rem;
+    right: 2rem;
 }
 
 button {
-    width: 21.5vmin;
-    margin-top: 1vmin;
+    margin-top: 1rem;
 }
 
 button:hover {
@@ -96,25 +88,21 @@ button:active:not(:disabled) {
     transition: unset;
 }
 
-#login {
-    color: var(--selected);
-}
-
-#email {
-    width: 47vmin;
-}
-
 @media (max-aspect-ratio: 4/3) {
-    #toggle, #password, #email {
-        width: 84vmin;
+    body>div {
+        margin: 2rem;
+    }
+
+    h1 {
+        font-size: 2.7rem;
     }
 
     input {
-        width: 70vmin;
+        width: 35rem;
+        height: 5rem;
     }
 
-    div>img {
-        width: 7vmin;
-        height: 3.5vmin;
+    #password>img {
+        bottom: 14.1rem;
     }
 }
