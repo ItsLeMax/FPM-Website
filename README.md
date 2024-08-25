@@ -2,6 +2,4 @@
 Website of Filmproduktion Maximus
 
 > [!NOTE]
-> This website is a hobby project. Although i have somewhat of a respectable amount of knowledge I am not familiar with some common and recommended work flows contrary to other projects of mine.
-
-I am using rather unusual size units as defaults. Feel free to open a pull request if you would like to contribute to an objective improvement.
+> I am using one rather unusual size unit as default. This will be resolved in the near future.
