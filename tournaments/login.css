@@ -14,6 +14,9 @@ body {
     justify-content: center;
 
     background-image: url("https://media.fpm-studio.de/assets/background-image/rocket_league.webp");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
 }
 
 body>div {
@@ -88,21 +91,60 @@ button:active:not(:disabled) {
     transition: unset;
 }
 
-@media (max-aspect-ratio: 4/3) {
-    body>div {
-        margin: 2rem;
+@media (max-width: 720px) {
+    :root {
+        --slider-size: .5
     }
 
-    h1 {
-        font-size: 2.7rem;
+    body>div {
+        margin: 1rem;
+    }
+
+    h1, p, button {
+        font-size: 1.75rem;
     }
 
     input {
-        width: 35rem;
-        height: 5rem;
+        width: 23.4rem;
+        height: 3rem;
     }
 
     #password>img {
-        bottom: 14.1rem;
+        height: 1.25rem;
+        bottom: 12.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    :root {
+        --slider-size: .4;
+    }
+
+    body {
+        background-size: 500rem;
+        background-position-y: unset;
+    }
+
+    body>div {
+        margin: 1rem;
+    }
+
+    button {
+        padding: 0 .5rem;
+        height: 2rem;
+    }
+
+    h1, p, button {
+        font-size: .8rem;
+    }
+
+    input {
+        width: 14rem;
+        height: 2.5rem;
+    }
+
+    #password>img {
+        height: 1rem;
+        bottom: 9rem;
     }
 }
