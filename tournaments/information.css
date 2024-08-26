@@ -1,7 +1,9 @@
 body {
     display: flex;
     flex-direction: column;
-    gap: 2vmin;
+    gap: 2rem;
+
+    margin: 3rem;
 }
 
 h1 {
@@ -9,5 +11,5 @@ h1 {
 }
 
 img {
-    width: 90vmin;
+    width: 60rem;
 }
