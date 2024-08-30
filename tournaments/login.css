@@ -121,8 +121,7 @@ button:active:not(:disabled) {
     }
 
     body {
-        background-size: 500rem;
-        background-position-y: unset;
+        background-color: #1c2d28;
     }
 
     body>div {
