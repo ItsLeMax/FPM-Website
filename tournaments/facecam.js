@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (navigator.mediaDevices.getUserMedia) {
         navigator.mediaDevices.getUserMedia({ video: true }).then((stream) => {
             document.getElementsByTagName("video")[0].srcObject = stream;
+            button.disabled = false;
         });
     }
 })
