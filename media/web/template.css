@@ -30,6 +30,7 @@ html {
 }
 
 body {
+    margin: 3rem;
     background-color: var(--gray20);
 }
 

@@ -8,6 +8,7 @@ html {
 
 body {
     height: 100vh;
+    margin: unset;
 
     display: flex;
     align-items: center;
@@ -91,7 +92,7 @@ button:active:not(:disabled) {
     transition: unset;
 }
 
-@media (max-width: 720px) {
+@media (max-width: 720px) or (max-height: 500px) {
     :root {
         --slider-size: .5
     }
@@ -111,11 +112,11 @@ button:active:not(:disabled) {
 
     #password>img {
         height: 1.25rem;
-        bottom: 12.2rem;
+        bottom: 11.8rem;
     }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 480px) or (max-height: 410px) {
     :root {
         --slider-size: .4;
     }
@@ -126,11 +127,14 @@ button:active:not(:disabled) {
 
     body>div {
         margin: 1rem;
+        padding: 1.5rem;
     }
 
     button {
-        padding: 0 .5rem;
         height: 2rem;
+
+        margin: unset;
+        padding: 0 .5rem;
     }
 
     h1, p, button {
@@ -143,7 +147,9 @@ button:active:not(:disabled) {
     }
 
     #password>img {
-        height: 1rem;
-        bottom: 9rem;
+        height: .8rem;
+
+        bottom: 7.2rem;
+        right: 1.5rem;
     }
 }

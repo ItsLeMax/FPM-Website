@@ -1,7 +1,4 @@
 body {
-    margin: 3rem;
-    background-color: var(--gray20);
-
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -34,14 +31,4 @@ video {
 
 button {
     background-color: var(--success);
-}
-
-@media (max-width: 864px) {
-    b {
-        font-size: 4rem;
-    }
-
-    p {
-        font-size: 3rem;
-    }
 }
