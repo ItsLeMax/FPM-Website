@@ -15,10 +15,11 @@
 </head>
 
 <body>
-    <h1>Tipps</h1>
+    <h2>Hinweise</h2>
+
     <div id="hints">
         <div>
-            <h2>Gehe auf den Aufgabenbereich ein</h2>
+            <h5>Gehe auf den Aufgabenbereich ein</h5>
             <ul>
                 <li>Welche Erfahrungen hast du gemacht und womit?</li>
                 <li>Welche Fähigkeiten hast du dir angeeignet?</li>
@@ -27,23 +28,23 @@
             </ul>
         </div>
 
-        <div id="text">
+        <div>
             <div>
-                <h2>Redundanz vermeiden</h2>
+                <h5>Redundanz vermeiden</h5>
                 <p>
                     Redundante Charaktereigenschaften (Floskeln, e.g. "Ich bin Teamfähig, freundlich und co.") lassen
                     dich in der Masse untergehen. Lege daher Wert auf deine Individualität!
                 </p>
             </div>
             <div>
-                <h2>Vermeide ein krampfhaftes Füllen der Felder</h2>
+                <h5>Vermeide ein krampfhaftes Füllen der Felder</h5>
                 <p>
                     Du musst bei weitem nicht alle Zeichen der Textfelder ausschöpfen. Die Qualität der Bewerbung
                     ist wichtig, nicht dessen Quantität.
                 </p>
             </div>
             <div>
-                <h2>Nimm die Sache locker</h2>
+                <h5>Nimm die Sache locker</h5>
                 <p>
                     Womöglich fühlst du dich unter Druck gesetzt und nervös. Das musst du aber nicht sein. Du wirst
                     von ItsLeMax wohlwollend empfangen. ❤
@@ -52,11 +53,12 @@
         </div>
     </div>
 
-    <h1>Beschreibungen der Bewerbungsfelder</h1>
-    <h2>Über dich</h2>
+    <h2>Beschreibungen der Bewerbungsfelder</h2>
+
+    <h5>Über dich</h5>
     <p>Bitte schreibe in diese Box eine Bewerbung.</p>
 
-    <h2>Beschreibung der verfügbaren Zeit</h2>
+    <h5>Beschreibung der verfügbaren Zeit</h5>
     <p>
         Gibt es einen Zeitraum, in dem du so gut wie immer Zeit hast?
         Wenn ja, wann? Alternativ kannst du auch darauf eingehen, wann du keine Zeit hast. Du kannst
@@ -64,26 +66,34 @@
         natürlich nicht immer erreichbar und tätig sein.
     </p>
 
-    <h2>Discord @-Handle</h2>
+    <h5>Discord @-Handle</h5>
     <p>
         Discord ist unsere Hauptkommunikationsplattform. Bitte gib ggf. deinen
         Discord-Namen an. Falls du keinen Discord-Account hast, solltest du dir einen erstellen. Discord
         kannst du <a href="https://discord.com/">sowohl in der App als auch im Browser</a> verwenden.
     </p>
 
-    <h2>Dateianhang</h2>
+    <h5>Dateianhang</h5>
     <p>Du kannst Dateien anhängen, um deine Projekte zur Einsicht zur Verfügung zu stellen.</p>
 
-    <h1>Die Bewerbung</h1>
+    <h2>Die Bewerbung</h2>
 
     <div id="jobs">
-        <h2>Als was möchtest du tätig sein?</h2>
+        <h5>Als was möchtest du tätig sein?</h5>
 
-        <p>Builder:</p>
-        <input type="checkbox" id="builder">
+        <div>
+            <p>Builder:</p>
+            <label class="switch">
+                <input type="checkbox" id="builder">
+                <span class="slider round"></span>
+            </label>
 
-        <p>Editor:</p>
-        <input type="checkbox" id="editor">
+            <p>Editor:</p>
+            <label class="switch">
+                <input type="checkbox" id="editor">
+                <span class="slider round"></span>
+            </label>
+        </div>
     </div>
 
     <button id="create" disabled>E-Mail-Programm öffnen mit generierter Vorlage</button>

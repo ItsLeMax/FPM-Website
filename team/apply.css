@@ -1,22 +1,20 @@
 body {
-    background-color: var(--gray20);
-
     display: flex;
     flex-direction: column;
-    gap: 2vmin;
+    gap: 3rem;
 }
 
-input[type="checkbox"] {
-    width: 2.5vmin;
-    height: 2.5vmin;
+input {
+    width: 5rem;
+    height: 5rem;
 }
 
-h1 {
+h2 {
     text-decoration: underline;
 }
 
 button {
-    padding: .5vmin;
+    padding: .5rem;
 
     color: whitesmoke;
     background-color: var(--gray50);
@@ -31,46 +29,13 @@ button:active:not(:disabled) {
     background-color: var(--danger);
 }
 
-#hints {
-    gap: 5vmin;
-}
-
-#text {
-    flex-direction: column;
-}
-
-#jobs {
-    gap: 1vmin;
-}
-
-#hints, #text, #jobs {
+#jobs div {
     display: flex;
+    align-items: center;
+    gap: 1rem;
 }
 
 #create {
-    height: 5vmin;
-}
-
-@media (max-aspect-ratio: 4/3) {
-    input[type="checkbox"] {
-        width: 8vmin;
-        height: 8vmin;
-    }
-
-    #hints {
-        display: block;
-    }
-
-    #create {
-        height: 10vmin;
-    }
-
-    #jobs {
-        justify-content: space-between;
-    }
-
-    #jobs h2 {
-        width: 39vmin;
-        display: block;
-    }
+    width: 50rem;
+    height: 5rem;
 }

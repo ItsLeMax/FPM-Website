@@ -10,20 +10,20 @@ body {
 }
 
 body>div {
-    border-top: 6vmin;
+    border-top: 6rem;
     border-style: solid;
 
-    padding: 3vmin;
-    background-color: rgba(15, 15, 15, .5);
+    padding: 3rem;
+    background-color: rgba(15, 15, 15, .9);
 }
 
 body>div:not(:first-of-type) {
-    margin-top: 10vmin;
+    margin-top: 5rem;
 }
 
 body>a {
     text-align: center;
-    line-height: 6vmin;
+    line-height: 6rem;
 
     width: 100%;
     float: left;
@@ -32,22 +32,35 @@ body>a {
 div:has(img) {
     display: flex;
     align-items: center;
-    gap: 5vmin;
+    gap: 5rem;
 }
 
 hr {
+    margin: 3rem 0;
     border-color: white;
 }
 
 img {
-    width: calc(16vmin * 4);
-    height: calc(9vmin * 4);
+    width: calc(16rem * 3);
+    height: calc(9rem * 3);
 }
 
 a {
     color: aquamarine;
     font-weight: bold;
     text-decoration: none;
+}
+
+h1 {
+    font-size: 4rem;
+}
+
+h2 {
+    font-size: 3.5rem;
+}
+
+h3 {
+    font-size: 3rem;
 }
 
 h1, h2 {
@@ -60,7 +73,7 @@ p, a {
 }
 
 #start {
-    border-color: var(--gray20);
+    border-color: var(--gray50);
 }
 
 #start p, #apply p {
@@ -95,7 +108,7 @@ p, a {
     border-color: rgb(110, 110, 255);
 }
 
-@media (max-aspect-ratio: 4/3) or (min-aspect-ratio: 12/3) {
+@media (max-width: 1800px) {
     img {
         order: 1;
     }
@@ -107,6 +120,6 @@ p, a {
 
 @media (max-aspect-ratio: 1/2) {
     body {
-        background-position-x: -80vmin;
+        background-position-x: -80rem;
     }
 }
