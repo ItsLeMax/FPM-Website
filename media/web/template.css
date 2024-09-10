@@ -9,9 +9,11 @@
     --gray20: rgb(20, 20, 20);
     --gray50: rgb(50, 50, 50);
 
-    --success: rgb(215, 255, 150);
-    --danger: rgb(255, 90, 90);
+    --success: rgb(47, 199, 110);
+    --danger: rgb(197, 71, 77);
     --accent_fpm: rgb(180, 160, 30);
+
+    --darker_blue: rgb(20, 40, 40);
 
     --slider-size: .75;
     --transition: .2s;
