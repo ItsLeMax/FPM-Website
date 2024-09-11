@@ -43,10 +43,6 @@ body>div {
     color: var(--selected);
 }
 
-h1 {
-    font-size: 3rem;
-}
-
 .slider {
     background-color: var(--selected);
 }
@@ -76,10 +72,13 @@ input:checked+.slider {
     position: absolute;
     bottom: 13.1rem;
     right: 2rem;
+
+    -webkit-user-drag: none;
 }
 
 button {
     margin-top: 1rem;
+    border-radius: 1rem;
 }
 
 button:hover {
@@ -92,16 +91,16 @@ button:active:not(:disabled) {
     transition: unset;
 }
 
-@media (max-width: 720px) or (max-height: 500px) {
+@media (max-width: 760px) or (max-height: 500px) {
     :root {
-        --slider-size: .5
+        --slider-size: .5;
     }
 
     body>div {
         margin: 1rem;
     }
 
-    h1, p, button {
+    h5, p, button {
         font-size: 1.75rem;
     }
 
@@ -116,13 +115,9 @@ button:active:not(:disabled) {
     }
 }
 
-@media (max-width: 480px) or (max-height: 410px) {
+@media (max-width: 480px) or (max-height: 430px) {
     :root {
         --slider-size: .4;
-    }
-
-    body {
-        background-color: #1c2d28;
     }
 
     body>div {
@@ -137,8 +132,8 @@ button:active:not(:disabled) {
         padding: 0 .5rem;
     }
 
-    h1, p, button {
-        font-size: .8rem;
+    h5, p, button {
+        font-size: .9rem;
     }
 
     input {
@@ -151,5 +146,9 @@ button:active:not(:disabled) {
 
         bottom: 7.2rem;
         right: 1.5rem;
+    }
+
+    .slider.round, .slider.round::before {
+        border-radius: unset;
     }
 }
