@@ -1,104 +1,168 @@
-let enabled = false;
+let navigatorEnabled = false;
 
-document.addEventListener("DOMContentLoaded", () => {
-    const navigator = document.createElement("div");
-    navigator.className = "navigator";
-    navigator.style.position = "fixed";
-    navigator.style.right = "0";
-    navigator.style.textAlign = "right";
+/**
+ * @description
+ * Generiert einen vorgefertigten Navigator
+ *
+ * Generates a prefabricated navigator
+ *
+ * @author ItsLeMax
+ *
+ * @param { "FPM"|"Tournaments" } subdomain
+ * Subdomäne des Navigators
+ *
+ * subdomain of the navigator
+ */
+function generateNavigator(subdomain) {
+    document.addEventListener("DOMContentLoaded", () => {
+        const navigator = document.createElement("div");
+        navigator.style.position = "fixed";
+        navigator.style.display = "flex";
+        navigator.style.flexDirection = "row-reverse";
+        navigator.style.width = "100%";
+        navigator.style.justifyContent = "space-between";
+        navigator.style.top = "0";
+        navigator.style.left = "0";
 
-    const menuButton = document.createElement("a");
-    menuButton.innerText = "☰";
-    menuButton.style.cursor = "pointer";
-    menuButton.style.userSelect = "none";
-    menuButton.style.color = "white";
-    navigator.append(menuButton);
+        const menuButton = document.createElement("a");
+        menuButton.innerText = "☰";
+        menuButton.style.cursor = "pointer";
+        menuButton.style.userSelect = "none";
+        menuButton.style.color = "white";
+        navigator.append(menuButton);
 
-    const menu = document.createElement("div");
-    menu.style.display = "flex";
-    menu.style.flexDirection = "column";
-    menu.style.gap = "1rem";
+        const menu = document.createElement("div");
+        let first, second, third, fourth, fifth, sixth, seventh;
 
-    const first = document.createElement("a");
-    first.innerText = "Code-Entwicklung";
-    first.href = "https://dev.fpm-studio.de/";
+        switch (subdomain) {
+            case "FPM":
+                first = document.createElement("a");
+                first.innerText = "Homepage";
+                first.href = "https://fpm-studio.de/";
 
-    const second = document.createElement("a");
-    second.innerText = "Extras";
-    second.href = "https://extras.fpm-studio.de/";
+                second = document.createElement("a");
+                second.innerText = "Team";
+                second.href = "https://team.fpm-studio.de/";
 
-    const third = document.createElement("a");
-    third.innerText = "Homepage";
-    third.href = "https://fpm-studio.de/";
+                third = document.createElement("a");
+                third.innerText = "Bibliothek";
+                third.href = "https://library.fpm-studio.de/";
 
-    const fourth = document.createElement("a");
-    fourth.innerText = "Bibliothek";
-    fourth.href = "https://library.fpm-studio.de/";
+                fourth = document.createElement("a");
+                fourth.innerText = "Extras";
+                fourth.href = "https://extras.fpm-studio.de/";
 
-    const fifth = document.createElement("a");
-    fifth.innerText = "Dateiverwaltung";
-    fifth.href = "https://media.fpm-studio.de/";
+                fifth = document.createElement("a");
+                fifth.innerText = "Geheimnisse";
+                fifth.href = "https://secrets.fpm-studio.de/";
 
-    const sixth = document.createElement("a");
-    sixth.innerText = "Geheime Codes";
-    sixth.href = "https://secrets.fpm-studio.de/";
+                sixth = document.createElement("a");
+                sixth.innerText = "Code-Entwicklung";
+                sixth.href = "https://dev.fpm-studio.de/";
 
-    const seventh = document.createElement("a");
-    seventh.innerText = "Team";
-    seventh.href = "https://team.fpm-studio.de/";
+                seventh = document.createElement("a");
+                seventh.innerText = "Turniere";
+                seventh.href = "https://tournaments.fpm-studio.de/";
+                break;
+            case "Tournaments":
+                first = document.createElement("a");
+                first.innerText = "Homepage";
+                first.href = "index.html";
 
-    const eighth = document.createElement("a");
-    eighth.innerText = "Turniere";
-    eighth.href = "https://tournaments.fpm-studio.de/";
+                second = document.createElement("a");
+                second.innerText = "Informationen";
+                second.href = "information.html";
 
-    const text = [first, second, third, fourth, fifth, sixth, seventh, eighth];
+                third = document.createElement("a");
+                third.innerText = "Verwaltung";
+                third.href = "manage.html";
 
-    for (const href of text) {
-        href.style.color = "white";
-        href.style.textDecoration = "none";
-
-        href.style.position = "relative";
-        href.style.right = "-21rem";
-        href.style.transform
-    }
-
-    menu.append(first);
-    menu.append(second);
-    menu.append(third);
-    menu.append(fourth);
-    menu.append(fifth);
-    menu.append(sixth);
-    menu.append(seventh);
-    menu.append(eighth);
-
-    navigator.append(menu);
-
-    document.body.prepend(navigator);
-
-    menuButton.addEventListener("click", () => {
-        if (enabled) {
-            enabled = false;
-            document.body.style.position = "unset";
-            document.body.style.right = "unset";
-            animate(text, "0", "-21rem");
-            return;
+                fourth = document.createElement("a");
+                fourth.innerText = "Facecam in Streams";
+                fourth.href = "facecam.html";
+                break;
         }
 
-        document.body.style.position = "absolute";
-        animate(text, "-21rem", "0");
-        enabled = true;
+        const navigatorElements = [first, second, third, fourth, fifth, sixth, seventh].filter(Boolean);
+
+        for (const href of navigatorElements) {
+            href.style.color = "white";
+            href.style.textDecoration = "none";
+            href.style.userSelect = "none";
+            href.style.padding = "0 .5rem";
+
+            href.style.position = "relative";
+            href.style.top = "-4rem";
+        }
+
+        for (const navigatorElement of navigatorElements) {
+            menu.append(navigatorElement);
+        }
+
+        navigator.append(menu);
+        document.body.prepend(navigator);
+
+        menuButton.addEventListener("click", () => {
+            if (!navigatorEnabled) {
+                animateNavigator(navigatorElements, true);
+                navigatorEnabled = true;
+                return;
+            }
+
+            navigatorEnabled = false;
+            animateNavigator(navigatorElements, false);
+        })
     })
-})
+}
 
-const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+/**
+ * @description
+ * Fügt mithilfe einer Prämisse eine Verzögerung im Code hinzu
+ *
+ * Adds with the help of a promise a delay inside the code
+ *
+ * @author StackOverflow
+ *
+ * @see [StackOverflow](https://stackoverflow.com/questions/951021/what-is-the-javascript-version-of-sleep)
+ *
+ * @param { Number } milliseconds
+ * Zeit in Millisekunden
+ *
+ * time in milliseconds
+ */
+const delay = (milliseconds) => new Promise(resolve => setTimeout(resolve, milliseconds));
 
-async function animate(text, start, end) {
-    for (const href of text) {
-        href.animate([{
-            right: start
-        }, {
-            right: end
-        }], {
+/**
+ * @description
+ * Animiert den Ein- und Auszug des Navigators
+ *
+ * Animates the in and out movement of the navigator
+ *
+ * @author ItsLeMax
+ *
+ * @param { Array<HTMLAnchorElement> } navigatorElements
+ * Alle Navigator-Elemente
+ *
+ * all navigator elements
+ *
+ * @param { String } naviActivated
+ * Wurde der Navigator aktiviert?
+ *
+ * Was the navigator activated?
+ */
+async function animateNavigator(navigatorElements, naviActivated) {
+    const moveIn = [{
+        top: "-4rem"
+    }, {
+        top: "0"
+    }];
+
+    if (!naviActivated) {
+        moveIn.reverse();
+    }
+
+    for (const href of navigatorElements) {
+        href.animate(moveIn, {
             duration: 250,
             fill: "forwards",
             easing: "ease-in-out"
