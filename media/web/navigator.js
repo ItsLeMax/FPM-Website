@@ -16,20 +16,13 @@ let navigatorEnabled = false;
 function generateNavigator(subdomain) {
     document.addEventListener("DOMContentLoaded", () => {
         const navigator = document.createElement("div");
-        navigator.style.position = "fixed";
-        navigator.style.display = "flex";
-        navigator.style.flexDirection = "row-reverse";
-        navigator.style.width = "100%";
-        navigator.style.justifyContent = "space-between";
-        navigator.style.top = "0";
-        navigator.style.left = "0";
+        navigator.className = "navigator";
 
-        const menuButton = document.createElement("a");
-        menuButton.innerText = "☰";
-        menuButton.style.cursor = "pointer";
-        menuButton.style.userSelect = "none";
-        menuButton.style.color = "white";
-        navigator.append(menuButton);
+        const navigatorButton = document.createElement("a");
+        navigatorButton.innerText = "☰";
+        navigatorButton.className = "navigator-button";
+
+        navigator.append(navigatorButton);
 
         const menu = document.createElement("div");
         let first, second, third, fourth, fifth, sixth, seventh;
@@ -80,37 +73,35 @@ function generateNavigator(subdomain) {
                 fourth = document.createElement("a");
                 fourth.innerText = "Facecam in Streams";
                 fourth.href = "facecam.html";
+
+                fifth = document.createElement("a");
+                fifth.innerText = "Datenschutz";
+                fifth.href = "privacy-policy.html";
                 break;
         }
 
-        const navigatorElements = [first, second, third, fourth, fifth, sixth, seventh].filter(Boolean);
+        const navigatorPages = [first, second, third, fourth, fifth, sixth, seventh].filter(Boolean);
 
-        for (const href of navigatorElements) {
-            href.style.color = "white";
-            href.style.textDecoration = "none";
-            href.style.userSelect = "none";
-            href.style.padding = "0 .5rem";
-
-            href.style.position = "relative";
-            href.style.top = "-4rem";
+        for (const navigatorPage of navigatorPages) {
+            navigatorPage.className = "navigator-page";
         }
 
-        for (const navigatorElement of navigatorElements) {
+        for (const navigatorElement of navigatorPages) {
             menu.append(navigatorElement);
         }
 
         navigator.append(menu);
         document.body.prepend(navigator);
 
-        menuButton.addEventListener("click", () => {
+        navigatorButton.addEventListener("click", () => {
             if (!navigatorEnabled) {
-                animateNavigator(navigatorElements, true);
+                animateNavigator(navigatorPages, true);
                 navigatorEnabled = true;
                 return;
             }
 
             navigatorEnabled = false;
-            animateNavigator(navigatorElements, false);
+            animateNavigator(navigatorPages, false);
         })
     })
 }
@@ -154,8 +145,10 @@ async function animateNavigator(navigatorElements, naviActivated) {
     const moveIn = [{
         top: "-4rem"
     }, {
-        top: "0"
+        top: ".5rem"
     }];
+
+    // style.top ändern und .transition in css hinzufügen?
 
     if (!naviActivated) {
         moveIn.reverse();
