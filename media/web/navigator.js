@@ -1,4 +1,4 @@
-let navigatorEnabled = false;
+let navigatorActive = false;
 
 /**
  * @description
@@ -84,24 +84,20 @@ function generateNavigator(subdomain) {
 
         for (const navigatorPage of navigatorPages) {
             navigatorPage.className = "navigator-page";
-        }
-
-        for (const navigatorElement of navigatorPages) {
-            menu.append(navigatorElement);
+            navigatorPage.setAttribute("active", false);
+            menu.append(navigatorPage);
         }
 
         navigator.append(menu);
         document.body.prepend(navigator);
 
-        navigatorButton.addEventListener("click", () => {
-            if (!navigatorEnabled) {
-                animateNavigator(navigatorPages, true);
-                navigatorEnabled = true;
-                return;
-            }
+        navigatorButton.addEventListener("click", async () => {
+            navigatorActive = !navigatorActive;
 
-            navigatorEnabled = false;
-            animateNavigator(navigatorPages, false);
+            for (const href of navigatorPages) {
+                href.setAttribute("active", navigatorActive);
+                await delay(35);
+            }
         })
     })
 }
@@ -121,46 +117,6 @@ function generateNavigator(subdomain) {
  *
  * time in milliseconds
  */
-const delay = (milliseconds) => new Promise(resolve => setTimeout(resolve, milliseconds));
-
-/**
- * @description
- * Animiert den Ein- und Auszug des Navigators
- *
- * Animates the in and out movement of the navigator
- *
- * @author ItsLeMax
- *
- * @param { Array<HTMLAnchorElement> } navigatorElements
- * Alle Navigator-Elemente
- *
- * all navigator elements
- *
- * @param { String } naviActivated
- * Wurde der Navigator aktiviert?
- *
- * Was the navigator activated?
- */
-async function animateNavigator(navigatorElements, naviActivated) {
-    const moveIn = [{
-        top: "-4rem"
-    }, {
-        top: ".5rem"
-    }];
-
-    // style.top ändern und .transition in css hinzufügen?
-
-    if (!naviActivated) {
-        moveIn.reverse();
-    }
-
-    for (const href of navigatorElements) {
-        href.animate(moveIn, {
-            duration: 250,
-            fill: "forwards",
-            easing: "ease-in-out"
-        });
-
-        await delay(35);
-    }
+function delay(milliseconds) {
+    return new Promise(resolve => setTimeout(resolve, milliseconds));
 }
