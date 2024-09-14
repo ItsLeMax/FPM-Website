@@ -31,7 +31,7 @@ html {
 }
 
 body {
-    margin: 3rem;
+    margin: 6.7rem 3rem 3rem 3rem;
     background-color: var(--gray20);
 }
 
@@ -124,7 +124,6 @@ select, button, input, textarea, span {
 
     user-select: none;
     cursor: pointer;
-    transition: .2s;
 
     color: var(--darker_yellow);
     background-color: var(--darker_blue);
@@ -134,7 +133,7 @@ select, button, input, textarea, span {
     position: relative;
 
     padding: .5rem;
-    transition: .4s;
+    transition: .1s;
 
     color: white;
     background-color: rgb(20, 30, 30);
@@ -153,17 +152,25 @@ select, button, input, textarea, span {
 }
 
 .navigator-page[active=false] {
-    top: -18rem;
+    top: -30rem;
 }
 
 .navigator-page[active=true] {
     top: .5rem;
+
+    white-space: nowrap;
 }
 
 @media (max-width: 1175px) {
     .navigator {
         flex-direction: column;
+
         padding: 0;
+        text-align: right;
+    }
+
+    .navigator a {
+        font-size: 4rem;
     }
 
     .navigator div {
@@ -175,12 +182,11 @@ select, button, input, textarea, span {
         z-index: 2;
     }
 
-    .navigator-page:hover {
+    .navigator-page {
         z-index: 1;
     }
 
     .navigator-page[active=false] {
-        top: -23rem;
         opacity: 0;
     }
 }
