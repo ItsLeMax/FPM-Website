@@ -31,6 +31,10 @@ html {
 }
 
 body {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
     margin: 6.7rem 3rem 3rem 3rem;
     background-color: var(--gray20);
 }
