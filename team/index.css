@@ -5,24 +5,16 @@ body {
     background-position: 0;
 }
 
-body>div {
+.box {
     border-top: 6rem;
-    border-style: solid;
+    border-style: ridge;
 
     padding: 3rem;
     background-color: rgba(15, 15, 15, .9);
 }
 
-body>div:not(:first-of-type) {
+.box:not(:first) {
     margin-top: 5rem;
-}
-
-body>a {
-    text-align: center;
-    line-height: 6rem;
-
-    width: 100%;
-    float: left;
 }
 
 div:has(img) {

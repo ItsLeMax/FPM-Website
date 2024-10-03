@@ -2,15 +2,6 @@ body {
     align-items: center;
 }
 
-a {
-    position: fixed;
-    top: 2rem;
-    right: 3rem;
-
-    background-color: var(--gray20);
-    font-size: 3rem;
-}
-
 p {
     text-align: center;
 }
