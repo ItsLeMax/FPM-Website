@@ -2,10 +2,6 @@
     --selected: rgb(252, 222, 124);
 }
 
-html {
-    overflow: hidden;
-}
-
 body {
     height: 100vh;
     margin: unset;
@@ -76,6 +72,8 @@ input:checked+.slider {
 }
 
 button {
+    width: 100%;
+
     margin-top: 1rem;
     border-radius: 1rem;
 }
@@ -95,11 +93,7 @@ button:active:not(:disabled) {
         --slider-size: .5;
     }
 
-    body>div {
-        margin: 1rem;
-    }
-
-    h5, p, button {
+    h5, p, button, input {
         font-size: 1.75rem;
     }
 
@@ -120,18 +114,15 @@ button:active:not(:disabled) {
     }
 
     body>div {
-        margin: 1rem;
         padding: 1.5rem;
     }
 
     button {
         height: 2rem;
-
-        margin: unset;
         padding: 0 .5rem;
     }
 
-    h5, p, button {
+    h5, p, button, input {
         font-size: .9rem;
     }
 
@@ -143,7 +134,7 @@ button:active:not(:disabled) {
     #password>img {
         height: .8rem;
 
-        bottom: 7.2rem;
+        bottom: 8.2rem;
         right: 1.5rem;
     }
 
