@@ -137,7 +137,7 @@ select, button, input, textarea, span {
     position: relative;
 
     padding: .5rem;
-    transition: .1s;
+    transition: .2s;
 
     color: white;
     background-color: rgb(20, 30, 30);
@@ -156,7 +156,7 @@ select, button, input, textarea, span {
 }
 
 .navigator-page[active=false] {
-    top: -30rem;
+    top: -4rem;
 }
 
 .navigator-page[active=true] {
@@ -165,7 +165,11 @@ select, button, input, textarea, span {
     white-space: nowrap;
 }
 
-@media (max-width: 1175px) {
+@media (max-width: 1280px) {
+    body {
+        margin: 9.3rem 3rem 3rem 3rem;
+    }
+
     .navigator {
         flex-direction: column;
 
@@ -188,9 +192,11 @@ select, button, input, textarea, span {
 
     .navigator-page {
         z-index: 1;
+        transition: .4s;
     }
 
     .navigator-page[active=false] {
+        top: -44rem;
         opacity: 0;
     }
 }

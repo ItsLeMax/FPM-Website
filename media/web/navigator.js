@@ -14,6 +14,22 @@ let navigatorActive = false;
  * subdomain of the navigator
  */
 function generateNavigator(subdomain) {
+    window.matchMedia("(max-width: 1280px)").addEventListener("change", () => {
+        const navigator = document.getElementsByClassName("navigator")[0];
+
+        navigator.style.opacity = 0;
+        navigator.style.transition = "unset";
+
+        setTimeout(() => {
+            navigator.style.opacity = 1;
+            navigator.style.transition = "opacity 0.5s ease-in-out";
+        }, 100);
+    });
+
+    window.addEventListener("resize", () => {
+        document.getElementsByClassName("navigator")[0].style.animation;
+    });
+
     document.addEventListener("DOMContentLoaded", () => {
         const navigator = document.createElement("div");
         navigator.className = "navigator";
