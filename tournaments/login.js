@@ -4,27 +4,29 @@ document.addEventListener("DOMContentLoaded", () => {
     const toggleSwitch = document.querySelector(".switch input");
 
     const button = document.querySelector("button");
-    const buttonText = document.querySelector("button").innerText;
+    const buttonInitialText = document.querySelector("button").innerText;
 
-    const hidePasswordEye = document.querySelector("div>img");
-    const hidePasswordEyeSource = hidePasswordEye.src;
-    const hidePasswordEyeType = hidePasswordEye.type;
+    const hidePwEye = document.querySelector("div>img");
+    const hidePwEyeInitialSource = hidePwEye.src;
 
-    let toggle = false;
+    const password = document.querySelector("#password input");
+    const passwordInitialType = password.type;
+
+    let registerAccount = false;
 
     toggleSwitch.addEventListener("click", () => {
-        toggle = !toggle;
+        registerAccount = !registerAccount;
 
-        button.innerText = button.innerText == buttonText ? "Registrieren" : buttonText;
+        button.innerText = button.innerText == buttonInitialText ? "Registrieren" : buttonInitialText;
 
-        if (toggle) {
+        if (registerAccount) {
             register.style.color = "var(--selected)";
             login.style.color = "whitesmoke";
             return;
         }
 
-        login.style.color = "var(--selected)";
-        register.style.color = "whitesmoke";
+        login.style.color = null;
+        register.style.color = null;
     })
 
     button.addEventListener("click", () => {
@@ -32,17 +34,15 @@ document.addEventListener("DOMContentLoaded", () => {
         toggleSwitch.disabled = true;
     })
 
-    hidePasswordEye.addEventListener("click", () => {
-        const passwordHidden = hidePasswordEye.src == hidePasswordEyeSource;
+    hidePwEye.addEventListener("click", () => {
+        const passwordHidden = hidePwEye.src == hidePwEyeInitialSource;
 
-        console.log(document.getElementById("password").type);
-
-        hidePasswordEye.src = passwordHidden
+        hidePwEye.src = passwordHidden
             ? "https://media.fpm-studio.de/assets/icons/eye_open.webp"
-            : hidePasswordEyeSource;
+            : hidePwEyeInitialSource;
 
-        document.getElementById("password").type = passwordHidden
+        password.type = passwordHidden
             ? "input"
-            : hidePasswordEyeType
+            : passwordInitialType
     })
 })
