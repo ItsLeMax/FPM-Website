@@ -2,19 +2,13 @@ body {
     background-size: cover;
     background-attachment: fixed;
     background-image: url("https://media.fpm-studio.de/assets/background-image/oasis.webp");
-    background-position: 0;
 }
 
 .box {
-    border-top: 6rem;
-    border-style: ridge;
+    border: 1rem ridge;
 
     padding: 3rem;
     background-color: rgba(15, 15, 15, .9);
-}
-
-.box:not(:first) {
-    margin-top: 5rem;
 }
 
 div:has(img) {
@@ -25,43 +19,20 @@ div:has(img) {
 
 hr {
     margin: 3rem 0;
-    border-color: white;
 }
 
 img {
-    width: calc(16rem * 3);
-    height: calc(9rem * 3);
+    width: calc(16rem * 2);
+    height: calc(9rem * 2);
 }
 
-a {
-    color: aquamarine;
-    font-weight: bold;
-    text-decoration: none;
-}
-
-h1 {
-    font-size: 4rem;
-}
-
-h2 {
-    font-size: 3.5rem;
-}
-
-h3 {
-    font-size: 3rem;
-}
-
-h1, h2 {
+h2, h3 {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     text-align: center;
 }
 
 p, a {
     text-align: justify;
-}
-
-#start {
-    border-color: var(--gray50);
 }
 
 #start p, #apply p {
