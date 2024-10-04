@@ -121,6 +121,8 @@ select, button, input, textarea, span {
     display: flex;
     flex-direction: row-reverse;
     justify-content: end;
+
+    filter: drop-shadow(0rem 0rem 0.5rem black);
 }
 
 .navigator-button {
@@ -149,10 +151,12 @@ select, button, input, textarea, span {
 
 .navigator-page:hover {
     top: 1rem !important;
+    filter: saturate(3);
 }
 
 .navigator-page:hover, .navigator-button:hover {
-    filter: saturate(3);
+    transition: .2s;
+    filter: saturate(3) hue-rotate(60deg);
 }
 
 .navigator-page[active=false] {
