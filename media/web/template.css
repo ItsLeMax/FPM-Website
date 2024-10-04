@@ -122,7 +122,7 @@ select, button, input, textarea, span {
     flex-direction: row-reverse;
     justify-content: end;
 
-    filter: drop-shadow(0rem 0rem 0.5rem black);
+    filter: drop-shadow(0rem 0rem .5rem black);
 }
 
 .navigator-button {
