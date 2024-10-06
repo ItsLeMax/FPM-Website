@@ -28,25 +28,6 @@ body>div {
     filter: drop-shadow(0 0 5rem black);
 }
 
-#toggle {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-}
-
-#login {
-    color: var(--selected);
-}
-
-.slider {
-    background-color: var(--selected);
-}
-
-.switch input:disabled~span {
-    cursor: not-allowed;
-    background-color: gray;
-}
-
 input {
     height: 4rem;
     width: 40rem;
@@ -58,17 +39,6 @@ input[type="password"] {
 
 input:checked+.slider {
     background-color: var(--selected);
-}
-
-#password>img {
-    height: 1.75rem;
-    cursor: pointer;
-
-    position: absolute;
-    bottom: 13.1rem;
-    right: 2rem;
-
-    -webkit-user-drag: none;
 }
 
 button {
@@ -86,6 +56,36 @@ button:hover {
 button:active:not(:disabled) {
     transform: scale(.9);
     transition: unset;
+}
+
+#toggle {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+#login {
+    color: var(--selected);
+}
+
+#password>img {
+    height: 1.75rem;
+    cursor: pointer;
+
+    position: absolute;
+    bottom: 13.1rem;
+    right: 2rem;
+
+    -webkit-user-drag: none;
+}
+
+.slider {
+    background-color: var(--selected);
+}
+
+.switch input:disabled~span {
+    cursor: not-allowed;
+    background-color: gray;
 }
 
 @media (max-width: 760px) or (max-height: 500px) {

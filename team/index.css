@@ -4,13 +4,6 @@ body {
     background-image: url("https://media.fpm-studio.de/assets/background-image/oasis.webp");
 }
 
-.box {
-    border: 1rem ridge;
-
-    padding: 3rem;
-    background-color: rgba(15, 15, 15, .9);
-}
-
 div:has(img) {
     display: flex;
     align-items: center;
@@ -31,8 +24,20 @@ h2, h3 {
     text-align: center;
 }
 
+h4 {
+    font-style: italic;
+    text-align: center;
+}
+
 p, a {
     text-align: justify;
+}
+
+.box {
+    border: 1rem ridge;
+
+    padding: 3rem;
+    background-color: rgba(15, 15, 15, .9);
 }
 
 #start p, #apply p {
@@ -65,6 +70,16 @@ p, a {
 
 #apply {
     border-color: rgb(110, 110, 255);
+}
+
+@media (min-width: 5120px) {
+    h3, h4 {
+        text-align: unset;
+    }
+
+    #appliable div:first-child, #direct div:last-child {
+        width: 100%;
+    }
 }
 
 @media (max-width: 1800px) {
