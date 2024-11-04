@@ -68,7 +68,7 @@ button:active:not(:disabled) {
     color: var(--selected);
 }
 
-#password>img {
+#password img {
     height: 1.75rem;
     cursor: pointer;
 
@@ -93,16 +93,16 @@ button:active:not(:disabled) {
         --slider-size: .5;
     }
 
-    h5, p, button, input {
-        font-size: 1.75rem;
-    }
-
     input {
         width: 23.4rem;
         height: 3rem;
     }
 
-    #password>img {
+    h5, p, button, input {
+        font-size: 1.75rem;
+    }
+
+    #password img {
         height: 1.25rem;
         bottom: 11.8rem;
     }
@@ -122,16 +122,16 @@ button:active:not(:disabled) {
         padding: 0 .5rem;
     }
 
-    h5, p, button, input {
-        font-size: .9rem;
-    }
-
     input {
         width: 14rem;
         height: 2.5rem;
     }
 
-    #password>img {
+    h5, p, button, input {
+        font-size: .9rem;
+    }
+
+    #password img {
         height: .8rem;
 
         bottom: 8.2rem;
@@ -140,5 +140,11 @@ button:active:not(:disabled) {
 
     .slider.round, .slider.round::before {
         border-radius: unset;
+    }
+}
+
+@media (max-height: 285px) {
+    body {
+        justify-content: unset;
     }
 }

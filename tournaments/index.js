@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-    generateBracket(generateExampleTournament());
+    generateBracket(generateExampleDataset());
 })
 
 /**
@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
  *
  * Array with bracket data
  */
-function generateExampleTournament() {
+function generateExampleDataset() {
     const exampleSeries = new Array;
 
     for (let column = 1; column <= 3; column++) {

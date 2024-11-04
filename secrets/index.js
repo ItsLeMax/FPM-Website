@@ -31,6 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 const button = document.querySelector("button");
                 const input = document.querySelector("input");
+
                 button.disabled = true;
                 input.disabled = true;
 
@@ -42,8 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
             error: () => {
                 const button = document.querySelector("button");
                 button.disabled = true;
-                button.innerText = "Der Server ist down!";
-                button.style.fontSize = "2.25vmin";
+                button.innerText = "Serverfehler!";
                 button.style.backgroundColor = "rgb(255, 95, 60)";
 
                 document.querySelector("input").disabled = true;
