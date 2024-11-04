@@ -1,6 +1,7 @@
 * {
     margin: 0;
     padding: 0;
+
     box-sizing: border-box;
 }
 
@@ -31,11 +32,12 @@ html {
 }
 
 body {
+    margin: 6.7rem 3rem 3rem 3rem;
+
     display: flex;
     flex-direction: column;
     gap: 2rem;
 
-    margin: 6.7rem 3rem 3rem 3rem;
     background-color: var(--gray20);
 }
 
@@ -57,6 +59,7 @@ video {
 
 hr {
     width: 100%;
+
     border-width: .1rem 0;
     border-color: var(--darker_yellow);
 }
@@ -166,7 +169,6 @@ select, button, input, textarea, span {
 
 .navigator-page[active=true] {
     top: .5rem;
-
     white-space: nowrap;
 }
 
@@ -239,15 +241,17 @@ select, button, input, textarea, span {
 }
 
 .slider:before {
+    width: calc(2.6rem * var(--slider-size));
+    height: calc(2.6rem * var(--slider-size));
+
     background-color: white;
+
     content: "";
+    transition: .2s;
 
     position: absolute;
-    height: calc(2.6rem * var(--slider-size));
-    width: calc(2.6rem * var(--slider-size));
     left: calc(.4rem * var(--slider-size));
     bottom: calc(.4rem * var(--slider-size));
-    transition: .2s;
 }
 
 input:checked+.slider {

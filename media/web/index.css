@@ -13,8 +13,8 @@ html {
 }
 
 body {
-	background-color: var(--gray);
 	margin: 2rem;
+	background-color: var(--gray);
 }
 
 h1 {
