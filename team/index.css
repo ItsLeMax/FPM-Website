@@ -15,8 +15,8 @@ hr {
 }
 
 img {
-    width: calc(16rem * 2);
-    height: calc(9rem * 2);
+    width: 32rem;
+    height: 18rem;
 }
 
 h2, h3 {
@@ -31,13 +31,6 @@ h4 {
 
 p, a {
     text-align: justify;
-}
-
-.box {
-    border: 1rem ridge;
-
-    padding: 3rem;
-    background-color: rgba(15, 15, 15, .9);
 }
 
 #start p, #apply p {
@@ -70,6 +63,13 @@ p, a {
 
 #apply {
     border-color: rgb(110, 110, 255);
+}
+
+.box {
+    border: 1rem ridge;
+
+    padding: 3rem;
+    background-color: rgba(15, 15, 15, .9);
 }
 
 @media (min-width: 5120px) {
