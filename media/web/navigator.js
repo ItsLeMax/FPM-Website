@@ -109,30 +109,12 @@ function generateNavigator(subdomain) {
 
         navigatorButton.addEventListener("click", async () => {
             navigatorActive = !navigatorActive;
+            navigator.style.pointerEvents = !navigatorActive ? "none" : null;
 
             for (const href of navigatorPages) {
                 href.setAttribute("active", navigatorActive);
-                await delay(35);
+                await new Promise(resolve => setTimeout(resolve, 35));
             }
         })
     })
-}
-
-/**
- * @description
- * Fügt mithilfe einer Prämisse eine Verzögerung im Code hinzu
- *
- * Adds with the help of a promise a delay inside the code
- *
- * @author StackOverflow
- *
- * @see [StackOverflow](https://stackoverflow.com/questions/951021/what-is-the-javascript-version-of-sleep)
- *
- * @param { Number } milliseconds
- * Zeit in Millisekunden
- *
- * time in milliseconds
- */
-function delay(milliseconds) {
-    return new Promise(resolve => setTimeout(resolve, milliseconds));
 }

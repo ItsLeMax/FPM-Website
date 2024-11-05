@@ -1,13 +1,11 @@
-/media/*
+/extras/redirect.html
 
+/html/.well-known
+
+/media/*
 !/media/web
 
-secrets/results
+/secrets/hidden-media
+/secrets/results
 
-redirect.html
-
-.well-known
-
-hidden-media
-
-WiP.txt
+/WiP.txt
