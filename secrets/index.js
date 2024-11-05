@@ -24,8 +24,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         XMLHttpRequests({
             readystate: (xhr) => {
-                if (JSON.parse(xhr.responseText)) {
-                    window.location.href = `./results/${code}.html`;
+                const response = JSON.parse(xhr.responseText);
+                if (response) {
+                    window.location.href = `${response}/${code}.html`;
                     return;
                 }
 

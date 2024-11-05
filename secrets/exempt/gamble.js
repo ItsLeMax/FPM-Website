@@ -1,22 +1,25 @@
+const hash = window.location.hash.split("-");
+
 const TEST = {
-    ENABLED: window.location.hash == "#test",
-    ROLL_SPEED_MULTIPLIER: 1000,
-    FAST_INSTEAD_OF_SLOW: true
+    ENABLED: hash[0] == "#test",
+    ROLL_SPEED_MULTIPLIER: hash[1] == "slow" ? -100 : hash[1] == "fast" ? 1000 : 2
 };
 
 document.addEventListener("DOMContentLoaded", () => {
     const maximumItems = 50;
     document.getElementById("itemTotal").innerText = maximumItems;
 
-    let timing = {
+    let defaultTiming = {
         revealTime: 5000,
         additionalTime: 1000
     }
 
     if (TEST.ENABLED) {
-        timing = {
-            revealTime: TEST.FAST_INSTEAD_OF_SLOW ? timing.revealTime / TEST.ROLL_SPEED_MULTIPLIER : timing.revealTime * TEST.ROLL_SPEED_MULTIPLIER,
-            additionalTime: TEST.FAST_INSTEAD_OF_SLOW ? timing.additionalTime / TEST.ROLL_SPEED_MULTIPLIER : timing.additionalTime * TEST.ROLL_SPEED_MULTIPLIER
+        const fittingExpression = (TEST.ROLL_SPEED_MULTIPLIER < 0 ? "*" : "/") + Math.abs(TEST.ROLL_SPEED_MULTIPLIER);
+
+        defaultTiming = {
+            revealTime: eval(`${defaultTiming.revealTime} ${fittingExpression}`),
+            additionalTime: eval(`${defaultTiming.additionalTime} ${fittingExpression}`)
         }
 
         udpateCash(10000, true);
@@ -111,9 +114,9 @@ document.addEventListener("DOMContentLoaded", () => {
         spinner.animate([{
             right: "0rem"
         }, {
-            right: getComputedStyle(document.body).getPropertyValue('--endpoint')
+            right: getComputedStyle(document.body).getPropertyValue('--endpoint') //+-10rem
         }], {
-            duration: timing.revealTime,
+            duration: defaultTiming.revealTime,
             easing: "ease-out",
             fill: "forwards"
         });
@@ -202,7 +205,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (cache.rarity == "legendär" && !TEST.ENABLED) {
                 new Audio("../hidden-media/audio/jackpot.mp3").play();
             }
-        }, timing.revealTime + timing.additionalTime);
+        }, defaultTiming.revealTime + defaultTiming.additionalTime);
     })
 })
 
