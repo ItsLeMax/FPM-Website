@@ -182,8 +182,6 @@ select, button, input, textarea, span {
 
         padding: 0;
         text-align: right;
-
-        pointer-events: none;
     }
 
     .navigator a {
@@ -197,7 +195,6 @@ select, button, input, textarea, span {
 
     .navigator-button {
         z-index: 11;
-        pointer-events: all;
     }
 
     .navigator-page {

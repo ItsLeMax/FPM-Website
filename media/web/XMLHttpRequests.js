@@ -44,7 +44,11 @@ function XMLHttpRequests(callbacks, url) {
         callbacks.readystate(xhr);
     };
 
-    if (callbacks.error) xhr.onerror = () => callbacks.error();
+    if (callbacks.error) {
+        xhr.onerror = () => {
+            callbacks.error();
+        }
+    }
 
     xhr.open("GET", (window.location.protocol.includes("file") ? "http://localhost:3000" : `https://${url.subdomain}.fpm-studio.de`) + `/api/${url.subdomain}/${url.sentData}`, true);
     xhr.send(null);

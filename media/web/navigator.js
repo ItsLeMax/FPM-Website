@@ -26,10 +26,6 @@ function generateNavigator(subdomain) {
         }, 100);
     });
 
-    window.addEventListener("resize", () => {
-        document.getElementsByClassName("navigator")[0].style.animation;
-    });
-
     document.addEventListener("DOMContentLoaded", () => {
         const navigator = document.createElement("div");
         navigator.className = "navigator";
@@ -109,10 +105,11 @@ function generateNavigator(subdomain) {
 
         navigatorButton.addEventListener("click", async () => {
             navigatorActive = !navigatorActive;
-            navigator.style.pointerEvents = !navigatorActive ? "none" : null;
 
             for (const href of navigatorPages) {
                 href.setAttribute("active", navigatorActive);
+                href.style.pointerEvents = !navigatorActive ? "none" : null;
+
                 await new Promise(resolve => setTimeout(resolve, 35));
             }
         })
