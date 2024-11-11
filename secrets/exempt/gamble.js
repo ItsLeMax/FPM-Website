@@ -2,7 +2,7 @@ const hash = window.location.hash.split("-");
 
 const TEST = {
     ENABLED: hash[0] == "#test",
-    ROLL_SPEED_MULTIPLIER: hash[1] == "slow" ? -100 : hash[1] == "fast" ? 1000 : 2
+    ROLL_SPEED_MULTIPLIER: hash[1] == "slow" ? .5 : hash[1] == "fast" ? 10000 : 2
 };
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -12,14 +12,32 @@ document.addEventListener("DOMContentLoaded", () => {
     let defaultTiming = {
         revealTime: 5000,
         additionalTime: 1000
-    }
+    };
 
     if (TEST.ENABLED) {
-        const fittingExpression = (TEST.ROLL_SPEED_MULTIPLIER < 0 ? "*" : "/") + Math.abs(TEST.ROLL_SPEED_MULTIPLIER);
+        /**
+         * @description
+         * Sucht den passenden Ausdruck, je nach dem, ob `TEST.ROLL_SPEED_MULTIPLIER` positiv oder negativ ist
+         *
+         * looks for the fitting expression, depending on whether `TEST.ROLL_SPEED_MULTIPLIER` is positive or negative
+         *
+         * @author ItsLeMax
+         *
+         * @param { Number } time
+         * Zeit aus dem `defaultTiming`-Objekt
+         *
+         * time from the `defaultTiming` object
+         *
+         * @returns { Number }
+         * Nummer mit Rechnung
+         *
+         * number with calculation
+         */
+        const express = (time) => eval(time + " " + (TEST.ROLL_SPEED_MULTIPLIER < 0 ? "*" : "/") + Math.abs(TEST.ROLL_SPEED_MULTIPLIER));
 
         defaultTiming = {
-            revealTime: eval(`${defaultTiming.revealTime} ${fittingExpression}`),
-            additionalTime: eval(`${defaultTiming.additionalTime} ${fittingExpression}`)
+            revealTime: express(defaultTiming.revealTime),
+            additionalTime: express(defaultTiming.additionalTime)
         }
 
         udpateCash(10000, true);
@@ -34,14 +52,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
     for (const navigator of document.querySelectorAll("#navigator button")) {
         navigator.addEventListener("click", () => {
-            for (const pages of document.querySelectorAll("body>div")) {
-                if (pages.id || !navigator.className) continue;
-                if (navigator.className == pages.className) {
-                    pages.style.display = "flex";
+            for (const page of document.querySelectorAll("body>div")) {
+                if (page.id || !navigator.className) continue;
+                if (navigator.className == page.className) {
+                    page.style.display = "flex";
                     continue;
                 }
 
-                pages.style.display = "none";
+                page.style.display = "none";
             }
         })
     }
@@ -62,9 +80,16 @@ document.addEventListener("DOMContentLoaded", () => {
         buttonAvailability(cash, cashSelection, gamePlayButton);
         toggleNavigator(true);
 
-        if (!TEST.ENABLED) {
-            new Audio("../hidden-media/audio/csgo_gamble.mp3").play();
+        const gambleAudio = new Audio("../hidden-media/audio/csgo_gamble.mp3");
+
+        if ((Math.abs(TEST.ROLL_SPEED_MULTIPLIER) >= .5 && TEST.ROLL_SPEED_MULTIPLIER <= 4)) {
+            if (TEST.ENABLED) {
+                gambleAudio.playbackRate = Math.abs(TEST.ROLL_SPEED_MULTIPLIER);
+            }
+
+            gambleAudio.play();
         }
+
         gamePlayButton.style.setProperty("display", "none");
 
         const spinner = document.createElement("div");
@@ -92,6 +117,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 const probability = Math.floor(Math.random() * 100);
 
                 for (const rarity of Object.keys(inventory).reverse()) {
+                    if (TEST.ENABLED) {
+                        logger(probability, rarity, selectedChest.options[selectedChest.selectedIndex].text, selectedChestPrice);
+                    }
+
                     if (probability > inventory[rarity].chance[selectedChestPrice]) continue;
 
                     const rarityDrops = inventory[rarity].drops;
@@ -122,6 +151,11 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
         setTimeout(async () => {
+            if (TEST.ROLL_SPEED_MULTIPLIER < 1) {
+                gambleAudio.pause();
+                gambleAudio.currentTime = 0;
+            }
+
             gamePlayButton.style.display = null;
             document.getElementsByClassName("spinner")[0]?.remove();
 
@@ -213,7 +247,7 @@ document.addEventListener("DOMContentLoaded", () => {
  * @description
  * Verkauft einen Gegenstand aus dem Inventar
  *
- * Sells an item from the inventory
+ * sells an item from the inventory
  *
  * @author ItsLeMax
  *
@@ -250,14 +284,14 @@ function sellItem(deleteButton, cash) {
  * @description
  * Aktiviert oder deaktiviert den Navigator
  *
- * Activates or deactives the navigator
+ * activates or deactives the navigator
  *
  * @author ItsLeMax
  *
  * @param { Boolean } toggle
  * Sollen die Buttons deaktiviert werden?
  *
- * Should the buttons get deactivated?
+ * should the buttons get deactivated?
  */
 function toggleNavigator(toggle) {
     for (const navigator of document.querySelectorAll("#navigator button")) {
@@ -269,24 +303,24 @@ function toggleNavigator(toggle) {
  * @description
  * Aktiviert oder deaktiviert das Aufladen von Guthaben, je nach Summe des Eigenen
  *
- * Activates or deactivates the topping up of credits, depending on the sum of the own
+ * activates or deactivates the topping up of credits, depending on the sum of the own
  * 
  * @author ItsLeMax
  *
  * @param { Element } cash
  * Geldelement, dessen Inhalt zur Validation benötigt wird
  *
- * Cash element, whose content is needed for validation
+ * cash element, whose content is needed for validation
  *
  * @param { NodeListOf<Element> } cashSelection
  * Geldauswahl, e.g. alle Geldaufladeknöpfe
  * 
- * Cash Selection, i.e. all cash up buttons
+ * cash selection, i.e. all cash up buttons
  *
  * @param { Element } gamePlayButton
  * Spieleknopf für den Fall, zu sehr im Negativ zu sein
  * 
- * Game Play Button for the case of being too much in the negatives
+ * game play button for the case of being too much in the negatives
  */
 function buttonAvailability(cash, cashSelection, gamePlayButton) {
     for (const balance of cashSelection) {
@@ -303,29 +337,33 @@ function buttonAvailability(cash, cashSelection, gamePlayButton) {
  * @description
  * Gibt einen `console.log()` aus mit Fokus auf das determinierte Objekt beim Glücksspiel
  *
- * Puts out a `console.log()` with focus on the determined object from gambling
+ * puts out a `console.log()` with focus on the determined object from gambling
  *
  * @author ItsLeMax
  *
  * @param { Number } probability
  * Wahrscheinlichkeit, zufällig determiniert
  *
- * Probability, randomly determined
+ * probability, randomly determined
  *
  * @param { String } rarity
  * Rarität von der Variable `inventory`, optimalerweise aus einem Loop
  *
  * rarity of the variable `inventory`, optimally from a loop
  *
+ * @param { String } selectedChestName
+ * Name der ausgewählten Kiste
+ *
+ * name of the selected chest
  * @param { Number } selectedChestPrice
  * Preis der ausgewählten Kiste
  *
- * Price of the selected chest
+ * price of the selected chest
  *
  * @summary
  * Vorgesehen zum Platzieren in einem Loop der Variable `inventory`
  *
- * Supposed to be placed in a loop of the variable `inventory`
+ * supposed to be placed in a loop of the variable `inventory`
  */
 function logger(probability, rarity, selectedChestName, selectedChestPrice) {
     console.log(
@@ -340,7 +378,7 @@ function logger(probability, rarity, selectedChestName, selectedChestPrice) {
  * @description
  * Ersetzt ein Zeichen an einem spezifischen Index
  *
- * Replaces a character at a specific index
+ * replaces a character at a specific index
  *
  * @author StackOverflow
  *
@@ -352,11 +390,11 @@ function logger(probability, rarity, selectedChestName, selectedChestPrice) {
  * @param { String } replacement
  * Ersatz des Index-Zeichens
  *
- * Replacement of the index character
+ * replacement of the index character
  * @returns
  * String mit Ersatz
  *
- * String with replacement
+ * string with replacement
  *
  * @see [StackOverflow](https://stackoverflow.com/questions/1431094/how-do-i-replace-a-character-at-a-specific-index-in-javascript)
  */
@@ -368,19 +406,19 @@ String.prototype.replaceAt = function (index, replacement) {
  * @description
  * Aktualisiert den eigenen Geldbetrag
  * 
- * Updates the owned money
+ * updates the owned money
 
  * @author ItsLeMax
 
  * @param { Number } newCash
  * Neuer Geldwert des Benutzers
  * 
- * New cash value of the user
+ * new cash value of the user
  *
  * @param { Boolean } skipWindow
  * Soll das Pseudofenster übersprungen werden?
  *
- * Should the pseudo window be skipped?
+ * should the pseudo window be skipped?
  */
 async function udpateCash(newCash, skipWindow) {
     if (!skipWindow) {
@@ -428,7 +466,7 @@ async function udpateCash(newCash, skipWindow) {
  * @description
  * Verursacht eine Verzögerung
  *
- * Causes a delay
+ * causes a delay
  *
  * @author StackOverflow
  *
@@ -447,18 +485,18 @@ function sleep(milliseconds) {
  * @description
  * Ändert einen Text zu einem Dateinamen
  *
- * Changes a text to a file name
+ * changes a text to a file name
  *
  * @author ItsLeMax
  *
  * @param { String } name
  * Name der vorgesehenen Datei
  *
- * Name of the planned file
+ * name of the planned file
  * @returns
  * Dateiname
  *
- * File name
+ * file name
  */
 function toFileName(name) {
     return name.replaceAll(" ", "_").toLowerCase();
