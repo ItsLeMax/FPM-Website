@@ -172,46 +172,6 @@ select, button, input, textarea, span {
     white-space: nowrap;
 }
 
-@media (max-width: 1280px) {
-    body {
-        margin: 9.3rem 3rem 3rem 3rem;
-    }
-
-    .navigator {
-        flex-direction: column;
-
-        padding: 0;
-        text-align: right;
-    }
-
-    .navigator a {
-        font-size: 5rem;
-    }
-
-    .navigator div {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .navigator-button {
-        z-index: 11;
-    }
-
-    .navigator-page {
-        z-index: 10;
-        transition: .4s;
-    }
-
-    .navigator-page:hover {
-        top: 0.5rem !important;
-    }
-
-    .navigator-page[active=false] {
-        top: -61rem;
-        opacity: 0;
-    }
-}
-
 .switch {
     position: relative;
     display: inline-block;
@@ -272,4 +232,44 @@ input:checked+.slider:before {
 
 .slider.round:before {
     border-radius: 50%;
+}
+
+@media (max-width: 1280px) {
+    body {
+        margin: 9.3rem 3rem 3rem 3rem;
+    }
+
+    .navigator {
+        flex-direction: column;
+
+        padding: 0;
+        text-align: right;
+    }
+
+    .navigator a {
+        font-size: 5rem;
+    }
+
+    .navigator div {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .navigator-button {
+        z-index: 11;
+    }
+
+    .navigator-page {
+        z-index: 10;
+        transition: .4s;
+    }
+
+    .navigator-page:hover {
+        top: 0.5rem !important;
+    }
+
+    .navigator-page[active=false] {
+        top: -61rem;
+        opacity: 0;
+    }
 }
