@@ -1,5 +1,6 @@
 :root {
     --blue: rgb(74, 177, 208);
+    --transition: .15s;
 }
 
 html {
@@ -19,7 +20,7 @@ body {
     background-color: rgb(5, 5, 5);
 }
 
-a {
+body>a {
     position: relative;
     overflow: hidden;
 
@@ -38,11 +39,11 @@ a {
     background-color: var(--gray10);
 }
 
-a:nth-child(even) {
+body>a:nth-child(even) {
     filter: hue-rotate(120deg);
 }
 
-a::before {
+body>a::before {
     top: 0;
     left: 0;
 
@@ -50,7 +51,7 @@ a::before {
     border-left: .2rem solid var(--blue);
 }
 
-a::after {
+body>a::after {
     bottom: 0;
     right: 0;
 
@@ -58,17 +59,17 @@ a::after {
     border-right: .2rem solid var(--blue);
 }
 
-a::before, a::after {
-	content: '';
+body>a::before, body>a::after {
+    content: '';
 
     width: 1rem;
     height: 1rem;
-	position: absolute;
+    position: absolute;
 
     transition: var(--transition);
 }
 
-a:hover {
+body>a:hover {
     color: var(--gray10);
     background-color: var(--blue);
     box-shadow: 0 0 5rem rgba(74, 177, 208, .3);
@@ -79,7 +80,7 @@ a:hover {
     transition-delay: .1s;
 }
 
-a:hover::before, a:hover::after {
+body>a:hover::before, body>a:hover::after {
     width: 100%;
     height: 100%;
 }
@@ -92,7 +93,7 @@ a:hover::before, a:hover::after {
         flex-direction: column;
     }
 
-    a {
+    body>a {
         width: 33rem;
         font-size: 4rem !important;
     }
