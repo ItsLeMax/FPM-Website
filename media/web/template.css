@@ -13,10 +13,11 @@
     --success: rgb(47, 199, 110);
     --danger: rgb(197, 71, 77);
 
-    --darker_blue: rgb(20, 40, 40);
-    --darker_yellow: rgb(180, 160, 30);
+    --darker-blue: rgb(20, 40, 40);
+    --darker-yellow: rgb(180, 160, 30);
 
     --slider-size: .75;
+    --navi-blue: rgb(5, 5, 15);
 }
 
 :disabled {
@@ -24,7 +25,7 @@
 }
 
 ::marker {
-    color: var(--darker_yellow);
+    color: var(--darker-yellow);
 }
 
 html {
@@ -32,7 +33,7 @@ html {
 }
 
 body {
-    margin: 6.7rem 3rem 3rem 3rem;
+    margin: 8.7rem 3rem 3rem 3rem;
 
     display: flex;
     flex-direction: column;
@@ -61,7 +62,7 @@ hr {
     width: 100%;
 
     border-width: .1rem 0;
-    border-color: var(--darker_yellow);
+    border-color: var(--darker-yellow);
 }
 
 li {
@@ -69,7 +70,7 @@ li {
 }
 
 a {
-    color: var(--darker_yellow);
+    color: var(--darker-yellow);
 }
 
 h1 {
@@ -115,7 +116,6 @@ select, button, input, textarea, span {
 
 .navigator {
     width: 100%;
-    padding: .5rem .5rem 0 0;
     z-index: 10;
 
     position: fixed;
@@ -126,50 +126,54 @@ select, button, input, textarea, span {
     flex-direction: row-reverse;
     justify-content: end;
 
-    filter: drop-shadow(0rem 0rem .5rem black);
+    filter: drop-shadow(0rem 0rem 1rem rgba(0, 0, 0, .5));
+}
+
+.navigator div {
+    display: flex;
+    flex-direction: column;
 }
 
 .navigator-button {
-    padding: .5rem;
+    height: fit-content;
+    padding-bottom: 0;
 
     user-select: none;
     cursor: pointer;
+}
 
-    color: var(--darker_yellow);
-    background-color: var(--darker_blue);
+.navigator-button:hover {
+    filter: brightness(3.5);
 }
 
 .navigator-page {
     position: relative;
 
-    padding: .5rem;
-    transition: .2s;
-
-    color: white;
-    background-color: rgb(20, 30, 30);
-
     font-weight: bold;
     text-decoration: none;
     user-select: none;
+    white-space: nowrap;
 }
 
 .navigator-page:hover {
-    top: 1rem !important;
-    filter: saturate(3);
+    color: var(--navi-blue);
+    background-color: white;
 }
 
-.navigator-page:hover, .navigator-button:hover {
+.navigator-button, .navigator-page {
+    padding: 1.5rem;
+
     transition: .2s;
-    filter: saturate(3) hue-rotate(60deg);
+    color: white;
+    background-color: var(--navi-blue);
 }
 
-.navigator-page[active=false] {
-    top: -4rem;
+.navigator-page[open=false] {
+    opacity: 0;
 }
 
-.navigator-page[active=true] {
-    top: .5rem;
-    white-space: nowrap;
+.navigator-page[open=true] {
+    opacity: 1;
 }
 
 .switch {
@@ -234,42 +238,36 @@ input:checked+.slider:before {
     border-radius: 50%;
 }
 
-@media (max-width: 1280px) {
+@media (min-width: 1487px) {
+    .navigator-button[open="true"] {
+        padding-bottom: 35.6rem;
+    }
+}
+
+@media (max-width: 1487px) {
     body {
-        margin: 9.3rem 3rem 3rem 3rem;
+        margin: 11.3rem 3rem 3rem 3rem;
     }
 
     .navigator {
         flex-direction: column;
-
         padding: 0;
-        text-align: right;
     }
 
     .navigator a {
-        font-size: 5rem;
+        font-size: 2rem;
+    }
+
+    .navigator-button {
+        text-align: right;
+    }
+
+    .navigator-page {
+        transition: .2s;
     }
 
     .navigator div {
         display: flex;
         flex-direction: column;
-    }
-
-    .navigator-button {
-        z-index: 11;
-    }
-
-    .navigator-page {
-        z-index: 10;
-        transition: .4s;
-    }
-
-    .navigator-page:hover {
-        top: 0.5rem !important;
-    }
-
-    .navigator-page[active=false] {
-        top: -61rem;
-        opacity: 0;
     }
 }

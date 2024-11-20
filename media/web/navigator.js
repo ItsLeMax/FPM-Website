@@ -1,4 +1,4 @@
-let navigatorActive = false;
+let navigatorOpen = false;
 
 /**
  * @description
@@ -14,104 +14,121 @@ let navigatorActive = false;
  * subdomain of the navigator
  */
 function generateNavigator(subdomain) {
-    window.matchMedia("(max-width: 1280px)").addEventListener("change", () => {
-        const navigator = document.getElementsByClassName("navigator")[0];
-
-        navigator.style.opacity = 0;
-        navigator.style.transition = "unset";
-
-        setTimeout(() => {
-            navigator.style.opacity = 1;
-            navigator.style.transition = "opacity 0.5s ease-in-out";
-        }, 100);
-    });
-
     document.addEventListener("DOMContentLoaded", () => {
-        const navigator = document.createElement("div");
-        navigator.className = "navigator";
+        const navigatorContainer = document.createElement("div");
+        navigatorContainer.className = "navigator";
 
         const navigatorButton = document.createElement("a");
-        navigatorButton.innerText = "☰";
+        const navigatorButtonInitial = "☰"
+        navigatorButton.innerText = navigatorButtonInitial;
         navigatorButton.className = "navigator-button";
+        navigatorButton.setAttribute("open", false);
 
-        navigator.append(navigatorButton);
+        navigatorContainer.append(navigatorButton);
 
-        const menu = document.createElement("div");
-        let first, second, third, fourth, fifth, sixth, seventh;
+        const navigatorPageHolder = document.createElement("div");
+        const navigatorPages = new Array;
 
         switch (subdomain) {
             case "FPM":
-                first = document.createElement("a");
-                first.innerText = "Homepage";
-                first.href = "https://fpm-studio.de/";
+                for (let element = 0; element < 7; element++) {
+                    navigatorPages.push(document.createElement("a"));
+                }
 
-                second = document.createElement("a");
-                second.innerText = "Team";
-                second.href = "https://team.fpm-studio.de/";
+                navigatorPages[0].innerText = "Homepage";
+                navigatorPages[0].href = "https://fpm-studio.de/";
 
-                third = document.createElement("a");
-                third.innerText = "Bibliothek";
-                third.href = "https://library.fpm-studio.de/";
+                navigatorPages[1].innerText = "Team";
+                navigatorPages[1].href = "https://team.fpm-studio.de/";
 
-                fourth = document.createElement("a");
-                fourth.innerText = "Extras";
-                fourth.href = "https://extras.fpm-studio.de/";
+                navigatorPages[2].innerText = "Bibliothek";
+                navigatorPages[2].href = "https://library.fpm-studio.de/";
 
-                fifth = document.createElement("a");
-                fifth.innerText = "Geheimnisse";
-                fifth.href = "https://secrets.fpm-studio.de/";
+                navigatorPages[3].innerText = "Extras";
+                navigatorPages[3].href = "https://extras.fpm-studio.de/";
 
-                sixth = document.createElement("a");
-                sixth.innerText = "Code-Entwicklung";
-                sixth.href = "https://dev.fpm-studio.de/";
+                navigatorPages[4].innerText = "Geheimnisse";
+                navigatorPages[4].href = "https://secrets.fpm-studio.de/";
 
-                seventh = document.createElement("a");
-                seventh.innerText = "Turniere";
-                seventh.href = "https://tournaments.fpm-studio.de/";
+                navigatorPages[5].innerText = "Code-Entwicklung";
+                navigatorPages[5].href = "https://dev.fpm-studio.de/";
+
+                navigatorPages[6].innerText = "Turniere";
+                navigatorPages[6].href = "https://tournaments.fpm-studio.de/";
                 break;
             case "Tournaments":
-                first = document.createElement("a");
-                first.innerText = "Homepage";
-                first.href = "index.html";
+                for (let element = 0; element < 5; element++) {
+                    navigatorPages.push(document.createElement("a"));
+                }
 
-                second = document.createElement("a");
-                second.innerText = "Informationen";
-                second.href = "information.html";
+                navigatorPages[0].innerText = "Homepage";
+                navigatorPages[0].href = "index.html";
 
-                third = document.createElement("a");
-                third.innerText = "Verwaltung";
-                third.href = "manage.html";
+                navigatorPages[1].innerText = "Informationen";
+                navigatorPages[1].href = "information.html";
 
-                fourth = document.createElement("a");
-                fourth.innerText = "Facecam in Streams";
-                fourth.href = "facecam.html";
+                navigatorPages[2].innerText = "Verwaltung";
+                navigatorPages[2].href = "manage.html";
 
-                fifth = document.createElement("a");
-                fifth.innerText = "Datenschutz";
-                fifth.href = "privacy-policy.html";
+                navigatorPages[3].innerText = "Facecam in Streams";
+                navigatorPages[3].href = "facecam.html";
+
+                navigatorPages[4].innerText = "Datenschutz";
+                navigatorPages[4].href = "privacy-policy.html";
                 break;
         }
-
-        const navigatorPages = [first, second, third, fourth, fifth, sixth, seventh].filter(Boolean);
 
         for (const navigatorPage of navigatorPages) {
             navigatorPage.className = "navigator-page";
-            navigatorPage.setAttribute("active", false);
-            menu.append(navigatorPage);
+            navigatorPage.style.pointerEvents = "none";
+            navigatorPage.setAttribute("open", false);
+
+            navigatorPageHolder.append(navigatorPage);
         }
 
-        navigator.append(menu);
-        document.body.prepend(navigator);
+        navigatorContainer.append(navigatorPageHolder);
+        document.body.prepend(navigatorContainer);
+
+        const navigatorPagesReversed = navigatorPages.slice().reverse();
 
         navigatorButton.addEventListener("click", async () => {
-            navigatorActive = !navigatorActive;
+            navigatorOpen = !navigatorOpen;
 
-            for (const href of navigatorPages) {
-                href.setAttribute("active", navigatorActive);
-                href.style.pointerEvents = !navigatorActive ? "none" : null;
+            if (!navigatorOpen) {
+                navigatorButton.innerText = navigatorButtonInitial;
+                for (const navigatorPage of navigatorPagesReversed) {
+                    await setNaviAttributes(navigatorPage);
+                }
 
-                await new Promise(resolve => setTimeout(resolve, 35));
+                return;
+            }
+
+            navigatorButton.innerText = "✖";
+            for (const navigatorPage of navigatorPages) {
+                await setNaviAttributes(navigatorPage);
             }
         })
+
+        /**
+         * Aktiviert oder deaktiviert die einzelnen Navigatorseiten
+         *
+         * activates or deactivates the single navigator pages
+         *
+         * @author ItsLeMax
+         *
+         * @param { HTMLAnchorElement } navigatorPage
+         *
+         * einzelne Seite des Navigators
+         *
+         * single page of the navigator
+         */
+        async function setNaviAttributes(navigatorPage) {
+            navigatorPage.style.pointerEvents = navigatorOpen ? null : "none";
+
+            navigatorPage.setAttribute("open", navigatorOpen);
+            navigatorButton.setAttribute("open", navigatorOpen);
+
+            await new Promise(resolve => setTimeout(resolve, 35));
+        }
     })
 }
