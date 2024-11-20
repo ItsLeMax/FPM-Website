@@ -24,7 +24,7 @@ body>div {
     padding: 2rem;
     border-radius: 2rem;
 
-    background-color: var(--darker_blue);
+    background-color: var(--darker-blue);
     filter: drop-shadow(0 0 5rem black);
 }
 
