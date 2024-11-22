@@ -57,12 +57,12 @@ span {
 }
 
 #countdown-main {
-    background-image: url("https://media.fpm-studio.de/assets/graphics/clock.webp");
+    background-image: url("https://media.fpm-studio.de/assets/graphics/wall_clock.webp");
     background-size: 38vmin;
 }
 
 #winrate-main {
-    background-image: url("https://media.fpm-studio.de/assets/icons/detailed_trophy.webp");
+    background-image: url("https://media.fpm-studio.de/assets/graphics/detailed_trophy.webp");
     background-size: 18vmin;
 }
 
