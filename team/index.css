@@ -4,19 +4,8 @@ body {
     background-image: url("https://media.fpm-studio.de/assets/background-image/oasis.webp");
 }
 
-div:has(img) {
-    display: flex;
-    align-items: center;
-    gap: 5rem;
-}
-
 hr {
     margin: 3rem 0;
-}
-
-img {
-    width: 32rem;
-    height: 18rem;
 }
 
 h2, h3 {
@@ -70,6 +59,17 @@ p, a {
 
     padding: 3rem;
     background-color: rgba(15, 15, 15, .9);
+}
+
+.box:has(img) {
+    display: flex;
+    align-items: center;
+    gap: 5rem;
+}
+
+.box img {
+    width: 32rem;
+    height: 18rem;
 }
 
 @media (min-width: 5120px) {
