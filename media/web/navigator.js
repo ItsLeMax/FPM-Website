@@ -15,97 +15,121 @@ let navigatorOpen = false;
  */
 function generateNavigator(subdomain) {
     document.addEventListener("DOMContentLoaded", () => {
-        const navigatorContainer = document.createElement("div");
-        navigatorContainer.className = "navigator";
+        const navigator = document.createElement("div");
+        navigator.id = "navigator";
 
         const navigatorButton = document.createElement("a");
         const navigatorButtonInitial = "☰"
         navigatorButton.innerText = navigatorButtonInitial;
-        navigatorButton.className = "navigator-button";
         navigatorButton.setAttribute("open", false);
 
-        navigatorContainer.append(navigatorButton);
+        navigator.append(navigatorButton);
 
-        const navigatorPageHolder = document.createElement("div");
-        const navigatorPages = new Array;
-
+        let pageAmount;
         switch (subdomain) {
             case "FPM":
-                for (let element = 0; element < 7; element++) {
-                    navigatorPages.push(document.createElement("a"));
-                }
-
-                navigatorPages[0].innerText = "Homepage";
-                navigatorPages[0].href = "https://fpm-studio.de/";
-
-                navigatorPages[1].innerText = "Team";
-                navigatorPages[1].href = "https://team.fpm-studio.de/";
-
-                navigatorPages[2].innerText = "Bibliothek";
-                navigatorPages[2].href = "https://library.fpm-studio.de/";
-
-                navigatorPages[3].innerText = "Extras";
-                navigatorPages[3].href = "https://extras.fpm-studio.de/";
-
-                navigatorPages[4].innerText = "Geheimnisse";
-                navigatorPages[4].href = "https://secrets.fpm-studio.de/";
-
-                navigatorPages[5].innerText = "Code-Entwicklung";
-                navigatorPages[5].href = "https://dev.fpm-studio.de/";
-
-                navigatorPages[6].innerText = "Turniere";
-                navigatorPages[6].href = "https://tournaments.fpm-studio.de/";
+                pageAmount = 7;
                 break;
             case "Tournaments":
-                for (let element = 0; element < 5; element++) {
-                    navigatorPages.push(document.createElement("a"));
-                }
-
-                navigatorPages[0].innerText = "Homepage";
-                navigatorPages[0].href = "index.html";
-
-                navigatorPages[1].innerText = "Informationen";
-                navigatorPages[1].href = "information.html";
-
-                navigatorPages[2].innerText = "Verwaltung";
-                navigatorPages[2].href = "manage.html";
-
-                navigatorPages[3].innerText = "Facecam in Streams";
-                navigatorPages[3].href = "facecam.html";
-
-                navigatorPages[4].innerText = "Datenschutz";
-                navigatorPages[4].href = "privacy-policy.html";
+                pageAmount = 5;
                 break;
         }
 
-        for (const navigatorPage of navigatorPages) {
-            navigatorPage.className = "navigator-page";
-            navigatorPage.style.pointerEvents = "none";
-            navigatorPage.setAttribute("open", false);
+        const navigatorPageButtons = new Array;
 
-            navigatorPageHolder.append(navigatorPage);
+        for (let element = 0; element < pageAmount; element++) {
+            const navigatorPage = document.createElement("div");
+            const navigatorPageImage = document.createElement("img");
+            const navigatorPageButton = document.createElement("a");
+
+            if (subdomain == "FPM") {
+                switch (element) {
+                    case 0:
+                        navigatorPageButton.innerText = "Homepage";
+                        navigatorPageButton.href = "https://fpm-studio.de/";
+                        break;
+                    case 1:
+                        navigatorPageButton.innerText = "Team";
+                        navigatorPageButton.href = "https://team.fpm-studio.de/";
+                        break;
+                    case 2:
+                        navigatorPageButton.innerText = "Bibliothek";
+                        navigatorPageButton.href = "https://library.fpm-studio.de/";
+                        break;
+                    case 3:
+                        navigatorPageButton.innerText = "Extras";
+                        navigatorPageButton.href = "https://extras.fpm-studio.de/";
+                        break;
+                    case 4:
+                        navigatorPageButton.innerText = "Geheimnisse";
+                        navigatorPageButton.href = "https://secrets.fpm-studio.de/";
+                        break;
+                    case 5:
+                        navigatorPageButton.innerText = "Code-Entwicklung";
+                        navigatorPageButton.href = "https://dev.fpm-studio.de/";
+                        break;
+                    case 6:
+                        navigatorPageButton.innerText = "Turniere";
+                        navigatorPageButton.href = "https://tournaments.fpm-studio.de/";
+                        break;
+                }
+            }
+
+            if (subdomain == "Tournaments") {
+                switch (element) {
+                    case 0:
+                        navigatorPageButton.innerText = "Homepage";
+                        navigatorPageButton.href = "index.html";
+                        break;
+                    case 1:
+                        navigatorPageButton.innerText = "Informationen";
+                        navigatorPageButton.href = "information.html";
+                        break;
+                    case 2:
+                        navigatorPageButton.innerText = "Verwaltung";
+                        navigatorPageButton.href = "manage.html";
+                        break;
+                    case 3:
+                        navigatorPageButton.innerText = "Facecam in Streams";
+                        navigatorPageButton.href = "facecam.html";
+                        break;
+                    case 4:
+                        navigatorPageButton.innerText = "Datenschutz";
+                        navigatorPageButton.href = "privacy-policy.html";
+                        break;
+                }
+            }
+
+            navigatorPageButton.className = "navigator-page-button";
+            navigatorPageButton.setAttribute("open", false);
+
+            navigatorPage.append(navigatorPageImage);
+            navigatorPage.append(navigatorPageButton);
+            navigator.append(navigatorPage);
+
+            navigatorPageButtons.push(navigatorPageButton);
         }
 
-        navigatorContainer.append(navigatorPageHolder);
-        document.body.prepend(navigatorContainer);
+        document.body.prepend(navigator);
 
-        const navigatorPagesReversed = navigatorPages.slice().reverse();
+        const navigatorPageButtonsReversed = navigatorPageButtons.slice().reverse();
 
         navigatorButton.addEventListener("click", async () => {
             navigatorOpen = !navigatorOpen;
+            navigatorButton.setAttribute("open", navigatorOpen);
 
             if (!navigatorOpen) {
                 navigatorButton.innerText = navigatorButtonInitial;
-                for (const navigatorPage of navigatorPagesReversed) {
-                    await setNaviAttributes(navigatorPage);
+                for (const navigatorPageButton of navigatorPageButtonsReversed) {
+                    await setNaviAttributes(navigatorPageButton);
                 }
 
                 return;
             }
 
             navigatorButton.innerText = "✖";
-            for (const navigatorPage of navigatorPages) {
-                await setNaviAttributes(navigatorPage);
+            for (const navigatorPageButton of navigatorPageButtons) {
+                await setNaviAttributes(navigatorPageButton);
             }
         })
 
@@ -116,17 +140,14 @@ function generateNavigator(subdomain) {
          *
          * @author ItsLeMax
          *
-         * @param { HTMLAnchorElement } navigatorPage
+         * @param { HTMLAnchorElement } navigatorPageButton
          *
          * einzelne Seite des Navigators
          *
          * single page of the navigator
          */
-        async function setNaviAttributes(navigatorPage) {
-            navigatorPage.style.pointerEvents = navigatorOpen ? null : "none";
-
-            navigatorPage.setAttribute("open", navigatorOpen);
-            navigatorButton.setAttribute("open", navigatorOpen);
+        async function setNaviAttributes(navigatorPageButton) {
+            navigatorPageButton.setAttribute("open", navigatorOpen);
 
             await new Promise(resolve => setTimeout(resolve, 35));
         }

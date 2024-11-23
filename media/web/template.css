@@ -114,65 +114,73 @@ select, button, input, textarea, span {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
-.navigator {
-    width: 100%;
+#navigator {
     z-index: 10;
 
     position: fixed;
     top: 0;
-    left: 0;
+    right: 0;
 
     display: flex;
-    flex-direction: row-reverse;
-    justify-content: end;
+    flex-direction: column;
+    align-items: end;
 
     filter: drop-shadow(0rem 0rem 1rem rgba(0, 0, 0, .5));
 }
 
-.navigator div {
+#navigator div {
+    width: 100%;
     display: flex;
-    flex-direction: column;
 }
 
-.navigator-button {
-    height: fit-content;
-    padding-bottom: 0;
+#navigator div:nth-child(even) {
+    filter: saturate(.5);
+}
+
+#navigator>a {
+    text-align: right;
+}
+
+#navigator>a[open="true"] {
+    width: 100%;
+}
+
+#navigator a {
+    padding: 1.5rem;
 
     user-select: none;
     cursor: pointer;
-}
-
-.navigator-button:hover {
-    filter: brightness(3.5);
-}
-
-.navigator-page {
-    position: relative;
-
-    font-weight: bold;
-    text-decoration: none;
-    user-select: none;
-    white-space: nowrap;
-}
-
-.navigator-page:hover {
-    color: var(--navi-blue);
-    background-color: white;
-}
-
-.navigator-button, .navigator-page {
-    padding: 1.5rem;
-
     transition: .2s;
+
     color: white;
     background-color: var(--navi-blue);
 }
 
-.navigator-page[open=false] {
-    opacity: 0;
+#navigator a:hover {
+    color: var(--navi-blue);
+    background-color: white;
 }
 
-.navigator-page[open=true] {
+.navigator-page-button {
+    width: 100%;
+
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.navigator-page-button img {
+    width: 1rem;
+    height: 1rem;
+
+    position: relative;
+}
+
+.navigator-page-button[open=false] {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.navigator-page-button[open=true] {
     opacity: 1;
 }
 
@@ -238,36 +246,28 @@ input:checked+.slider:before {
     border-radius: 50%;
 }
 
-@media (min-width: 1487px) {
-    .navigator-button[open="true"] {
-        padding-bottom: 35.6rem;
-    }
-}
-
-@media (max-width: 1487px) {
+@media (max-width: 1080px) {
     body {
         margin: 11.3rem 3rem 3rem 3rem;
     }
 
-    .navigator {
-        flex-direction: column;
-        padding: 0;
+    #navigator a {
+        font-size: 3rem;
+    }
+}
+
+@media (max-height: 900px) {
+    #navigator {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        direction: rtl;
     }
 
-    .navigator a {
-        font-size: 2rem;
+    #navigator a {
+        white-space: nowrap;
     }
 
-    .navigator-button {
-        text-align: right;
-    }
-
-    .navigator-page {
-        transition: .2s;
-    }
-
-    .navigator div {
-        display: flex;
-        flex-direction: column;
+    #navigator>a {
+        width: fit-content;
     }
 }
