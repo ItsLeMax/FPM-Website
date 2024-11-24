@@ -35,40 +35,47 @@ function generateNavigator(subdomain) {
                 break;
         }
 
-        const navigatorPageButtons = new Array;
+        const navigatorPages = new Array;
 
-        for (let element = 0; element < pageAmount; element++) {
+        for (let page = 0; page < pageAmount; page++) {
             const navigatorPage = document.createElement("div");
             const navigatorPageImage = document.createElement("img");
             const navigatorPageButton = document.createElement("a");
 
             if (subdomain == "FPM") {
-                switch (element) {
+                switch (page) {
                     case 0:
+                        navigatorPageImage.src = "https://media.fpm-studio.de/assets/icons/home.webp";
                         navigatorPageButton.innerText = "Homepage";
                         navigatorPageButton.href = "https://fpm-studio.de/";
                         break;
                     case 1:
+                        navigatorPageImage.src = "https://media.fpm-studio.de/assets/icons/group.webp";
                         navigatorPageButton.innerText = "Team";
                         navigatorPageButton.href = "https://team.fpm-studio.de/";
                         break;
                     case 2:
+                        navigatorPageImage.src = "https://media.fpm-studio.de/assets/icons/book.webp";
                         navigatorPageButton.innerText = "Bibliothek";
                         navigatorPageButton.href = "https://library.fpm-studio.de/";
                         break;
                     case 3:
+                        navigatorPageImage.src = "https://media.fpm-studio.de/assets/icons/plus.webp";
                         navigatorPageButton.innerText = "Extras";
                         navigatorPageButton.href = "https://extras.fpm-studio.de/";
                         break;
                     case 4:
+                        navigatorPageImage.src = "https://media.fpm-studio.de/assets/icons/incognito.webp";
                         navigatorPageButton.innerText = "Geheimnisse";
                         navigatorPageButton.href = "https://secrets.fpm-studio.de/";
                         break;
                     case 5:
+                        navigatorPageImage.src = "https://media.fpm-studio.de/assets/icons/web-programming.webp";
                         navigatorPageButton.innerText = "Code-Entwicklung";
                         navigatorPageButton.href = "https://dev.fpm-studio.de/";
                         break;
                     case 6:
+                        navigatorPageImage.src = "https://media.fpm-studio.de/assets/icons/trophy.webp";
                         navigatorPageButton.innerText = "Turniere";
                         navigatorPageButton.href = "https://tournaments.fpm-studio.de/";
                         break;
@@ -76,7 +83,7 @@ function generateNavigator(subdomain) {
             }
 
             if (subdomain == "Tournaments") {
-                switch (element) {
+                switch (page) {
                     case 0:
                         navigatorPageButton.innerText = "Homepage";
                         navigatorPageButton.href = "index.html";
@@ -100,19 +107,18 @@ function generateNavigator(subdomain) {
                 }
             }
 
-            navigatorPageButton.className = "navigator-page-button";
-            navigatorPageButton.setAttribute("open", false);
-
             navigatorPage.append(navigatorPageImage);
             navigatorPage.append(navigatorPageButton);
-            navigator.append(navigatorPage);
 
-            navigatorPageButtons.push(navigatorPageButton);
+            navigatorPage.setAttribute("open", false);
+            navigatorPages.push(navigatorPage);
+
+            navigator.append(navigatorPage);
         }
 
         document.body.prepend(navigator);
 
-        const navigatorPageButtonsReversed = navigatorPageButtons.slice().reverse();
+        const navigatorPagesReversed = navigatorPages.slice().reverse();
 
         navigatorButton.addEventListener("click", async () => {
             navigatorOpen = !navigatorOpen;
@@ -120,16 +126,16 @@ function generateNavigator(subdomain) {
 
             if (!navigatorOpen) {
                 navigatorButton.innerText = navigatorButtonInitial;
-                for (const navigatorPageButton of navigatorPageButtonsReversed) {
-                    await setNaviAttributes(navigatorPageButton);
+                for (const navigatorPage of navigatorPagesReversed) {
+                    await setNaviAttributes(navigatorPage);
                 }
 
                 return;
             }
 
             navigatorButton.innerText = "✖";
-            for (const navigatorPageButton of navigatorPageButtons) {
-                await setNaviAttributes(navigatorPageButton);
+            for (const navigatorPage of navigatorPages) {
+                await setNaviAttributes(navigatorPage);
             }
         })
 
@@ -140,14 +146,14 @@ function generateNavigator(subdomain) {
          *
          * @author ItsLeMax
          *
-         * @param { HTMLAnchorElement } navigatorPageButton
+         * @param { HTMLAnchorElement } navigatorPage
          *
          * einzelne Seite des Navigators
          *
          * single page of the navigator
          */
-        async function setNaviAttributes(navigatorPageButton) {
-            navigatorPageButton.setAttribute("open", navigatorOpen);
+        async function setNaviAttributes(navigatorPage) {
+            navigatorPage.setAttribute("open", navigatorOpen);
 
             await new Promise(resolve => setTimeout(resolve, 35));
         }

@@ -25,7 +25,6 @@ body>a {
     overflow: hidden;
 
     width: 30rem;
-    height: 6rem;
 
     font-size: 4rem;
     line-height: 6rem;
@@ -76,7 +75,7 @@ body>a:hover {
 
     transform: scale(1.05);
     transition-duration: var(--transition);
-    transition-timing-function: cubic-bezier(0.785, 0.135, 0.15, 0.86);
+    transition-timing-function: cubic-bezier(.785, .135, .15, .86);
     transition-delay: .1s;
 }
 
