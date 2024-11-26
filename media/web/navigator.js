@@ -36,6 +36,7 @@ function generateNavigator(subdomain) {
         }
 
         const navigatorPages = new Array;
+        navigatorPages.push(navigatorButton);
 
         for (let page = 0; page < pageAmount; page++) {
             const navigatorPage = document.createElement("div");
@@ -122,7 +123,6 @@ function generateNavigator(subdomain) {
 
         navigatorButton.addEventListener("click", async () => {
             navigatorOpen = !navigatorOpen;
-            navigatorButton.setAttribute("open", navigatorOpen);
 
             if (!navigatorOpen) {
                 navigatorButton.innerText = navigatorButtonInitial;
