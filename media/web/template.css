@@ -33,7 +33,7 @@ html {
 }
 
 body {
-    margin: 8.7rem 3rem 3rem 3rem;
+    margin: 3rem;
 
     display: flex;
     flex-direction: column;
@@ -254,10 +254,6 @@ input:checked+.slider:before {
 }
 
 @media (max-width: 1080px) {
-    body {
-        margin: 11.3rem 3rem 3rem 3rem;
-    }
-
     #navigator a {
         font-size: 2.5rem;
     }
