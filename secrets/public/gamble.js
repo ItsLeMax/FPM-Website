@@ -46,11 +46,11 @@ document.addEventListener("DOMContentLoaded", () => {
     let cache = new Object;
 
     const cashSelection = document.querySelectorAll(".balance button");
-    const cash = document.querySelector("#navigator b");
+    const cash = document.querySelector("#gamble-navigator b");
 
     const gamePlayButton = document.querySelector("#game button");
 
-    for (const navigator of document.querySelectorAll("#navigator button")) {
+    for (const navigator of document.querySelectorAll("#gamble-navigator button")) {
         navigator.addEventListener("click", () => {
             for (const page of document.querySelectorAll("body>div")) {
                 if (page.id || !navigator.className) continue;
@@ -294,7 +294,7 @@ function sellItem(deleteButton, cash) {
  * should the buttons get deactivated?
  */
 function toggleNavigator(toggle) {
-    for (const navigator of document.querySelectorAll("#navigator button")) {
+    for (const navigator of document.querySelectorAll("#gamble-navigator button")) {
         navigator.disabled = toggle;
     }
 }
@@ -330,7 +330,7 @@ function buttonAvailability(cash, cashSelection, gamePlayButton) {
     const balanceTooLow = parseFloat(cash.innerText) <= -800;
 
     gamePlayButton.style.setProperty("font-size", balanceTooLow ? "0rem" : null, "important");
-    document.querySelector("#navigator b").style.color = balanceTooLow ? "var(--danger)" : null;
+    document.querySelector("#gamble-navigator b").style.color = balanceTooLow ? "var(--danger)" : null;
 }
 
 /**
@@ -427,7 +427,7 @@ async function udpateCash(newCash, skipWindow) {
         pseudotransfer?.close();
     }
 
-    const balanceElement = document.querySelector("#navigator b");
+    const balanceElement = document.querySelector("#gamble-navigator b");
     const balance = parseFloat(balanceElement.innerText.split("€")[0]);
     const profit = newCash > balance;
 
