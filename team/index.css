@@ -34,10 +34,6 @@ p, a {
     border-color: rgb(189, 33, 98);
 }
 
-#appliable div {
-    flex-direction: column;
-}
-
 #process {
     border-color: rgb(111, 95, 255);
 }
@@ -67,19 +63,8 @@ p, a {
     gap: 5rem;
 }
 
-.box img {
-    width: 32rem;
-    height: 18rem;
-}
-
-@media (min-width: 5120px) {
-    h3, h4 {
-        text-align: unset;
-    }
-
-    #appliable div:first-child, #direct div:last-child {
-        width: 100%;
-    }
+.box img, .box div:has(img) {
+    width: 40rem;
 }
 
 @media (max-width: 1800px) {
