@@ -16,7 +16,7 @@ body {
     grid-template-columns: auto auto;
     gap: 5rem;
 
-    margin: unset;
+    margin: unset !important;
     background-color: rgb(5, 5, 5);
 }
 
@@ -95,5 +95,11 @@ body>a:hover::before, body>a:hover::after {
     body>a {
         width: 33rem;
         font-size: 4rem !important;
+    }
+}
+
+@media (max-height: 270px) {
+    html {
+        height: unset;
     }
 }
