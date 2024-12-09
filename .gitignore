@@ -5,7 +5,7 @@
 /media/*
 !/media/web
 
+/secrets/code
 /secrets/hidden-media
-/secrets/results
 
 /WiP.txt
