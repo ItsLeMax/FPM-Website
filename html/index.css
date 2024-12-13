@@ -1,49 +1,30 @@
 :root {
     --padding: 5vh;
-}
-
-::selection {
-    background-color: rgb(99, 56, 255);
+    --soft-black: rgba(0, 0, 0, .25);
 }
 
 body {
-    margin: 0;
-}
-
-h1 {
-    font-size: 6vmin;
-}
-
-h2 {
-    font-size: 4vmin;
-}
-
-p, a, span {
-    font-size: 3vmin;
+    margin: unset !important;
+    gap: unset;
 }
 
 a {
-    color: rgb(33, 99, 197);
+    text-decoration: none;
     font-weight: bold;
-}
-
-ul {
-    margin-left: 3vmin;
 }
 
 li {
     color: rgb(220, 220, 220);
-    font-size: 3vmin;
 }
 
-.black-tint *:not(a) {
+.black-tint-container>* {
     color: black;
 }
 
 #intro {
     height: 100vh;
 
-    background-color: rgba(0, 0, 0, .25);
+    background-color: var(--soft-black);
     text-align: center;
 
     display: flex;
@@ -51,21 +32,25 @@ li {
     justify-content: center;
 }
 
+#intro h1 {
+    margin: 0 2rem;
+}
+
 #intro video {
     position: fixed;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
+
+    width: 100%;
+    height: 100%;
 
     object-fit: cover;
     z-index: -1;
 }
 
 #summary {
-    background-color: rgb(250, 90, 90);
-
     display: flex;
     height: 50vh;
+
+    background-color: rgb(250, 90, 90);
 }
 
 #summary div {
@@ -91,35 +76,35 @@ li {
 
 #secrets {
     padding: var(--padding);
+
     display: flex;
-    gap: 5vmin;
+    justify-content: space-between;
 
     background-size: cover;
-    background-position-y: -30vmin;
+    background-position-y: -30rem;
     background-image: url("https://media.fpm-studio.de/assets/background-image/stone_wall.webp");
 }
 
 #secrets img {
-    width: 15vmin;
+    width: 15rem;
 }
 
 #team {
+    height: 80vh;
+    min-height: 55rem;
+
     display: flex;
     flex-direction: column;
-    gap: 2vmin;
+    gap: 2rem;
 
-    height: 90vh;
-    padding: var(--padding);
     position: relative;
+    padding: var(--padding);
     overflow: hidden;
 
     background-size: 100%;
     background-position-y: center;
+    background-size: cover;
     background-image: url("https://media.fpm-studio.de/assets/background-image/propulsion.webp");
-}
-
-#team p {
-    z-index: 1;
 }
 
 #letaubsi-text {
@@ -127,16 +112,12 @@ li {
 }
 
 #itslemax-text, #letaubsi-text {
+    padding: var(--padding);
+    background-color: var(--soft-black);
+
+    display: none;
     z-index: 1;
     pointer-events: none;
-
-    padding: var(--padding);
-    background-color: rgba(0, 0, 0, .25);
-    display: none;
-}
-
-#letaubsi-text ul {
-    margin: 0 3vmin 0 0;
 }
 
 #itslemax-text h2 {
@@ -148,7 +129,7 @@ li {
 }
 
 #team img {
-    height: 80vh;
+    height: 50rem;
 
     position: absolute;
     bottom: 0;
@@ -159,12 +140,24 @@ li {
     transition: .2s;
 }
 
+#leaders {
+    display: flex;
+    gap: 2rem;
+}
+
+#leaders p {
+    height: fit-content;
+
+    position: relative;
+    top: .75rem;
+}
+
 #itslemax-image {
-    left: 5vmin;
+    left: 5rem;
 }
 
 #letaubsi-image {
-    right: 5vmin;
+    right: 5rem;
 }
 
 #itslemax-image:hover~#itslemax-text,
@@ -174,7 +167,7 @@ li {
 
 #itslemax-image:hover+#letaubsi-image,
 #itslemax-image:has(+#letaubsi-image:hover) {
-    filter: blur(1vmin);
+    filter: blur(.5rem);
     transition: .1s;
 }
 
@@ -192,8 +185,12 @@ li {
 
     background-size: cover;
     background-position-y: center;
-    background-image: linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .25)),
+    background-image: linear-gradient(var(--soft-black), rgba(0, 0, 0, .9)),
         url("https://media.fpm-studio.de/assets/background-image/rocket_league.webp");
+}
+
+#tournaments a {
+    color: rgb(74, 74, 228);
 }
 
 #donation {
@@ -202,39 +199,47 @@ li {
 }
 
 #links {
-    background-color: rgb(15, 15, 15);
     padding: var(--padding);
+    background-color: rgb(15, 15, 15);
 
     display: flex;
     align-items: center;
-    gap: 3vmin;
+    gap: 3rem;
 }
 
 #links a, #links p {
-    font-size: 2vmin;
+    font-size: 2rem;
 }
 
 #links div {
     display: flex;
     align-items: center;
-    gap: 1vmin;
+    gap: 1rem;
 }
 
 #links img {
-    width: 3vmin;
+    width: 3rem;
 }
 
-@media (max-aspect-ratio: 14/9) {
-    #links a, #links p {
-        font-size: 3vmin !important;
-    }
-
-    #links {
-        flex-direction: column;
+@media (max-width: 1420px) {
+    #team img {
+        height: 40rem;
     }
 }
 
-@media (max-aspect-ratio: 4/3) {
+@media (max-width: 1170px) {
+    #team {
+        height: unset;
+    }
+
+    #team img {
+        display: none;
+    }
+
+    #team>div {
+        display: block !important;
+    }
+
     #summary {
         height: unset;
         text-align: center;
@@ -253,32 +258,10 @@ li {
     #secrets {
         background-position-y: unset
     }
-
-    #team img {
-        height: 60vh;
-    }
 }
 
-@media (max-aspect-ratio: 1/1) {
-    #team {
-        height: unset;
-    }
-
-    #team img {
-        display: none;
-    }
-
-    #team>div {
-        display: block !important;
-    }
-}
-
-@media (max-aspect-ratio: 1/3) {
-    :root {
-        --padding: 1vh;
-    }
-
-    #team * {
-        overflow: hidden;
+@media (max-width: 960px) {
+    #links {
+        flex-direction: column;
     }
 }
