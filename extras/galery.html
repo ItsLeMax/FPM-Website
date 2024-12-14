@@ -21,6 +21,7 @@
 <body>
     <div id="selector">
         <h3>Filmgalerie</h3>
+
         <select>
             <option selected disabled>Wähle hier den Film aus.</option>
             <option>Dora und die albanische Staatsgrenze</option>
@@ -29,8 +30,13 @@
         </select>
 
         <b id="index">1/0</b>
-        <div><img borderless></div>
-        <p id="caption">Caption</p>
+
+        <div>
+            <img id="loading" src="https://media.fpm-studio.de/assets/graphics/loading.gif">
+            <img id="image" borderless>
+        </div>
+
+        <p id="caption"></p>
     </div>
     <div id="buttons">
         <button id="previous" disabled>&#60;</button>

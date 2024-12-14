@@ -1,37 +1,22 @@
 document.addEventListener("DOMContentLoaded", () => {
     const select = document.querySelector("select");
-    const image = document.querySelector("img");
+
+    const image = document.getElementById("image");
+    const loading = document.getElementById("loading");
     const caption = document.getElementById("caption");
-    const buttonIDs = ["next", "previous"];
-
-    for (const buttonID of buttonIDs) {
-        document.getElementById(buttonID).addEventListener("click", () => {
-            const pageNumbers = pageCount().pageNumbers;
-
-            if (pageNumbers[0] == 1 && buttonID == "previous") return;
-            if (pageNumbers[0] == pageNumbers[1] && buttonID == "next") return;
-            pageNumbers[0] = buttonID == "next" ? pageNumbers[0] += 1 : pageNumbers[0] -= 1;
-            updateText(pageNumbers);
-
-            if (!select.value) return;
-            updateImage();
-        })
-    }
 
     select.addEventListener("change", () => {
-        for (const buttonID of buttonIDs) {
-            const button = document.getElementById(buttonID);
+        updateButtons((button) => {
             if (button.disabled) {
-                button.disabled = false;
                 caption.style.display = "block";
             }
-        }
+        });
 
         document.getElementById("index").style.display = "block";
-        const pageNumbers = pageCount().pageNumbers;
+        const pageNumbers = getPageCount().pageNumbers;
         pageNumbers[0] = 1;
 
-        updateText(pageNumbers);
+        updatePageCount(pageNumbers);
         updateImage();
 
         XMLHttpRequests({
@@ -39,16 +24,58 @@ document.addEventListener("DOMContentLoaded", () => {
                 const response = JSON.parse(xhr.responseText);
                 if (!response) return;
 
-                const pageNumbers = pageCount().pageNumbers;
+                const pageNumbers = getPageCount().pageNumbers;
                 pageNumbers[1] = response.length;
 
-                updateText(pageNumbers);
+                updatePageCount(pageNumbers);
             }
         }, {
             subdomain: "extras",
             sentData: getSelectId().toLowerCase()
         });
     })
+
+    updateButtons((button) => {
+        button.addEventListener("click", () => {
+            const pageNumbers = getPageCount().pageNumbers;
+
+            if (pageNumbers[0] == 1 && button.id == "previous") return;
+            if (pageNumbers[0] == pageNumbers[1] && button.id == "next") return;
+            pageNumbers[0] = button.id == "next" ? pageNumbers[0] += 1 : pageNumbers[0] -= 1;
+            updatePageCount(pageNumbers);
+
+            if (!select.value) return;
+            updateImage();
+        })
+    });
+
+    image.addEventListener("load", () => {
+        caption.innerText = eval(getSelectId())[getPageCount().pageNumbers[0]] || "";
+        updateButtons((button) => {
+            button.disabled = false;
+            image.style.filter = "unset";
+            loading.style.display = "none";
+        });
+    })
+
+    /**
+     * @description
+     * Führt eine Funktion für alle Knöpfe aus
+     *
+     * Executes a function for all buttons
+     *
+     * @author ItsLeMax
+     *
+     * @param { Function } fn
+     * Funktion zum Ausführen
+     *
+     * Function to execute
+     */
+    function updateButtons(fn) {
+        for (const buttonId of ["next", "previous"]) {
+            fn(document.getElementById(buttonId));
+        }
+    }
 
     /**
      * @description
@@ -63,7 +90,7 @@ document.addEventListener("DOMContentLoaded", () => {
      * 
      * Object with element and array with both numbers, current number and total number or element, unedited
      */
-    function pageCount() {
+    function getPageCount() {
         const pageElement = document.getElementById("index");
 
         const pageNumbers = pageElement.innerText.split("/");
@@ -88,9 +115,9 @@ document.addEventListener("DOMContentLoaded", () => {
      * 
      * splitted index inside the array from the object of the function `pageCount`
      */
-    function updateText(pageNumbers) {
+    function updatePageCount(pageNumbers) {
         pageNumbers[0] = pageNumbers[0].toString();
-        pageCount().pageElement.innerText = pageNumbers.join("/");
+        getPageCount().pageElement.innerText = pageNumbers.join("/");
     };
 
     /**
@@ -102,8 +129,12 @@ document.addEventListener("DOMContentLoaded", () => {
      * @author ItsLeMax
      */
     function updateImage() {
-        image.setAttribute("src", "https://media.fpm-studio.de/movies/" + getSelectId().toLowerCase() + "/" + pageCount().pageNumbers[0] + ".png");
-        caption.innerText = eval(getSelectId())[pageCount().pageNumbers[0]] || "";
+        image.setAttribute("src", "https://media.fpm-studio.de/movies/" + getSelectId().toLowerCase() + "/" + getPageCount().pageNumbers[0] + ".png");
+        updateButtons((button) => {
+            button.disabled = true;
+            image.style.filter = "brightness(33%) blur(.1rem)";
+            loading.style.display = "block";
+        });
     };
 
     /**
