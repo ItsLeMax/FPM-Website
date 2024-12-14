@@ -6,15 +6,12 @@ p {
     text-align: center;
 }
 
-hr {
-    width: 50rem;
-}
-
 video {
     width: calc(16rem * 3);
     height: calc(9rem * 3);
 
-    border: 1rem solid;
+    border: .5rem solid;
+    background-color: rgba(0, 0, 0, .5);
 }
 
 button {
