@@ -98,10 +98,6 @@ button:disabled {
     background-color: var(--gray10);
 }
 
-#buttons {
-    text-align: center;
-}
-
 @media (max-height: 860px) {
     body {
         justify-content: unset;
