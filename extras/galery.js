@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const select = document.getElementsByTagName("select")[0];
-    const image = document.getElementsByTagName("img")[0];
+    const select = document.querySelector("select");
+    const image = document.querySelector("img");
     const captionElement = document.getElementById("caption");
     const buttonIDs = ["next", "previous"];
 

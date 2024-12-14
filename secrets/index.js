@@ -2,9 +2,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const codeURL = document.location.hash.substring(1);
     if (codeURL) document.querySelector("input").value = codeURL;
 
-    document.getElementsByTagName("button")[0].addEventListener("click", () => {
+    document.querySelector("button").addEventListener("click", () => {
         validateInput();
     })
+
     document.addEventListener("keypress", (e) => {
         if (e.key != "Enter") return;
         validateInput();

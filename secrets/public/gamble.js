@@ -157,7 +157,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
             gamePlayButton.style.display = null;
-            document.getElementsByClassName("spinner")[0]?.remove();
+            document.querySelector(".spinner")?.remove();
 
             const popup = spinner.getElementsByTagName("img")[57];
 
