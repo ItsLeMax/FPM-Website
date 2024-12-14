@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
     const select = document.querySelector("select");
     const image = document.querySelector("img");
-    const captionElement = document.getElementById("caption");
+    const caption = document.getElementById("caption");
     const buttonIDs = ["next", "previous"];
 
     for (const buttonID of buttonIDs) {
@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const button = document.getElementById(buttonID);
             if (button.disabled) {
                 button.disabled = false;
-                captionElement.style.display = "block";
+                caption.style.display = "block";
             }
         }
 
@@ -103,7 +103,7 @@ document.addEventListener("DOMContentLoaded", () => {
      */
     function updateImage() {
         image.setAttribute("src", "https://media.fpm-studio.de/movies/" + getSelectId().toLowerCase() + "/" + pageCount().pageNumbers[0] + ".png");
-        captionElement.innerText = eval(getSelectId())[pageCount().pageNumbers[0]] || "";
+        caption.innerText = eval(getSelectId())[pageCount().pageNumbers[0]] || "";
     };
 
     /**

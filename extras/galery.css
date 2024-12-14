@@ -2,82 +2,109 @@
     background-color: rgba(164, 255, 60, .5);
 }
 
+::-webkit-scrollbar {
+    width: 1rem;
+}
+
+::-webkit-scrollbar-track {
+    background: #555555;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 1rem;
+    background: var(--darker-yellow);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    cursor: pointer;
+    background: rgb(145, 125, 25);
+    transition: .2s;
+}
+
 body {
-    background-color: var(--gray20);
+    height: 100vh;
+    margin: 0 3rem !important;
 
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-
-    display: flex;
-    flex-direction: column;
+    gap: unset;
+    align-items: center;
+    justify-content: center;
 }
 
 div:has(button:disabled) {
     display: none;
 }
 
-h1 {
-    font-size: 6vmin;
+h3 {
     text-align: center;
-}
-
-img {
-    min-width: 35vw;
-    max-width: 90vw;
-    height: 60vmin;
-}
-
-img:not([src]) {
-    width: 80vmin;
 }
 
 select {
-    color: whitesmoke;
-    background-color: rgb(30, 30, 30);
-    font-size: 3vmin;
-    text-align: center;
-
     width: 100%;
-    height: 6vmin;
-}
 
-select:focus {
-    outline: none;
+    color: white;
+    background-color: rgb(30, 30, 30);
+    text-align: center;
 }
 
 button {
     color: whitesmoke;
     background-color: transparent;
-    font-size: 4vmin;
+    font-size: 4rem;
+}
+
+#selector {
+    max-width: min-content;
 }
 
 #selector div {
-    background-color: var(--gray10);
-    border: .5vmin solid var(--gray10);
-
     display: flex;
     justify-content: center;
+
+    border: .5rem solid var(--gray10);
+    background-color: var(--gray10);
+}
+
+#selector img {
+    max-width: calc(16rem * 3);
+    min-height: calc(9rem * 3);
+    max-height: calc(9rem * 3);
+}
+
+#selector img:not([src]) {
+    width: 50rem;
 }
 
 #index {
     background-color: rgba(20, 20, 20, .5);
     padding: 0 1%;
-    margin: 1vmin 0 0 1vmin;
+    margin: 1rem 0 0 1rem;
 
     display: none;
     position: absolute;
 }
 
 #caption {
-    width: 100%;
-    display: none;
+    height: 8rem;
+    padding-left: 0.5rem;
 
-    font-size: 3vmin;
-    text-align: center;
+    display: none;
+    overflow-y: scroll;
+
+    background-color: var(--gray10);
 }
 
 #buttons {
     text-align: center;
+}
+
+@media (max-height: 800px) {
+    body {
+        justify-content: unset;
+    }
+}
+
+@media (max-width: 600px) {
+    #buttons button {
+        font-size: 8rem;
+    }
 }
