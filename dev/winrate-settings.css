@@ -1,49 +1,31 @@
-* {
-    margin: 0;
-    padding: 0;
-}
-
 emoji {
-    width: 8vmin;
-    font-size: 6vmin;
+    width: 8rem;
+    font-size: 6rem;
 }
 
 b {
-    width: 42vmin;
+    width: 31rem;
 
-    font-size: 8vmin;
+    font-size: 6rem;
     font-weight: 200;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 body {
-    background-color: rgb(20, 20, 20);
-}
+    height: 100vh;
+    margin: 0 2rem;
 
-body>div {
-    height: 35vmin;
-
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 input {
-    font-size: 6vmin;
+    font-size: 6rem;
     text-align: center;
-}
-
-button, input {
-    border: none;
+    color: var(--gray20);
 }
 
 #wl-wins, #wl-losses, #wl-average {
-    width: 75vmin;
+    width: 75rem;
 
     display: flex;
     justify-content: space-between;
@@ -51,22 +33,23 @@ button, input {
 }
 
 #wl-wins input, #wl-losses input {
-    width: 10vmin;
-    height: 10vmin;
+    width: 10rem;
 }
 
 #wl-average b {
     width: auto;
-
-    font-size: 6vmin;
-    text-align: right;
 }
 
 #wl-average span {
-    width: 57.5vmin;
-    height: 3vmin;
+    width: 57.5rem;
+    height: 3rem;
 
-    display: block;
     background-color: gray;
-    border-radius: 3vmin;
+    border-radius: 3rem;
+}
+
+@media (max-height: 520px) {
+    body {
+        justify-content: unset;
+    }
 }
