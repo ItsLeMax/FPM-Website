@@ -24,6 +24,10 @@
     cursor: not-allowed;
 }
 
+:focus {
+    outline: none;
+}
+
 ::marker {
     color: var(--darker-yellow);
 }

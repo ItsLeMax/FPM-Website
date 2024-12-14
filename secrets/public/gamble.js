@@ -5,6 +5,10 @@ const TEST = {
     ROLL_SPEED_MULTIPLIER: hash[1] == "slow" ? .5 : hash[1] == "fast" ? 10000 : 2
 };
 
+const cashRegisterAudio = new Audio("../hidden-media/audio/cash_register.mp3");
+const csgoGambleAudio = new Audio("../hidden-media/audio/csgo_gamble.mp3");
+const jackpotAudio = new Audio("../hidden-media/audio/jackpot.mp3");
+
 document.addEventListener("DOMContentLoaded", () => {
     const maximumItems = 50;
     document.getElementById("itemTotal").innerText = maximumItems;
@@ -67,7 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
     for (const button of cashSelection) {
         button.addEventListener("click", async () => {
             await udpateCash(parseFloat(cash.innerText) + parseFloat(button.innerText));
-            new Audio("../hidden-media/audio/cash_register.mp3").play();
+            cashRegisterAudio.play();
             buttonAvailability(cash, cashSelection, gamePlayButton);
         })
     }
@@ -80,14 +84,12 @@ document.addEventListener("DOMContentLoaded", () => {
         buttonAvailability(cash, cashSelection, gamePlayButton);
         toggleNavigator(true);
 
-        const gambleAudio = new Audio("../hidden-media/audio/csgo_gamble.mp3");
-
         if ((Math.abs(TEST.ROLL_SPEED_MULTIPLIER) >= .5 && TEST.ROLL_SPEED_MULTIPLIER <= 4)) {
             if (TEST.ENABLED) {
-                gambleAudio.playbackRate = Math.abs(TEST.ROLL_SPEED_MULTIPLIER);
+                csgoGambleAudio.playbackRate = Math.abs(TEST.ROLL_SPEED_MULTIPLIER);
             }
 
-            gambleAudio.play();
+            csgoGambleAudio.play();
         }
 
         gamePlayButton.style.setProperty("display", "none");
@@ -152,8 +154,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         setTimeout(async () => {
             if (TEST.ROLL_SPEED_MULTIPLIER < 1) {
-                gambleAudio.pause();
-                gambleAudio.currentTime = 0;
+                csgoGambleAudio.pause();
+                csgoGambleAudio.currentTime = 0;
             }
 
             gamePlayButton.style.display = null;
@@ -237,7 +239,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
             if (cache.rarity == "legendär" && !TEST.ENABLED) {
-                new Audio("../hidden-media/audio/jackpot.mp3").play();
+                jackpotAudio.play();
             }
         }, defaultTiming.revealTime + defaultTiming.additionalTime);
     })
@@ -263,7 +265,7 @@ document.addEventListener("DOMContentLoaded", () => {
  */
 function sellItem(deleteButton, cash) {
     deleteButton.parentElement.remove();
-    new Audio("../hidden-media/audio/cash_register.mp3").play();
+    cashRegisterAudio.play();
 
     const itemAmount = document.getElementById("itemAmount");
     itemAmount.innerText = parseInt(itemAmount.innerText) - 1;

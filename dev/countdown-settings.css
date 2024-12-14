@@ -31,10 +31,6 @@ p {
     text-align: center;
 }
 
-input:focus {
-    outline: none;
-}
-
 button {
     height: 6vmin;
     width: 15vmin;

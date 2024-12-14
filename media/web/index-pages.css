@@ -86,7 +86,7 @@ body>a:hover::before, body>a:hover::after {
 
 @media (max-width: 1150px) {
     body {
-        margin: 5rem;
+        margin: 0 2rem !important;
 
         display: flex;
         flex-direction: column;
