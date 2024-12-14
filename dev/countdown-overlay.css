@@ -1,4 +1,6 @@
 body {
+    margin: 0 2rem;
+
     background-color: unset;
     user-select: none;
     text-align: center;
@@ -8,8 +10,6 @@ b {
     transition: .2s;
 
     color: rgb(240, 240, 240);
-    font-size: 52vmin;
+    font-size: 37rem;
     font-family: 'Poppins', sans-serif;
-
-    text-transform: uppercase;
 }

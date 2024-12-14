@@ -1,5 +1,5 @@
 window.addEventListener("DOMContentLoaded", () => {
-    const countdownElement = document.getElementsByTagName("b")[0];
+    const countdownElement = document.querySelector("b");
     const countdownInitial = countdownElement.innerText;
 
     window.addEventListener("storage", () => {

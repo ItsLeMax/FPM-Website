@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
     const time = document.getElementById("minutes");
-    const start = document.getElementsByTagName("button")[0];
+    const start = document.querySelector("button");
     const initialText = start.innerText;
     const initialColor = start.style.backgroundColor;
 
@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
             time.value = time.value.slice(0, 2);
         }
 
-        const exceedsLimit = time.value > 45 || time.value < 1;
+        const exceedsLimit = time.value > 60 || time.value < 1;
         time.style.color = exceedsLimit ? "red" : "black";
         start.disabled = time.value ? exceedsLimit : false;
     })

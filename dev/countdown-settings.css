@@ -1,81 +1,59 @@
-:disabled {
-    filter: brightness(50%);
-}
-
 body {
-    background-color: var(--gray20);
+    height: 100vh;
+    margin: 0 2rem;
 
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(1.7);
-
-    display: flex;
-    flex-direction: column;
     align-items: center;
-    gap: 1vmin;
+    justify-content: center;
 }
 
 body>div {
     display: flex;
-    gap: 3vmin;
+    gap: 3rem;
 }
 
-h1 {
-    font-size: 4vmin;
+body>p {
+    max-width: 80rem;
+}
+
+h3 {
     white-space: nowrap;
 }
 
 p {
-    font-size: 2vmin;
     text-align: center;
 }
 
 button {
-    height: 6vmin;
-    width: 15vmin;
-
-    color: black;
+    width: 15rem;
 }
 
 button:active:not(button:disabled) {
     filter: brightness(75%);
 }
 
-input, button {
-    border: .25vmin solid black;
-}
-
 select {
-    width: 48.75vmin;
-}
-
-input, button, select {
-    font-size: 2vmin;
-}
-
-#minutes {
-    width: 14vmin;
-    font-size: 2.5vmin;
+    width: 48.5rem;
 }
 
 #minutes, #picker {
-    width: 15vmin;
-    height: 6vmin;
-
-    color: black;
-    cursor: text;
+    width: 15rem;
 }
 
 input[type="checkbox"] {
-    width: 4vmin;
-    height: 4vmin;
+    width: 4rem;
+    height: 4rem;
 }
 
 #toggle {
-    background-color: rgb(212, 214, 77);
+    background-color: var(--darker-yellow);
 }
 
 #update {
-    background-color: rgb(110, 255, 243);
+    background-color: rgb(44, 44, 133);
+}
+
+@media (max-height: 640px) {
+    body {
+        justify-content: unset;
+    }
 }
