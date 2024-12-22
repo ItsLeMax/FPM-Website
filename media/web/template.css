@@ -50,8 +50,10 @@ body:has(#navigator) {
     margin-top: 5.6rem;
 }
 
-input[type="text"] {
-    cursor: text;
+input:not([type]),
+input[type="text"],
+input[type="number"] {
+    cursor: text !important;
 }
 
 button, input, select {
@@ -308,5 +310,12 @@ input:checked+.slider:before {
 
     #navigator a {
         font-size: 1.5rem;
+    }
+
+    #navigator img {
+        width: 1.5rem;
+        height: 1.5rem;
+
+        margin: .4rem 0 0 1rem;
     }
 }
