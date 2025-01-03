@@ -145,7 +145,7 @@ document.addEventListener("DOMContentLoaded", () => {
         spinner.animate([{
             right: "0rem"
         }, {
-            right: (parseFloat(getComputedStyle(document.body).getPropertyValue('--endpoint')) + Math.floor(Math.random() * 20)) + "rem"
+            right: (parseFloat(getComputedStyle(document.body).getPropertyValue("--endpoint")) + Math.floor(Math.random() * 20)) + "rem"
         }], {
             duration: defaultTiming.revealTime,
             easing: "ease-out",

@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", () => {
     const codeURL = document.location.hash.substring(1);
     if (codeURL) document.querySelector("input").value = codeURL;
 
