@@ -160,6 +160,9 @@ select, button, input, textarea, span {
 }
 
 #navigator a {
+    width: 100%;
+    display: block;
+
     color: white;
     font-weight: bold;
     text-decoration: none;
@@ -168,6 +171,10 @@ select, button, input, textarea, span {
 #navigator div {
     width: 100%;
     padding: 1.5rem 1.5rem 1.5rem 3.5rem;
+}
+
+#navigator:not(:has(div[open="true"])) div {
+    display: none;
 }
 
 #navigator div:nth-child(even) {
