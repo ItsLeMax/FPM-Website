@@ -87,6 +87,17 @@ a {
     filter: drop-shadow(0 0 .5rem black);
 }
 
+.settings:hover::before {
+    position: absolute;
+    top: 8rem;
+    right: 2.5rem;
+
+    font-size: 1.75rem;
+    font-weight: 100;
+
+    content: "Einstellungen";
+}
+
 #github {
     background-image: url("https://media.fpm-studio.de/assets/icons/github.webp");
 }
