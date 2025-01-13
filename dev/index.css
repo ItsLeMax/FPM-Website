@@ -82,7 +82,7 @@ a {
     right: 0;
 }
 
-.settings:hover {
+.settings:hover:not(::before) {
     transition: .2s;
     filter: drop-shadow(0 0 .5rem black);
 }
