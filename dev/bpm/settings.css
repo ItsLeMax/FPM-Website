@@ -23,7 +23,7 @@ span::before {
 
 span p {
     position: relative;
-    bottom: 2.5rem;
+    bottom: 2.4rem;
 
     text-align: center;
     mix-blend-mode: difference;

@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     const characteristic = await deviceInfoService.getCharacteristic(char.uuid);
                     const decodedValue = new TextDecoder().decode(await characteristic.readValue());
 
-                    document.getElementById("device").innerText += "\n" + `${char.label}: ${decodedValue}`;
+                    document.getElementById("device").innerText += "\n" + `● ${char.label}: ${decodedValue}`;
                 } catch (error) {
                     console.warn(`Eigenschaft ${char.label} (${char.uuid}) konnte nicht gelesen werden.`);
                 }
