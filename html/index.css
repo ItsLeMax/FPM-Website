@@ -265,3 +265,29 @@ li {
         flex-direction: column;
     }
 }
+
+@media (max-width: 800px) {
+    :root {
+        --padding: 5vw;
+    }
+
+    h1 {
+        margin: unset !important;
+    }
+
+    #team {
+        min-height: unset;
+    }
+
+    #secrets img {
+        width: 25vw;
+    }
+
+    #links {
+        gap: 5vw;
+    }
+
+    #links img {
+        width: 5vw;
+    }
+}
