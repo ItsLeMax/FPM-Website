@@ -324,8 +324,61 @@ input:checked+.slider:before {
 }
 
 @media (max-width: 800px) {
-    #navigator a {
-        font-size: 5vw;
+    body {
+        margin: 6vw;
+        gap: 4vw;
+    }
+
+    body:has(#navigator) {
+        margin-top: 11.2vw;
+    }
+
+    button, input, select {
+        padding: 2vw;
+    }
+
+    hr {
+        border-width: .2vw 0;
+    }
+
+    #navigator>a {
+        padding: 3vw;
+    }
+
+    #navigator div {
+        padding: 3vw 3vw 3vw 7vw;
+    }
+
+    #navigator img {
+        margin: 1vw 0 0 1.5vw;
+
+        width: 4vw;
+        height: 4vw;
+    }
+
+    .switch {
+        width: calc(12vw * var(--slider-size));
+        height: calc(6.8vw * var(--slider-size));
+    }
+
+    .slider:before {
+        width: calc(5.2vw * var(--slider-size));
+        height: calc(5.2vw * var(--slider-size));
+
+        left: calc(.8vw * var(--slider-size));
+        bottom: calc(.8vw * var(--slider-size));
+    }
+
+    input:focus+.slider {
+        box-shadow: 0 0 calc(.2vw * var(--slider-size)) #2196F3;
+    }
+
+    input:checked+.slider:before {
+        transform: translateX(calc(5.2vw * var(--slider-size)));
+    }
+
+    .slider.round {
+        border-radius: calc(6.8vw * var(--slider-size));
     }
 
     h1 {
@@ -355,5 +408,9 @@ input:checked+.slider:before {
     p, b, a, i, li,
     select, button, input, textarea, span {
         font-size: 4vw !important;
+    }
+
+    #navigator a {
+        font-size: 5vw;
     }
 }

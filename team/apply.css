@@ -25,3 +25,13 @@ button:active:not(:disabled) {
 #create {
     width: 50rem;
 }
+
+@media (max-width: 900px) {
+    #create {
+        width: 100%;
+    }
+
+    #jobs {
+        gap: 2vw;
+    }
+}

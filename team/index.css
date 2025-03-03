@@ -22,6 +22,10 @@ p, a {
     text-align: justify;
 }
 
+#start span {
+    display: none;
+}
+
 #start p, #apply p {
     text-align: center;
 }
@@ -74,6 +78,30 @@ p, a {
 
     div:has(img) {
         flex-direction: column;
+    }
+}
+
+@media (max-width: 865px) {
+    #start span {
+        display: inline-block;
+        font-size: 10vw !important;
+    }
+
+    hr {
+        margin: 6vw 0;
+    }
+
+    .box {
+        border: 2vw ridge;
+        padding: 6vw;
+    }
+
+    .box:has(img) {
+        gap: 10vw;
+    }
+
+    .box img, .box div:has(img) {
+        width: 100%;
     }
 }
 
