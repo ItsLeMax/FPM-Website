@@ -42,9 +42,9 @@ document.addEventListener("DOMContentLoaded", () => {
  * Maximum beats per minute
  *
  * @returns
- * Herzschlagwert
+ * Nummer mit zufälligem Herzschlag
  *
- * Heart beat value
+ * number with random heart beat
  *
  * @see [StackOverflow](https://stackoverflow.com/questions/1527803/generating-random-whole-numbers-in-javascript-in-a-specific-range)
  */

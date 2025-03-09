@@ -393,6 +393,7 @@ function logger(probability, rarity, selectedChestName, selectedChestPrice) {
  * Ersatz des Index-Zeichens
  *
  * replacement of the index character
+ *
  * @returns
  * String mit Ersatz
  *
@@ -496,9 +497,9 @@ function sleep(milliseconds) {
  *
  * name of the planned file
  * @returns
- * Dateiname
+ * String mit Dateiname
  *
- * file name
+ * string with file name
  */
 function toFileName(name) {
     return name.replaceAll(" ", "_").toLowerCase();
