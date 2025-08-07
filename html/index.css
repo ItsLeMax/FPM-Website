@@ -48,8 +48,6 @@ li {
 
 #summary {
     display: flex;
-    height: 50vh;
-
     background-color: rgb(250, 90, 90);
 }
 
@@ -253,6 +251,10 @@ li {
 
     #team {
         background-size: cover;
+    }
+
+    #leaders p {
+        display: none;
     }
 
     #secrets {
