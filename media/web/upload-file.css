@@ -1,0 +1,53 @@
+p {
+    color: #555;
+}
+
+form {
+    display: flex;
+    gap: 1rem;
+}
+
+input {
+    color: white;
+
+    border: .1rem solid #ccc;
+    border-radius: .4rem;
+}
+
+button {
+    color: white;
+
+    padding: 1rem 2rem;
+    border-radius: .4rem;
+}
+
+button[type="submit"] {
+    background-color: #0056b3;
+}
+
+span {
+    width: 0%;
+    height: 100%;
+    display: inline-block;
+
+    background-color: green;
+    border-radius: .4rem;
+    transition: width 0.3s;
+}
+
+#abort {
+    background-color: #ff3c00;
+}
+
+#progress-bar {
+    width: 50rem;
+    height: 2rem;
+
+    background-color: #ccc;
+    border-radius: .4rem;
+}
+
+#info,
+#progress-bar {
+    display: none;
+}
