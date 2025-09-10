@@ -177,22 +177,10 @@ li {
     padding: var(--padding);
 }
 
-#tournaments {
-    text-align: right;
-    padding: var(--padding);
-
-    background-size: cover;
-    background-position-y: center;
-    background-image: linear-gradient(var(--soft-black), rgba(0, 0, 0, .9)),
-        url("https://media.fpm-studio.de/assets/background-image/rocket_league.webp");
-}
-
-#tournaments a {
-    color: rgb(74, 74, 228);
-}
-
 #donation {
     background-color: cornsilk;
+    text-align: right;
+
     padding: var(--padding);
 }
 
