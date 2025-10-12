@@ -8,7 +8,9 @@
         margin-top: 11.2vw;
     }
 
-    button, input, select {
+    button,
+    input,
+    select {
         padding: 2vw;
     }
 
@@ -80,8 +82,16 @@
         font-size: 5vw;
     }
 
-    p, b, a, i, li,
-    select, button, input, textarea, span {
+    p,
+    b,
+    a,
+    i,
+    li,
+    select,
+    button,
+    input,
+    textarea,
+    span {
         font-size: 4vw !important;
     }
 

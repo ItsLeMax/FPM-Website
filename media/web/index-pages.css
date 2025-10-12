@@ -58,7 +58,8 @@ body>a::after {
     border-right: .2rem solid var(--blue);
 }
 
-body>a::before, body>a::after {
+body>a::before,
+body>a::after {
     content: "";
 
     width: 1rem;
@@ -79,7 +80,8 @@ body>a:hover {
     transition-delay: .1s;
 }
 
-body>a:hover::before, body>a:hover::after {
+body>a:hover::before,
+body>a:hover::after {
     width: 100%;
     height: 100%;
 }
