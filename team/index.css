@@ -1,112 +1,150 @@
-body {
-    background-size: cover;
-    background-attachment: fixed;
-    background-image: url("https://media.fpm-studio.de/assets/background-image/oasis.webp");
-}
-
-hr {
-    margin: 3rem 0;
-}
-
-h2, h3 {
-    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-    text-align: center;
-}
-
 h4 {
-    font-style: italic;
-    text-align: center;
+    letter-spacing: .1rem;
 }
 
-p, a {
+h5 {
+    color: #a0cfff;
+}
+
+h4,
+h5,
+h6 {
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+a {
+    color: #70b7ff;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #a8d6ff;
+}
+
+p,
+a,
+li {
     text-align: justify;
 }
 
-#start span {
-    display: none;
+img {
+    max-width: 100%;
 }
 
-#start p, #apply p {
-    text-align: center;
-}
+hr {
+    height: 1px;
+    margin: 2rem 0;
 
-#direct {
-    border-color: rgb(29, 132, 150);
-}
-
-#appliable {
-    border-color: rgb(189, 33, 98);
-}
-
-#process {
-    border-color: rgb(111, 95, 255);
-}
-
-#production {
-    border-color: rgb(114, 184, 250);
-}
-
-#important {
-    border-color: salmon;
-}
-
-#apply {
-    border-color: rgb(110, 110, 255);
+    border: none;
+    background: linear-gradient(to right, transparent, rgba(255, 255, 255, .2), transparent);
 }
 
 .box {
-    border: 1rem ridge;
-
     padding: 3rem;
-    background-color: rgba(15, 15, 15, .9);
+    margin: 0 auto;
+    max-width: 55rem;
+
+    border-radius: 1.5rem;
+    box-shadow: 0 0 2rem rgba(0, 0, 0, .4);
+    transition: transform .3s ease, box-shadow .3s ease;
 }
 
-.box:has(img) {
-    display: flex;
-    align-items: center;
-    gap: 5rem;
+.box img {
+    border-radius: 1rem;
+    box-shadow: 0 .2rem 2rem rgba(0, 0, 0, .3);
+    transition: transform .3s ease, box-shadow .3s ease;
 }
 
-.box img, .box div:has(img) {
-    width: 40rem;
+.box img:hover {
+    transform: scale(1.02);
+    box-shadow: 0 1rem 3rem rgba(0, 0, 0, .6);
 }
 
-@media (max-width: 1800px) {
-    img {
-        order: 1;
+#direct {
+    border-left: .4rem solid #1d8496;
+}
+
+#appliable {
+    border-left: .4rem solid #bd2162;
+}
+
+#process {
+    border-left: .4rem solid #6f5fff;
+}
+
+#production {
+    border-left: .4rem solid #72b8fa;
+}
+
+#important {
+    border-left: .4rem solid salmon;
+}
+
+#apply {
+    border-left: .4rem solid #6e6eff;
+}
+
+#start h4,
+#start p {
+    text-align: center;
+}
+
+#apply h4,
+#apply p {
+    text-align: center;
+}
+
+@media (max-width: 800px) {
+
+    p,
+    b,
+    a,
+    i,
+    li,
+    select,
+    button,
+    input,
+    textarea,
+    span {
+        font-size: 2vw !important;
     }
 
-    div:has(img) {
-        flex-direction: column;
+    h4 {
+        text-align: center;
     }
-}
 
-@media (max-width: 865px) {
-    #start span {
-        display: inline-block;
-        font-size: 10vw !important;
+    h4,
+    h5,
+    h6 {
+        margin-bottom: 1vw;
+        overflow-wrap: anywhere;
     }
 
     hr {
-        margin: 6vw 0;
+        margin: 5vw 0;
+    }
+
+    img {
+        width: 75vw;
     }
 
     .box {
-        border: 2vw ridge;
-        padding: 6vw;
+        padding: 5vw;
+        border-radius: 5vw;
     }
 
-    .box:has(img) {
-        gap: 10vw;
+    .box img {
+        border-radius: 5vw;
     }
 
-    .box img, .box div:has(img) {
-        width: 100%;
+    #direct,
+    #appliable,
+    #process,
+    #production,
+    #important,
+    #apply {
+        border-left-width: .8vw;
     }
-}
 
-@media (max-aspect-ratio: 1/2) {
-    body {
-        background-position-x: -80rem;
-    }
 }
