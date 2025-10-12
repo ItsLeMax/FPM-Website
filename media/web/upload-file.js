@@ -1,7 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-    const UPLOAD_ABORTED = "Upload abgebrochen.";
-
     const formContainer = document.querySelector("form");
     const formUpload = document.querySelector("form button");
     const formAbort = document.getElementById("abort");
@@ -16,25 +14,30 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let xhr;
 
-    formContainer.addEventListener("submit", (e) => {
+    formContainer.addEventListener("submit", (event) => {
 
-        e.preventDefault();
+        event.preventDefault();
 
-        const file = formContainer.datei.files[0];
+        // Prepare files for upload
 
-        if (!file)
+        const files = formContainer.querySelector("input").files;
+
+        if (!files || !files.length)
             return;
 
         xhr = new XMLHttpRequest();
         const formData = new FormData();
 
-        formData.append("datei", file);
+        for (const file of files)
+            formData.append("files", file);
 
         let startTime = Date.now();
 
         xhr.upload.addEventListener("progress", (event) => {
 
             if (event.lengthComputable) {
+
+                // Update page content on upload
 
                 const elapsedTime = (Date.now() - startTime) / 1000;
                 const uploadProgress = Math.round((event.loaded / event.total) * 100);
@@ -43,9 +46,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 infoContainer.style.display = "block";
                 progressBarContainer.style.display = "block";
 
-                infoStatus.textContent = "Datei wird hochgeladen...";
+                infoStatus.textContent = "Daten werden hochgeladen...";
                 infoProgress.textContent = `Fortschritt: ${uploadProgress}%`;
-                infoSpeed.textContent = `Geschwindigkeit: ${uploadSpeed} MB/s`;
+                infoSpeed.textContent = `Beanspruchte Bandbreite: ${uploadSpeed} MB/s`;
 
                 progressBarElement.style.width = uploadProgress + "%";
 
@@ -58,28 +61,34 @@ document.addEventListener("DOMContentLoaded", () => {
 
         xhr.onreadystatechange = () => {
 
-            if (xhr.readyState === XMLHttpRequest.DONE)
-                infoStatus.textContent = xhr.status === 200 ? `${xhr.responseText}` : `Fehler beim Upload: ${xhr.statusText}`;
-            else
-                infoStatus.textContent = null;
+            if (xhr.readyState != XMLHttpRequest.DONE)
+                return;
 
-            finishUpload();
+            // Finalize upload
+
+            infoStatus.textContent = xhr.status == 200
+                ? "Upload erfolgreich: " + JSON.parse(xhr.responseText).join(", ")
+                : "Fehler beim Upload: " + xhr.status + " " + xhr.statusText;
+
+            resetUi();
 
         };
 
-        xhr.open("POST", "/upload");
+        xhr.open("POST", "/private/upload");
         xhr.send(formData);
 
     });
 
     formAbort.addEventListener("click", () => {
 
+        // Manual cancellation handling
+
         if (xhr) {
 
             xhr.abort();
-            finishUpload();
+            resetUi();
 
-            infoStatus.textContent = UPLOAD_ABORTED;
+            infoStatus.textContent = "Upload abgebrochen";
 
         }
 
@@ -91,7 +100,7 @@ document.addEventListener("DOMContentLoaded", () => {
      * @author ItsLeMax
      * @since 10.09.2025
      */
-    function finishUpload() {
+    function resetUi() {
 
         progressBarElement.style.width = null;
 
