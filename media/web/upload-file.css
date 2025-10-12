@@ -51,3 +51,14 @@ span {
 #progress-bar {
     display: none;
 }
+
+@media (max-width: 1180px) {
+    form {
+        flex-direction: column;
+        gap: 4vw;
+    }
+
+    button {
+        padding: 2vw;
+    }
+}
