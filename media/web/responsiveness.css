@@ -4,10 +4,6 @@
         gap: 4vw;
     }
 
-    body:has(#navigator) {
-        margin-top: 11.2vw;
-    }
-
     button,
     input,
     select {
@@ -16,21 +12,6 @@
 
     hr {
         border-width: .2vw 0;
-    }
-
-    #navigator>a {
-        padding: 3vw;
-    }
-
-    #navigator div {
-        padding: 3vw 3vw 3vw 7vw;
-    }
-
-    #navigator img {
-        margin: 1vw 0 0 1.5vw;
-
-        width: 4vw;
-        height: 4vw;
     }
 
     .switch {
@@ -92,10 +73,6 @@
     input,
     textarea,
     span {
-        font-size: 4vw !important;
-    }
-
-    #navigator a {
-        font-size: 5vw;
+        font-size: 2vw !important;
     }
 }
