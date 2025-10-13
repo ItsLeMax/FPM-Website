@@ -14,11 +14,14 @@ a {
 }
 
 p,
-a {
+a,
+li,
+span {
     font-size: 2rem;
 }
 
-li {
+li,
+span {
     color: rgb(220, 220, 220);
 }
 
@@ -88,7 +91,7 @@ li {
 /* Leaders of production */
 
 #team {
-    height: 80vh;
+    height: 85vh;
     min-height: 55rem;
 
     display: flex;
@@ -290,6 +293,13 @@ li {
         margin: unset !important;
     }
 
+    p,
+    a,
+    li,
+    span {
+        font-size: 4vw !important;
+    }
+
     #team {
         min-height: unset;
         gap: 4vw;
@@ -301,6 +311,10 @@ li {
 
     #links {
         gap: 5vw;
+    }
+
+    #links div {
+        gap: 2vw;
     }
 
     #links img {
