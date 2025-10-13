@@ -1,16 +1,22 @@
-h3 {
-    letter-spacing: .1rem;
+:root {
+    --saturatedblue: #1d8496;
+    --saturatedred: #bd2162;
+    --saturatedpurple: #6f5fff;
 }
 
-h5 {
-    color: #a0cfff;
+::marker {
+    color: var(--saturatedpurple);
+}
+
+h3 {
+    letter-spacing: .1rem;
 }
 
 h3,
 h5,
 h6 {
     font-weight: 600;
-    margin-bottom: 1rem;
+    margin: 1rem 0;
 }
 
 a {
@@ -62,15 +68,23 @@ hr {
 }
 
 #direct {
-    border-left: .4rem solid #1d8496;
+    border-left: .4rem solid var(--saturatedblue);
+}
+
+#direct h5 {
+    color: var(--saturatedblue);
 }
 
 #appliable {
-    border-left: .4rem solid #bd2162;
+    border-left: .4rem solid var(--saturatedred);
+}
+
+#appliable h5 {
+    color: var(--saturatedred);
 }
 
 #process {
-    border-left: .4rem solid #6f5fff;
+    border-left: .4rem solid var(--saturatedpurple);
 }
 
 #production {
@@ -79,6 +93,10 @@ hr {
 
 #important {
     border-left: .4rem solid salmon;
+}
+
+#important img {
+    margin-top: 1rem;
 }
 
 #apply {
@@ -115,7 +133,7 @@ hr {
     h3,
     h5,
     h6 {
-        margin-bottom: 1vw;
+        margin: 2vw 0;
         overflow-wrap: anywhere;
     }
 
@@ -143,6 +161,10 @@ hr {
     #important,
     #apply {
         border-left-width: .8vw;
+    }
+
+    #important img {
+        margin-top: 2vw;
     }
 
 }
