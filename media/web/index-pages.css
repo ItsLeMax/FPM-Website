@@ -12,10 +12,6 @@ html {
 }
 
 body {
-    display: grid;
-    grid-template-columns: auto auto;
-    gap: 5rem;
-
     margin: unset !important;
     background-color: rgb(5, 5, 5);
 }
@@ -86,22 +82,28 @@ body>a:hover::after {
     height: 100%;
 }
 
-@media (max-width: 1150px) {
+@media (max-width: 600px) {
     body {
-        margin: 0 2rem !important;
-
-        display: flex;
-        flex-direction: column;
+        padding: 4vw !important;
+        gap: 4vw;
     }
 
     body>a {
-        width: 33rem;
-        font-size: 4rem !important;
+        width: 60vw;
+
+        font-size: 10vw;
+        line-height: 42vw;
+    }
+
+    body>a::before,
+    body>a::after {
+        width: 2vw;
+        height: 2vw;
     }
 }
 
-@media (max-height: 270px) {
+@media (max-height: 420px) {
     html {
-        height: unset;
+        align-items: flex-start;
     }
 }
