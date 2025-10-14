@@ -184,7 +184,6 @@ span {
 }
 
 #navigator a {
-    width: 100%;
     display: block;
 
     color: white;
@@ -193,7 +192,7 @@ span {
 }
 
 #navigator div {
-    width: 100%;
+    width: 16rem;
 }
 
 #navigator div a {
@@ -227,7 +226,7 @@ span {
 }
 
 #navigator img {
-    margin: 2rem 0 0 .75rem;
+    margin: 1.2rem 0 0 .75rem;
 
     position: absolute;
     left: 0;
@@ -302,6 +301,21 @@ input:checked+.slider:before {
     #navigator a {
         font-size: 2rem !important;
     }
+
+    #navigator div {
+        width: 24rem;
+    }
+
+    #navigator div a {
+        padding-left: 4.5rem;
+    }
+
+    #navigator img {
+        width: 2.5rem;
+        height: 2.5rem;
+
+        margin: 1.75rem 0 0 1.05rem;
+    }
 }
 
 @media (max-height: 800px) and (min-width: 1080px) {
@@ -320,6 +334,30 @@ input:checked+.slider:before {
     }
 
     #navigator div:nth-child(odd) img {
-        right: 19.3rem;
+        right: 13.2rem;
+    }
+}
+
+@media (max-width: 380px) {
+    #navigator img {
+        width: 5vw;
+        height: 5vw;
+        margin: 3.5vw 0 0 2.1vw;
+    }
+
+    #navigator div {
+        width: 55vw;
+    }
+
+    #navigator div a {
+        padding: 3vw 3vw 3vw 9vw;
+    }
+
+    #navigator>a {
+        padding: 3vw;
+    }
+
+    #navigator a {
+        font-size: 4vw !important;
     }
 }
