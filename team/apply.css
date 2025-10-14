@@ -1,5 +1,5 @@
 :root {
-    --slider-size: 0.35;
+    --slider-size: .35;
 }
 
 html {
@@ -31,8 +31,13 @@ button:disabled {
 }
 
 button:active:not(:disabled) {
-    background-color: var(--danger);
+    background-color: rgb(30, 30, 30);
+
+    transform: scale(0.98);
+    transition: transform 0.1s ease;
 }
+
+/* Container with interactive elements */
 
 #jobs {
     display: flex;
@@ -41,7 +46,6 @@ button:active:not(:disabled) {
 }
 
 @media (max-width: 960px) {
-
     body {
         padding: 3.33vw;
     }
