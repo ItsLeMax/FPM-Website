@@ -1,0 +1,13 @@
+html {
+    display: flex;
+    justify-content: center;
+
+    background-color: var(--gray10);
+}
+
+body {
+    width: 75%;
+
+    margin: 0;
+    padding: 2rem;
+}
