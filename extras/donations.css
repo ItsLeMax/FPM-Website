@@ -1,0 +1,22 @@
+div {
+    width: 30rem;
+}
+
+div * {
+    text-align: center;
+}
+
+@media (max-width: 600px) {
+    div {
+        width: 66vw;
+    }
+
+    div * {
+        font-size: 3vw;
+    }
+
+    .link-box {
+        width: 66vw;
+        line-height: 25vw;
+    }
+}
