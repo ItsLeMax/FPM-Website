@@ -49,6 +49,8 @@ button:disabled {
     transition: .05s;
 }
 
+/* Picture area */
+
 #selector {
     max-width: min-content;
 }
@@ -62,12 +64,15 @@ button:disabled {
     background-color: var(--gray10);
 }
 
+/* Loading gif (invisible at first) */
+
 #loading {
     display: none;
     position: absolute;
     z-index: 1;
 }
 
+/* Image specifically */
 #image {
     max-width: calc(16rem * 3);
     min-height: calc(9rem * 3);
@@ -77,6 +82,8 @@ button:disabled {
 #image:not([src]) {
     width: 48rem;
 }
+
+/* Number that shows the selected image number and total amount */
 
 #index {
     background-color: rgba(20, 20, 20, .5);
@@ -88,9 +95,11 @@ button:disabled {
     position: absolute;
 }
 
+/* Description of the image */
+
 #caption {
     height: 8rem;
-    padding-left: 0.5rem;
+    padding-left: .5rem;
 
     display: none;
     overflow-y: scroll;

@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     create.addEventListener("click", () => {
 
-        let mailTo = (
+        let mail = (
             "mailto:" + "itslemax.media@gmail.com" +
             "?subject=" + ("FPM-Bewerbung" + "%20" + "als" + "%20" + "%SELECTION%") +
             "&body=" + "-----------" +
@@ -17,6 +17,8 @@ document.addEventListener("DOMContentLoaded", () => {
             "---------------------" +
             "%0D%0A" + ("Discord" + "%20" + "%40-Handle") + "%3A%0D%0A@"
         );
+
+        // Gather selected jobs from checkboxes
 
         const jobs = new Array;
 
@@ -30,11 +32,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
         }
 
-        mailTo = mailTo.replace("%SELECTION%", jobs.join("%20%26%20"));
+        // Make jobs readable and add them to the mail
 
-        window.open(mailTo);
+        mail = mail.replace("%SELECTION%", jobs.join("%20%26%20"));
+
+        window.open(mail);
 
     })
+
+    // Toggle create button depending if any checkbox is selected
 
     document.getElementById("jobs").addEventListener("click", () => {
 

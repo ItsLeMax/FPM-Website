@@ -11,7 +11,9 @@ document.addEventListener("DOMContentLoaded", () => {
         let age = today.getFullYear() - bdate.getFullYear();
         const month = today.getMonth() - bdate.getMonth();
 
-        if (month < 0 || (month == 0 && today.getDate() < bdate.getDate())) age--;
+        if (month < 0 || (month == 0 && today.getDate() < bdate.getDate()))
+            age--;
+
         birthdayElement.textContent = age;
 
     }

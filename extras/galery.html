@@ -19,6 +19,7 @@
 </head>
 
 <body>
+    <!-- Selection and image display -->
     <div id="selector">
         <h3>Filmgalerie</h3>
 
@@ -26,18 +27,22 @@
             <option selected disabled>Wähle hier den Film aus.</option>
             <option>Dora und die albanische Staatsgrenze</option>
             <option>Weihnachtsmann und KoksKG</option>
-            <option disabled>Böses im Busch</option>
+            <option disabled>Marionette des Schicksals</option>
         </select>
 
+        <!-- Image count -->
         <b id="index">1/0</b>
 
         <div>
+            <!-- Loading gif only shows if needed -->
             <img id="loading" src="https://media.fpm-studio.de/assets/graphics/loading.gif">
             <img id="image" borderless>
         </div>
 
         <p id="caption"></p>
     </div>
+
+    <!-- Interaction elements -->
     <div id="buttons">
         <button id="previous" disabled>&#60;</button>
         <button id="next" disabled>></button>
