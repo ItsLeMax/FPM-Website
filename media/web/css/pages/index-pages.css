@@ -101,9 +101,3 @@ body {
         height: 2vw;
     }
 }
-
-@media (max-height: 420px) {
-    html {
-        align-items: flex-start;
-    }
-}

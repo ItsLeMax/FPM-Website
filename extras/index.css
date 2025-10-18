@@ -1,0 +1,5 @@
+@media (max-height: 230px) {
+    html {
+        align-items: flex-start;
+    }
+}
