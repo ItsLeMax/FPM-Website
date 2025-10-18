@@ -16,6 +16,7 @@ Website of Filmproduktion Maximus
 | GitHub B&W      | Graphic    | Google Image      | GitHub         | [🔗](https://www.google.com/search?sca_esv=2a63e8a7ece273e3&rlz=1C1CHBF_deDE880DE880&sxsrf=ADLYWILLddCY1dz4VOuNvt1E9jDUUgnMxQ:1732300323624&q=github&udm=2&fbs=AEQNm0A6bwEop21ehxKWq5cj-cHa02QUie7apaStVTrDAEoT1CkRGSL-1wA3X2bR5dRYtRGv3dh0WX48pQ0OijG3Ir_Ily36WNjIM66TUeQQm6v5pCxPr2gtqfjkC7ffv6Tr7pov6Kj4r20q4qdHCSHuZ8l9l_oCqEwoxOcaGtTQ9oNU0Tr95ug&sa=X&ved=2ahUKEwiX_LvLyfCJAxUs0AIHHe2gHBAQtKgLegQIHRAB&biw=1463&bih=731&dpr=1.75)
 | Loading Gif     | Graphic    | Tenor             | teej_14        | [🔗](https://tenor.com/de/view/loading-gif-hr-gif-23067502)
 | FL Studio Ref   | Graphic    | Yoo               | Luis Bae.      | [🔗](https://yoo.rs/fl-studio-project-en-1621142165.html)
+| Rotate Phone    | Graphic    | Vecteezy          | Feri Saputra   | [🔗](https://www.vecteezy.com/vector-art/5380184-phone-rotation-icon-symbol-tilting-screen-flat-design-on-white-background)
 | Home            | Navi       | Flaticon          | Freepik        | [🔗](https://www.flaticon.com/free-icon/home_1946488?term=home&page=1&position=3&origin=search&related_id=1946488)
 | Group           | Navi       | Flaticon          | Prosymbols     | [🔗](https://www.flaticon.com/free-icon/group_615075?term=team&page=1&position=42&origin=search&related_id=615075)
 | Book            | Navi       | Flaticon          | mavadee        | [🔗](https://www.flaticon.com/free-icon/book_1164620?term=library&page=1&position=1&origin=search&related_id=1164620)
