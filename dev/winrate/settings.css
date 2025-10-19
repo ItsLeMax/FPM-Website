@@ -1,39 +1,45 @@
 emoji {
-    width: 8rem;
-    font-size: 6rem;
-}
-
-b {
-    width: 31rem;
-
-    font-size: 6rem;
-    font-weight: 200;
+    width: 6rem;
+    font-size: 4rem;
 }
 
 body {
     height: 100vh;
-    margin: 0 2rem;
+    margin: unset;
 
     align-items: center;
     justify-content: center;
 }
 
+b {
+    width: 21rem;
+
+    font-size: 4rem;
+    font-weight: 200;
+}
+
 input {
-    font-size: 6rem;
+    font-size: 4rem;
     text-align: center;
     color: var(--gray20);
 }
 
-#wl-wins, #wl-losses, #wl-average {
-    width: 75rem;
+/* Input boxes */
+
+#wl-wins,
+#wl-losses,
+#wl-average {
+    width: 50rem;
 
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-#wl-wins input, #wl-losses input {
-    width: 10rem;
+#wl-wins input,
+#wl-losses input {
+    height: 7rem;
+    width: 7rem;
 }
 
 #wl-average b {
@@ -41,14 +47,48 @@ input {
 }
 
 #wl-average span {
-    width: 57.5rem;
+    width: 40rem;
     height: 3rem;
 
     background-color: gray;
     border-radius: 3rem;
 }
 
-@media (max-height: 520px) {
+@media (max-width: 860px) {
+    emoji {
+        width: 12vw;
+    }
+
+    b {
+        width: 42vw;
+    }
+
+    emoji,
+    b,
+    input {
+        font-size: 8vw !important;
+    }
+
+    #wl-wins,
+    #wl-losses,
+    #wl-average {
+        width: 92vw;
+    }
+
+    #wl-wins input,
+    #wl-losses input {
+        height: 14vw;
+        width: 14vw;
+    }
+
+    #wl-average span {
+        width: 75vw;
+        height: 6vw;
+        border-radius: 6vw;
+    }
+}
+
+@media (max-height: 380px) {
     body {
         justify-content: unset;
     }

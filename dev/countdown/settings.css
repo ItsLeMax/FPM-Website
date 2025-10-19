@@ -8,15 +8,11 @@ body {
 
 body>div {
     display: flex;
-    gap: 3rem;
+    gap: 6rem;
 }
 
 body>p {
     max-width: 57rem;
-}
-
-h3 {
-    white-space: nowrap;
 }
 
 p {
@@ -32,17 +28,24 @@ button:active:not(button:disabled) {
 }
 
 select {
-    width: 48.5rem;
+    width: 54.5rem;
 }
 
-#minutes, #picker {
+/* Minutes and color picker with the same properties */
+
+#minutes,
+#picker {
     width: 15rem;
 }
+
+/* Checkbox size for each */
 
 input[type="checkbox"] {
     width: 4rem;
     height: 4rem;
 }
+
+/* Buttons to interact with the overlay */
 
 #toggle {
     background-color: var(--darker-yellow);
