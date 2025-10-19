@@ -17,6 +17,25 @@ div * {
 
     .link-box {
         width: 66vw;
-        line-height: 25vw;
+
+        font-size: 5vw;
+        line-height: 15vw;
+    }
+}
+
+@media (max-height: 550px) {
+    body {
+        height: 100vh;
+        justify-content: unset;
+    }
+
+    .link-box {
+        overflow: unset;
+    }
+
+    .link-box:hover::before,
+    .link-box:hover::after {
+        width: 97%;
+        height: 97%;
     }
 }
