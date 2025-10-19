@@ -1,62 +1,185 @@
+:root {
+    --accent-blue: #4466ff;
+    --radius: .8rem;
+    --transition: .2s ease;
+}
+
 body {
     height: 100vh;
-    margin: 0 2rem;
+    margin: 0;
 
     align-items: center;
     justify-content: center;
+
+    background: radial-gradient(ellipse at top, #151721, #0b0d13);
 }
 
-body>div {
-    display: flex;
-    gap: 6rem;
-}
-
-body>p {
-    max-width: 57rem;
+h3 {
+    font-size: 1.8rem;
 }
 
 p {
+    max-width: 50rem;
+
+    color: #bbb;
     text-align: center;
 }
 
-button {
-    width: 15rem;
-}
-
-button:active:not(button:disabled) {
-    filter: brightness(75%);
-}
-
+input[type="number"],
+input[type="text"],
+input[type="checkbox"],
 select {
-    width: 54.5rem;
+    padding: .6rem 1rem;
+
+    color: white !important;
+    background: #1a1c25;
+    font-size: 1rem;
+
+    border: .1rem solid rgba(255, 255, 255, .1);
+    border-radius: var(--radius);
+
+    transition: border-color var(--transition), background var(--transition);
 }
 
-/* Minutes and color picker with the same properties */
-
-#minutes,
-#picker {
-    width: 15rem;
+input[type="number"]:focus,
+input[type="text"]:focus,
+select:focus {
+    border-color: var(--accent-blue);
+    background: #222533;
 }
 
-/* Checkbox size for each */
+/* Checkbox optisch kleiner und klarer */
 
 input[type="checkbox"] {
-    width: 4rem;
-    height: 4rem;
+    width: 1.2rem;
+    height: 1.2rem;
+
+    accent-color: var(--accent-blue);
 }
 
-/* Buttons to interact with the overlay */
+/* Buttons */
+
+button {
+    padding: .8rem 2rem;
+
+    color: white;
+    background: var(--accent-blue);
+
+    font-size: 1.1rem;
+    font-weight: 600;
+
+    border: none;
+    border-radius: var(--radius);
+
+    transition: background var(--transition), transform var(--transition);
+}
+
+button:hover {
+    background: #5d7cff;
+    transform: translateY(-.2rem);
+}
+
+button:active {
+    transform: scale(.98);
+}
+
+/* Each box with settings */
+
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    width: 90%;
+    max-width: 48rem;
+    padding: 2rem 3rem;
+
+    background: rgba(25, 27, 35, .9);
+    box-shadow: 0 0 3rem rgba(0, 0, 0, .5);
+
+    border: .1rem solid rgba(255, 255, 255, .1);
+    border-radius: var(--radius);
+}
+
+/* Each setting inside said boxes */
+
+.container>div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.container>div p {
+    margin: 0;
+
+    color: whitesmoke;
+    font-weight: 500;
+}
+
+/* Farbakzente */
 
 #toggle {
-    background-color: var(--darker-yellow);
+    background: #e4c65a;
+    color: #222;
 }
 
-#update {
-    background-color: rgb(44, 44, 133);
+#toggle:hover {
+    background: #f0d96b;
 }
 
-@media (max-height: 640px) {
+@media (max-height: 840px) {
     body {
         justify-content: unset;
     }
+}
+
+@media (max-width: 800px) {
+    :root {
+        --radius: 1.6vw;
+    }
+
+    h3 {
+        font-size: 3.6vw;
+    }
+
+    input[type="checkbox"] {
+        width: 2.4vw;
+        height: 2.4vw;
+    }
+
+    input[type="number"],
+    input[type="text"],
+    input[type="checkbox"],
+    select {
+        padding: 1.2vw 2vw;
+        font-size: 2vw;
+        border: .2vw solid rgba(255, 255, 255, .1);
+    }
+
+    input:not([type]),
+    input[type="text"],
+    input[type="number"] {
+        width: 28vw;
+    }
+
+    button {
+        padding: 1.6vw 4vw;
+        font-size: 2.2vw;
+    }
+
+    button:hover {
+        transform: translateY(-.4vw);
+    }
+
+    .container {
+        gap: 4vw;
+        padding: 4vw 6vw;
+    }
+
+    p,
+    .container {
+        max-width: 70vw;
+    }
+
 }

@@ -22,12 +22,14 @@
         z.B. mit dem Klick auf <i>Interagieren</i>.
     </p>
 
-    <div>
+    <!-- Main Boxes -->
+    <div class="container">
         <div>
             <p>Minuten</p>
             <input id="minutes" type="number" minlength="5" placeholder="&lt;=60 || 10">
         </div>
 
+        <!-- Sub containers with text and settings -->
         <div>
             <p>Farbe (Hex)</p>
             <input id="picker" maxlength="6" placeholder="ffffff">
@@ -35,28 +37,28 @@
 
         <div>
             <p>Ausrichtung</p>
-            <input type="checkbox" id="left">
-            <input type="checkbox" id="center">
-            <input type="checkbox" id="right" checked>
+            <div>
+                <input type="checkbox" id="left">
+                <input type="checkbox" id="center">
+                <input type="checkbox" id="right" checked>
+            </div>
         </div>
     </div>
 
-    <div>
-        <div>
-            <p>Schriftfamilie (Auswahl mit Linksklick>Pfeiltasten)</p>
-            <select>
-                <option>Standard</option>
-                <option>Serif</option>
-                <option>Arial</option>
-                <option>Sans-Serif</option>
-                <option>Tahoma</option>
-                <option>Verdana</option>
-                <option>Lucida Sans Unicode</option>
-            </select>
-        </div>
+    <div class="container">
+        <p>Schriftfamilie (Auswahl mit Linksklick>Pfeiltasten)</p>
+        <select>
+            <option>Standard</option>
+            <option>Serif</option>
+            <option>Arial</option>
+            <option>Sans-Serif</option>
+            <option>Tahoma</option>
+            <option>Verdana</option>
+            <option>Lucida Sans Unicode</option>
+        </select>
     </div>
 
-    <div>
+    <div class="container">
         <button id="toggle">Start</button>
         <button id="update">Update</button>
     </div>
