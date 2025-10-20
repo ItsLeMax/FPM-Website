@@ -35,6 +35,8 @@ span {
     transition: width 0.3s;
 }
 
+/* Abort button, progress bar and info */
+
 #abort {
     background-color: #ff3c00;
 }

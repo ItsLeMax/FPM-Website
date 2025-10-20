@@ -8,13 +8,20 @@ function generateNavigator() {
 
     document.addEventListener("DOMContentLoaded", () => {
 
+        // Navi container
+
         const navigator = document.createElement("div");
         navigator.id = "navigator";
 
+        // Navi button
+
         const navigatorButton = document.createElement("a");
-        const navigatorButtonInitial = "☰"
+        const navigatorButtonInitial = "☰";
+
         navigatorButton.innerText = navigatorButtonInitial;
         navigatorButton.setAttribute("open", false);
+
+        // Merge
 
         navigator.append(navigatorButton);
 
@@ -23,11 +30,15 @@ function generateNavigator() {
 
         let selectedPage = 0;
 
+        // Loop with a new page each iteration
+
         while (selectedPage !== false) {
 
             const navigatorPage = document.createElement("div");
             const navigatorPageImage = document.createElement("img");
             const navigatorPageButton = document.createElement("a");
+
+            // Create pages until there are no more pages left to create (see default case)
 
             selectedPage++;
 
@@ -78,6 +89,8 @@ function generateNavigator() {
             if (!selectedPage)
                 break;
 
+            // Assemble page
+
             navigatorPage.append(navigatorPageImage);
             navigatorPage.append(navigatorPageButton);
 
@@ -88,17 +101,25 @@ function generateNavigator() {
 
         }
 
+        // Add to body if done
+
         document.body.prepend(navigator);
 
         const navigatorPagesReversed = navigatorPages.slice().reverse();
+
+        // Toggle navigator on or off
 
         navigatorButton.addEventListener("click", async () => {
 
             navigatorOpen = !navigatorOpen;
 
+            // Toggle navigator off
+
             if (!navigatorOpen) {
 
                 navigatorButton.innerText = navigatorButtonInitial;
+
+                // Close pages in reverse order by updating its boolean
 
                 for (const navigatorPage of navigatorPagesReversed)
                     await setNaviAttributes(navigatorPage);
@@ -107,7 +128,11 @@ function generateNavigator() {
 
             }
 
+            // Toggle navigator on
+
             navigatorButton.innerText = "✖";
+
+            // Open pages in normal order by updating its boolean
 
             for (const navigatorPage of navigatorPages)
                 await setNaviAttributes(navigatorPage);
@@ -118,6 +143,7 @@ function generateNavigator() {
          * @description Activates or deactivates the single navigator pages
          * @author ItsLeMax
          * @param { HTMLAnchorElement } navigatorPage Navigator page to update
+         * @summary Uses a small delay to create a smooth animation effect
          */
         async function setNaviAttributes(navigatorPage) {
             navigatorPage.setAttribute("open", navigatorOpen);
