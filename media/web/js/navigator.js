@@ -64,7 +64,7 @@ function generateNavigator() {
                     break;
 
                 case 6:
-                    navigatorPageImage.src = "https://media.fpm-studio.de/assets/icons/web-programming.webp";
+                    navigatorPageImage.src = "https://media.fpm-studio.de/assets/icons/web_programming.webp";
                     navigatorPageButton.innerText = "Code-Entwicklung";
                     navigatorPageButton.href = "https://dev.fpm-studio.de/";
                     break;
