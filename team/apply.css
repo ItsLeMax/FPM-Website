@@ -32,6 +32,10 @@ button:active:not(:disabled) {
 }
 
 @media (max-width: 960px) {
+    :root {
+        --slider-size: 1;
+    }
+
     body {
         padding: 3.33vw;
     }
@@ -41,6 +45,7 @@ button:active:not(:disabled) {
     }
 
     #jobs {
+        flex-direction: column;
         gap: 2vw;
     }
 }
