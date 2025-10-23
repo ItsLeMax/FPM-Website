@@ -25,19 +25,19 @@
     }
 
     h3 {
-        font-size: 6vw;
+        font-size: 8vw;
     }
 
     h4 {
-        font-size: 5vw;
+        font-size: 7vw;
     }
 
     h5 {
-        font-size: 4vw;
+        font-size: 6vw;
     }
 
     h6 {
-        font-size: 3vw;
+        font-size: 5vw;
     }
 
     p,
@@ -50,7 +50,7 @@
     input,
     textarea,
     span {
-        font-size: 2vw !important;
+        font-size: 4vw !important;
     }
 
     /* Fancy toggle buttons  */
