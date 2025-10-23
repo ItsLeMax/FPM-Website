@@ -293,13 +293,6 @@ span {
         margin: unset !important;
     }
 
-    p,
-    a,
-    li,
-    span {
-        font-size: 4vw !important;
-    }
-
     #team {
         min-height: unset;
         gap: 4vw;

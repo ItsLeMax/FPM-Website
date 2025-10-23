@@ -119,19 +119,6 @@ hr {
 
 @media (max-width: 800px) {
 
-    p,
-    b,
-    a,
-    i,
-    li,
-    select,
-    button,
-    input,
-    textarea,
-    span {
-        font-size: 2vw !important;
-    }
-
     h3 {
         text-align: center;
     }

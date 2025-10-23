@@ -396,7 +396,6 @@ input:checked+.slider:before {
     }
 }
 
-
 /* Special query for the navigator */
 
 @media (max-width: 380px) {
