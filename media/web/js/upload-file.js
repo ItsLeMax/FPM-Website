@@ -95,8 +95,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     /**
-     * Finishes the upload process by resetting the UI elements
-     *
+     * @description Finishes the upload process by resetting the UI elements
      * @author ItsLeMax
      * @since 10.09.2025
      */
