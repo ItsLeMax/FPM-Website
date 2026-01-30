@@ -1,102 +1,65 @@
+:root {
+    --box-size: 15rem;
+}
+
+* {
+    user-select: none;
+}
+
 body {
-    min-height: 100vh;
+    height: 100vh;
+    margin: 0 3rem;
 
+    flex-direction: unset;
+    justify-content: center;
     align-items: center;
-    background: radial-gradient(ellipse at top, #141622 0%, #0b0d13 100%);
 }
 
-a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 2rem;
+body>*:not(#navigator) {
+    height: var(--box-size);
+    width: var(--box-size);
+    line-height: var(--box-size);
+
+    background-color: var(--gray50);
+    text-align: center;
 }
 
-/* Every link */
-
-body>* {
-    display: flex;
+body>*:not(#navigator):hover {
+    transform: scale(1.1);
 }
-
-body>*:hover {
-    transform: translateY(-.3rem);
-    box-shadow: 0 0 2rem rgba(0, 0, 0, .3);
-    transition: transform .25s ease, box-shadow .25s ease;
-}
-
-body>a {
-    width: 28rem !important;
-}
-
-/* Main links */
-
-.box {
-    width: 24rem;
-    height: 6rem;
-
-    display: block;
-    padding-left: 1rem;
-
-    line-height: 6.2rem;
-    background: rgba(255, 255, 255, .02);
-}
-
-/* Link settings */
 
 .settings {
-    width: 4rem;
-
-    font-size: 3rem;
-    line-height: 6rem;
-    text-align: center;
-
-    background: rgba(255, 255, 255, .1);
-    opacity: .7;
+    font-weight: bold;
 }
 
-.settings:hover {
-    opacity: 1;
-    background: rgba(255, 255, 255, .2);
-}
+.box,
+.settings {
+    font-size: 2rem;
 
-/* Color for every link */
+    color: white;
+    text-decoration: none;
+}
 
 #github {
-    border-top: .2rem solid #ff9f43;
+    background-image: url("https://media.fpm-studio.de/assets/icons/github_black.webp");
 }
 
 #countdown {
-    border-top: .2rem solid #4ce1a6;
-}
-
-#winrate {
-    border-top: .2rem solid #b25fff;
+    background-image: url("https://media.fpm-studio.de/assets/graphics/wall_clock.webp");
 }
 
 #password {
-    border-top: .2rem solid #ff6b81;
+    background-image: url("https://media.fpm-studio.de/assets/graphics/loading.gif");
 }
 
-@media (max-width: 800px) {
-    a {
-        font-size: 4vw !important;
-    }
+#winrate {
+    background-image: url("https://media.fpm-studio.de/assets/graphics/detailed_trophy.webp");
+}
 
-    body>a {
-        width: 56vw !important;
-    }
-
-    .box {
-        width: 48vw;
-        height: 12vw;
-
-        padding-left: 2vw;
-        line-height: 12.3vw;
-    }
-
-    .settings {
-        width: 8vw;
-
-        font-size: 6vw !important;
-        line-height: 12vw;
-    }
+#github,
+#countdown,
+#password,
+#winrate {
+    background-size: 30rem;
+    background-blend-mode: multiply;
 }
