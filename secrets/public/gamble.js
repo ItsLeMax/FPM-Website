@@ -1,15 +1,20 @@
 const hash = window.location.hash.split("-");
 
-const TEST = {
-    ENABLED: hash[0] == "#test",
-    ROLL_SPEED_MULTIPLIER: hash[1] == "slow" ? .5 : hash[1] == "fast" ? 10000 : 2
-};
+// Preload audio
 
 const cashRegisterAudio = new Audio("../hidden-media/audio/cash_register.mp3");
 const csgoGambleAudio = new Audio("../hidden-media/audio/csgo_gamble.mp3");
 const jackpotAudio = new Audio("../hidden-media/audio/jackpot.mp3");
 
+// Some dev shit
+
+const DEV_ENV = {
+    ENABLED: hash[0] == "#test",
+    ROLL_SPEED_MULTIPLIER: hash[1] == "slow" ? .5 : hash[1] == "fast" ? 10000 : 2
+};
+
 document.addEventListener("DOMContentLoaded", () => {
+
     const maximumItems = 50;
     document.getElementById("itemTotal").innerText = maximumItems;
 
@@ -18,26 +23,19 @@ document.addEventListener("DOMContentLoaded", () => {
         additionalTime: 1000
     };
 
-    if (TEST.ENABLED) {
+    if (DEV_ENV.ENABLED) {
+
         /**
-         * @description
-         * Sucht den passenden Ausdruck, je nach dem, ob `TEST.ROLL_SPEED_MULTIPLIER` positiv oder negativ ist
-         *
-         * looks for the fitting expression, depending on whether `TEST.ROLL_SPEED_MULTIPLIER` is positive or negative
-         *
+         * @description Looks for the fitting mathematical expression, depending on whether `TEST.ROLL_SPEED_MULTIPLIER` is positive or negative
          * @author ItsLeMax
-         *
-         * @param { Number } time
-         * Zeit aus dem `defaultTiming`-Objekt
-         *
-         * time from the `defaultTiming` object
-         *
-         * @returns { Number }
-         * Nummer mit Rechnung
-         *
-         * number with calculation
+         * @param { Number } time time from the `defaultTiming` object
+         * @returns { Number } Number with calculation
          */
-        const express = (time) => eval(time + " " + (TEST.ROLL_SPEED_MULTIPLIER < 0 ? "*" : "/") + Math.abs(TEST.ROLL_SPEED_MULTIPLIER));
+        const express = (time) => eval(
+            time + " "
+            + (DEV_ENV.ROLL_SPEED_MULTIPLIER < 0 ? "*" : "/")
+            + Math.abs(DEV_ENV.ROLL_SPEED_MULTIPLIER)
+        );
 
         defaultTiming = {
             revealTime: express(defaultTiming.revealTime),
@@ -45,6 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         udpateCash(10000, true);
+
     }
 
     let cache = new Object;
@@ -54,10 +53,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const gamePlayButton = document.querySelector("#game button");
 
+    // Navigator logic
+
     for (const navigator of document.querySelectorAll("#gamble-navigator button")) {
+
         navigator.addEventListener("click", () => {
+
             for (const page of document.querySelectorAll("body>div")) {
-                if (page.id || !navigator.className) continue;
+
+                if (page.id || !navigator.className)
+                    continue;
+
                 if (navigator.className == page.className) {
                     page.style.display = "flex";
                     continue;
@@ -65,31 +71,48 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 page.style.display = "none";
             }
+
         })
+
     }
+
+    // Click registration of cash buttons
 
     for (const button of cashSelection) {
+
         button.addEventListener("click", async () => {
+
             await udpateCash(parseFloat(cash.innerText) + parseFloat(button.innerText));
             cashRegisterAudio.play();
+
             buttonAvailability(cash, cashSelection, gamePlayButton);
-        })
+
+        });
+
     }
 
+    // "Gambling" process
+
     gamePlayButton.addEventListener("click", async () => {
+
         const selectedChest = document.getElementById("chests");
         const selectedChestPrice = parseInt(selectedChest.value);
 
-        await udpateCash(parseFloat(cash.innerText) - selectedChestPrice, TEST.ENABLED);
+        // Update UI elements
+
+        await udpateCash(parseFloat(cash.innerText) - selectedChestPrice, DEV_ENV.ENABLED);
         buttonAvailability(cash, cashSelection, gamePlayButton);
         toggleNavigator(true);
 
-        if ((Math.abs(TEST.ROLL_SPEED_MULTIPLIER) >= .5 && TEST.ROLL_SPEED_MULTIPLIER <= 4)) {
-            if (TEST.ENABLED) {
-                csgoGambleAudio.playbackRate = Math.abs(TEST.ROLL_SPEED_MULTIPLIER);
-            }
+        // Audio changes when testing
+
+        if ((Math.abs(DEV_ENV.ROLL_SPEED_MULTIPLIER) >= .5 && DEV_ENV.ROLL_SPEED_MULTIPLIER <= 4)) {
+
+            if (DEV_ENV.ENABLED)
+                csgoGambleAudio.playbackRate = Math.abs(DEV_ENV.ROLL_SPEED_MULTIPLIER);
 
             csgoGambleAudio.play();
+
         }
 
         gamePlayButton.style.setProperty("display", "none");
@@ -97,14 +120,21 @@ document.addEventListener("DOMContentLoaded", () => {
         const spinner = document.createElement("div");
         spinner.className = "spinner";
 
-        const drops = new Array;
-        for (const rarity of Object.values(inventory)) {
-            drops.push(...rarity.drops);
-        }
+        // Initialize prizes
 
-        for (let item = 0; item < 59; item++) {
+        const prizes = new Array;
+
+        for (const rarity of Object.values(inventory))
+            prizes.push(...rarity.drops);
+
+        // Add prizes to the gambling pool
+
+        for (let prize = 0; prize < 59; prize++) {
+
             const image = document.createElement("img");
             image.className = "image";
+
+            // In case the image does not load
 
             image.addEventListener("error", () => {
                 image.src = "../hidden-media/img/gambling/misc/placeholder.png";
@@ -114,32 +144,53 @@ document.addEventListener("DOMContentLoaded", () => {
                 );
             });
 
-            if (item != 57) image.src = `../hidden-media/img/gambling/loot/${toFileName(drops[Math.floor(Math.random() * drops.length)].title)}.webp`;
-            else {
+            // Every prize is random except the one that you win (pre-determined)
+
+            if (prize != 57) {
+                image.src = `../hidden-media/img/gambling/loot/${toFileName(prizes[Math.floor(Math.random() * prizes.length)].title)}.webp`;
+            } else {
+
+                // The prize will be set here; Probability/Rarity check first
+
                 const probability = Math.floor(Math.random() * 100);
 
                 for (const rarity of Object.keys(inventory).reverse()) {
-                    if (TEST.ENABLED) {
+
+                    // Debug on test
+
+                    if (DEV_ENV.ENABLED)
                         logger(probability, rarity, selectedChest.options[selectedChest.selectedIndex].text, selectedChestPrice);
-                    }
 
-                    if (probability > inventory[rarity].chance[selectedChestPrice]) continue;
+                    // Allow only the closest/best rarity
 
-                    const rarityDrops = inventory[rarity].drops;
-                    const random = rarityDrops[Math.floor(Math.random() * rarityDrops.length)];
-                    image.src = `../hidden-media/img/gambling/loot/${toFileName(random.title)}.webp`;
+                    if (probability > inventory[rarity].chance[selectedChestPrice])
+                        continue;
+
+                    // Determine prize
+
+                    const pricesOfRarity = inventory[rarity].drops;
+                    const prize = pricesOfRarity[Math.floor(Math.random() * pricesOfRarity.length)];
+                    image.src = `../hidden-media/img/gambling/loot/${toFileName(prize.title)}.webp`;
+
+                    // Store temporarily for later
 
                     cache = {
-                        random: random,
+                        prize: prize,
                         rarity: rarity,
                         float: float[Math.floor(Math.random() * float.length)]
                     };
+
                     break;
+
                 }
+
             }
 
             spinner.appendChild(image);
+
         }
+
+        // trigger spinner animation
 
         document.getElementById("game").appendChild(spinner);
         spinner.animate([{
@@ -153,10 +204,15 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
         setTimeout(async () => {
-            if (TEST.ROLL_SPEED_MULTIPLIER < 1) {
+
+            // Don't play slowed audio on tests
+
+            if (DEV_ENV.ROLL_SPEED_MULTIPLIER < 1) {
                 csgoGambleAudio.pause();
                 csgoGambleAudio.currentTime = 0;
             }
+
+            // Create default prize popup
 
             gamePlayButton.style.display = null;
             document.querySelector(".spinner")?.remove();
@@ -180,6 +236,8 @@ document.addEventListener("DOMContentLoaded", () => {
             description.innerText = cache.random.description;
             info.appendChild(description);
 
+            // Special descriptions for certain items
+
             if (cache.rarity != "niete" && !cache.random.title.endsWith("€")) {
                 const rarity = document.createElement("p");
                 rarity.innerText = `Rarität: ${cache.rarity.toUpperCase()}`;
@@ -194,106 +252,115 @@ document.addEventListener("DOMContentLoaded", () => {
                 info.appendChild(sellValue);
             }
 
+            // Dialog logic
+
             dialog.appendChild(info);
             document.getElementsByClassName("gamble")[1].prepend(dialog);
             dialog.showModal();
+
+            // Close button
 
             dialog.querySelector("button").addEventListener("click", () => {
                 dialog.close();
             });
 
-            if (TEST.ENABLED) {
+            if (DEV_ENV.ENABLED)
                 dialog.close();
-            }
+
+            // Update history page here
 
             dialog.addEventListener("close", () => {
+
+                // Increase total prize amount
+
                 const itemAmount = document.getElementById("itemAmount");
                 itemAmount.innerText = parseInt(itemAmount.innerText) + 1;
 
+                // If you have too many prizes, the first one will be sold
+
                 const history = document.querySelectorAll(".inventory div");
-                if (history[maximumItems - 1]) {
-                    sellItem(history[0].querySelector("button"), cash);
-                }
+
+                if (history[maximumItems - 1])
+                    sellPrize(history[0].querySelector("button"), cash);
+
+                // Add image and sell button to the history page
 
                 const image = dialog.querySelector("img");
                 image.className = "";
                 info.appendChild(image);
 
-                const deleteButton = document.createElement("button");
-                deleteButton.innerText = "♻";
-                deleteButton.addEventListener("click", () => {
-                    sellItem(deleteButton, cash);
+                const sellButton = document.createElement("button");
+                sellButton.innerText = "♻";
+                sellButton.addEventListener("click", () => {
+                    sellPrize(sellButton, cash);
                 })
-                info.prepend(deleteButton);
+                info.prepend(sellButton);
 
                 document.getElementsByClassName("inventory")[1].append(info);
 
-                dialog.remove();
+                // Unlock again
 
+                dialog.remove();
                 toggleNavigator();
+
             })
+
+            // Update cash on cash prizes
 
             if (cache.random.title.endsWith("€")) {
                 udpateCash(parseFloat(cash.innerText) + parseFloat(cache.random.title), true);
                 buttonAvailability(cash, cashSelection, gamePlayButton);
             }
 
-            if (cache.rarity == "legendär" && !TEST.ENABLED) {
+            // Special sound for legendary prizes
+
+            if (cache.rarity == "legendär" && !DEV_ENV.ENABLED)
                 jackpotAudio.play();
-            }
+
         }, defaultTiming.revealTime + defaultTiming.additionalTime);
+
     })
+
 })
 
 /**
- * @description
- * Verkauft einen Gegenstand aus dem Inventar
- *
- * sells an item from the inventory
- *
+ * @description Sells a prize from the inventory
  * @author ItsLeMax
- *
- * @param { HTMLButtonElement } deleteButton
- * Löschknopf des Items
- *
- * delete button of the item 
- *
- * @param { Element } cash
- * besagte Variable, mit der Geldbeträge aktualisiert werden
- *
- * said variable, with which monetary values will be updated
+ * @param { HTMLButtonElement } deleteButton Delete button of the prize 
+ * @param { Element } cash Cash variable, with which monetary values will be updated
  */
-function sellItem(deleteButton, cash) {
+function sellPrize(deleteButton, cash) {
+
     deleteButton.parentElement.remove();
     cashRegisterAudio.play();
 
-    const itemAmount = document.getElementById("itemAmount");
-    itemAmount.innerText = parseInt(itemAmount.innerText) - 1;
+    // Update total prize amount
+
+    const prizeAmount = document.getElementById("itemAmount");
+    prizeAmount.innerText = parseInt(prizeAmount.innerText) - 1;
 
     for (const historyElement of deleteButton.parentElement.querySelectorAll("*")) {
+
+        // Give money if the prize has monetary value
+
         if (historyElement.innerText.startsWith("Verkaufswert")) {
             udpateCash(parseFloat(cash.innerText) + parseFloat(historyElement.innerText.split(" ")[1].replace("€", "")), true);
             break;
         }
+
     }
 
-    if (!document.querySelectorAll(".inventory div").length) {
+    // Close inventory if empty
+
+    if (!document.querySelectorAll(".inventory div").length)
         document.querySelector(".inventory").disabled = true;
-    }
+
 }
 
 /**
- * @description
- * Aktiviert oder deaktiviert den Navigator
- *
- * activates or deactives the navigator
- *
+ * @description Activates or deactives the navigator
  * @author ItsLeMax
- *
- * @param { Boolean } toggle
- * Sollen die Buttons deaktiviert werden?
- *
- * should the buttons get deactivated?
+ * @param { Boolean } toggle Should the buttons get deactivated?
  */
 function toggleNavigator(toggle) {
     for (const navigator of document.querySelectorAll("#gamble-navigator button")) {
@@ -302,103 +369,54 @@ function toggleNavigator(toggle) {
 }
 
 /**
- * @description
- * Aktiviert oder deaktiviert das Aufladen von Guthaben, je nach Summe des Eigenen
- *
- * activates or deactivates the topping up of credits, depending on the sum of the own
- * 
+ * @description Activates or deactivates the topping up of credits, depending on the sum of the own
  * @author ItsLeMax
- *
- * @param { Element } cash
- * Geldelement, dessen Inhalt zur Validation benötigt wird
- *
- * cash element, whose content is needed for validation
- *
- * @param { NodeListOf<Element> } cashSelection
- * Geldauswahl, e.g. alle Geldaufladeknöpfe
- * 
- * cash selection, i.e. all cash up buttons
- *
- * @param { Element } gamePlayButton
- * Spieleknopf für den Fall, zu sehr im Negativ zu sein
- * 
- * game play button for the case of being too much in the negatives
+ * @param { Element } cash Cash element, whose content is needed for validation
+ * @param { NodeListOf<Element> } cashSelection Cash selection, i.e. all cash up buttons
+ * @param { Element } gamePlayButton Game play button for the case of being too much in the negatives
  */
 function buttonAvailability(cash, cashSelection, gamePlayButton) {
-    for (const balance of cashSelection) {
+
+    // Disallow balance increase if the money is over 100.000 bucks
+
+    for (const balance of cashSelection)
         balance.disabled = parseFloat(cash.innerText) >= 100000;
-    }
+
+    // Disallow gamble if you have debt
 
     const balanceTooLow = parseFloat(cash.innerText) <= -800;
 
     gamePlayButton.style.setProperty("font-size", balanceTooLow ? "0rem" : null, "important");
     document.querySelector("#gamble-navigator b").style.color = balanceTooLow ? "var(--danger)" : null;
+
 }
 
 /**
- * @description
- * Gibt einen `console.log()` aus mit Fokus auf das determinierte Objekt beim Glücksspiel
- *
- * puts out a `console.log()` with focus on the determined object from gambling
- *
+ * @description Creates a `console.log()` with focus on the determined object from gambling
  * @author ItsLeMax
- *
- * @param { Number } probability
- * Wahrscheinlichkeit, zufällig determiniert
- *
- * probability, randomly determined
- *
- * @param { String } rarity
- * Rarität von der Variable `inventory`, optimalerweise aus einem Loop
- *
- * rarity of the variable `inventory`, optimally from a loop
- *
- * @param { String } selectedChestName
- * Name der ausgewählten Kiste
- *
- * name of the selected chest
- * @param { Number } selectedChestPrice
- * Preis der ausgewählten Kiste
- *
- * price of the selected chest
- *
- * @summary
- * Vorgesehen zum Platzieren in einem Loop der Variable `inventory`
- *
- * supposed to be placed in a loop of the variable `inventory`
+ * @param { Number } probability Probability, randomly determined
+ * @param { String } rarity Rarity of the variable `inventory`, optimally from a loop
+ * @param { String } selectedChestName Name of the selected chest
+ * @param { Number } selectedChestPrice Price of the selected chest
+ * @summary Supposed to be placed in a loop of the variable `inventory`
  */
 function logger(probability, rarity, selectedChestName, selectedChestPrice) {
+
     console.log(
         `Vergleich: ${rarity.toUpperCase()}` + "\n" +
         `Rarität (${selectedChestName}): ${inventory[rarity].chance[selectedChestPrice]}%` + "\n" +
         `Zufallswert: ${probability}%` + "\n" +
         "Gut 0 >-----------< 100 Schlecht".replaceAt(7 + (Math.floor(probability / 10)), "*")
     );
+
 }
 
 /**
- * @description
- * Ersetzt ein Zeichen an einem spezifischen Index
- *
- * replaces a character at a specific index
- *
+ * @description Replaces a character at a specific index
  * @author StackOverflow
- *
- * @param { Number } index
- * Index des zu ersetzenden Zeichens
- *
- * index of the character to be replaced
- *
- * @param { String } replacement
- * Ersatz des Index-Zeichens
- *
- * replacement of the index character
- *
- * @returns
- * String mit Ersatz
- *
- * string with replacement
- *
+ * @param { Number } index Index of the character to be replaced
+ * @param { String } replacement Replacement of the index character
+ * @returns String with replacement
  * @see [StackOverflow](https://stackoverflow.com/questions/1431094/how-do-i-replace-a-character-at-a-specific-index-in-javascript)
  */
 String.prototype.replaceAt = function (index, replacement) {
@@ -406,29 +424,25 @@ String.prototype.replaceAt = function (index, replacement) {
 }
 
 /**
- * @description
- * Aktualisiert den eigenen Geldbetrag
- * 
- * updates the owned money
-
+ * @description Updates the owned money
  * @author ItsLeMax
-
- * @param { Number } newCash
- * Neuer Geldwert des Benutzers
- * 
- * new cash value of the user
- *
- * @param { Boolean } skipWindow
- * Soll das Pseudofenster übersprungen werden?
- *
- * should the pseudo window be skipped?
+ * @param { Number } newCash New cash value of the user
+ * @param { Boolean } skipWindow Should the pseudo window be skipped?
  */
 async function udpateCash(newCash, skipWindow) {
+
+    // Shortly visible transaction window
+
     if (!skipWindow) {
+
         const pseudotransfer = window.open("../hidden-media/web/gamble-transaction.html");
+
         await sleep(250);
         pseudotransfer?.close();
+
     }
+
+    // Set variables, also for a fancy animation
 
     const balanceElement = document.querySelector("#gamble-navigator b");
     const balance = parseFloat(balanceElement.innerText.split("€")[0]);
@@ -439,11 +453,15 @@ async function udpateCash(newCash, skipWindow) {
 
     let count = (balance - newCash) / iterationCount;
 
-    for (const button of document.getElementsByTagName("button")) {
+    // Disable buttons temporarily
+
+    for (const button of document.getElementsByTagName("button"))
         button.disabled = true;
-    }
+
+    // Money increase animation
 
     for (let iteration = 0; iteration <= iterationCount; iteration++) {
+
         balanceElement.innerText = `${(balance - count * iteration).toFixed(2)}€ Guthaben`;
         balanceElement.animate([{
             transform: "scale(1.1)",
@@ -455,29 +473,20 @@ async function udpateCash(newCash, skipWindow) {
             duration: timePerIteration,
         });
 
-        if (!TEST.ENABLED) {
+        if (!DEV_ENV.ENABLED)
             await sleep(timePerIteration);
-        }
+
     }
 
-    for (const button of document.getElementsByTagName("button")) {
+    for (const button of document.getElementsByTagName("button"))
         button.disabled = false;
-    }
+
 }
 
 /**
- * @description
- * Verursacht eine Verzögerung
- *
- * causes a delay
- *
+ * @description Causes a delay
  * @author StackOverflow
- *
- * @param { Number } milliseconds
- * Millisekunden der Verzögerung
- *
- * milliseconds of the delay
- *
+ * @param { Number } milliseconds Milliseconds of the delay
  * @see [StackOverflow](https://stackoverflow.com/questions/951021/what-is-the-javascript-version-of-sleep)
  */
 function sleep(milliseconds) {
@@ -485,21 +494,10 @@ function sleep(milliseconds) {
 }
 
 /**
- * @description
- * Ändert einen Text zu einem Dateinamen
- *
- * changes a text to a file name
- *
+ * @description Changes a text to a file name
  * @author ItsLeMax
- *
- * @param { String } name
- * Name der vorgesehenen Datei
- *
- * name of the planned file
- * @returns
- * String mit Dateiname
- *
- * string with file name
+ * @param { String } name Name of the planned file
+ * @returns String with file name
  */
 function toFileName(name) {
     return name.replaceAll(" ", "_").toLowerCase();
