@@ -1,20 +1,4 @@
-div {
-    width: 30rem;
-}
-
-div * {
-    text-align: center;
-}
-
 @media (max-width: 600px) {
-    div {
-        width: 66vw;
-    }
-
-    div * {
-        font-size: 3vw;
-    }
-
     .link-box {
         width: 66vw;
 
@@ -23,7 +7,7 @@ div * {
     }
 }
 
-@media (max-height: 550px) {
+@media (max-height: 450px) {
     body {
         height: 100vh;
         justify-content: unset;
@@ -31,11 +15,5 @@ div * {
 
     .link-box {
         overflow: unset;
-    }
-
-    .link-box:hover::before,
-    .link-box:hover::after {
-        width: 97%;
-        height: 97%;
     }
 }
