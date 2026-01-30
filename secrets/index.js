@@ -1,31 +1,37 @@
 document.addEventListener("DOMContentLoaded", () => {
+
     const codeURL = document.location.hash.substring(1);
-    if (codeURL) document.querySelector("input").value = codeURL;
+
+    if (codeURL)
+        document.querySelector("input").value = codeURL;
 
     document.querySelector("button").addEventListener("click", () => {
         validateInput();
-    })
+    });
 
     document.addEventListener("keypress", (e) => {
-        if (e.key != "Enter") return;
-        validateInput();
-    })
+
+        if (e.key == "Enter")
+            validateInput();
+
+    });
 
     /**
-     * @description
-     * Überprüft nach einer Interaktion mit dem Button, ob der Code im Input valide ist
-     * 
-     * Checks after an interaction with the button whether the code of the input is valid
-
+     * @description Checks after an interaction with the button whether the code of the input is valid
      * @author ItsLeMax
      */
     function validateInput() {
+
         const code = document.querySelector("input").value;
-        if (!code) return;
+
+        if (!code)
+            return;
 
         XMLHttpRequests({
             readystate: (xhr) => {
+
                 const response = JSON.parse(xhr.responseText);
+
                 if (response) {
                     window.location.href = `${response}/${code}.html`;
                     return;
@@ -41,18 +47,24 @@ document.addEventListener("DOMContentLoaded", () => {
                     button.disabled = false;
                     input.disabled = false;
                 }, 2000);
+
             },
             error: () => {
+
                 const button = document.querySelector("button");
+
                 button.disabled = true;
                 button.innerText = "Serverfehler!";
                 button.style.backgroundColor = "rgb(255, 95, 60)";
 
                 document.querySelector("input").disabled = true;
+
             }
         }, {
             subdomain: "secrets",
             sentData: code
         });
+
     }
+
 })
