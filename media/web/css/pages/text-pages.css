@@ -13,3 +13,9 @@ body {
     margin: 0;
     padding: 2rem;
 }
+
+@media (max-width: 800px) {
+    body {
+        width: 85%;
+    }
+}
