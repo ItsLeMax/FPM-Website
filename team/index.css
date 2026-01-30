@@ -8,6 +8,13 @@
     color: var(--saturatedpurple);
 }
 
+body {
+    background-image: url(https://media.fpm-studio.de/assets/background-image/construction.webp);
+    background-size: cover;
+
+    align-items: center;
+}
+
 h3 {
     letter-spacing: .1rem;
 }
@@ -50,12 +57,13 @@ hr {
 
 .box {
     padding: 3rem;
-    margin: 0 auto;
     max-width: 55rem;
 
     border-radius: 1.5rem;
     box-shadow: 0 0 2rem rgba(0, 0, 0, .4);
     transition: transform .3s ease, box-shadow .3s ease;
+
+    background-color: var(--gray20);
 }
 
 .box img {
@@ -112,6 +120,16 @@ hr {
 }
 
 #apply h3 {
+    text-align: center;
+}
+
+#start,
+#apply {
+    width: -webkit-fill-available;
+}
+
+#start>*,
+#apply>* {
     text-align: center;
 }
 
