@@ -4,12 +4,9 @@ Website of Filmproduktion Maximus
 ## Credits
 | Image           | Usage      | Page              | Artist/Brand   | Link
 | --------------- | ---------- | ----------------- | -------------- | ----
-| Gear            | Panel      | Homepage          | Marposs        | [🔗](https://www.marposs.com/ger/application/mechanical-industry-gears)
-| Gear            | Panel      | Adobe Stock       | nikkytok       | [🔗](https://stock.adobe.com/de/search?creator_id=200519964&filters%5Bcontent_type%3Aphoto%5D=1&filters%5Bcontent_type%3Aillustration%5D=1&filters%5Bcontent_type%3Azip_vector%5D=1&filters%5Bcontent_type%3Avideo%5D=1&filters%5Bcontent_type%3Atemplate%5D=1&filters%5Bcontent_type%3A3d%5D=1&filters%5Bfetch_excluded_assets%5D=1&filters%5Bcontent_type%3Aimage%5D=1&order=relevance&k=gear&search_page=1&search_type=usertyped&acp=&aco=gear&get_facets=0&asset_id=141883625)
-| Wall Clock      | Panel      | Wikimedia         | Ikescs         | [🔗](https://commons.wikimedia.org/wiki/File:Wall_clock.jpg)
-| Detailed Trophy | Panel      | Indiamart         | Piru Pooja     | [🔗](https://www.indiamart.com/proddetail/new-trophies-awards-12660502073.html)
-| Book            | Background | Pixabay           | Richi Choraria | [🔗](https://pixabay.com/de/photos/b%C3%BCcher-tinte-licht-golden-leser-1906534/)
-| Storm           | Background | Pixabay           | Elias Sch.     | [🔗](https://pixabay.com/de/photos/unwetter-abenteuer-mysterie-3041241/)
+| Library         | Background | Pixabay           | jarmoluk       | [🔗](https://pixabay.com/de/photos/alte-b%c3%bccher-buchen-alt-bibliothek-436498/)
+| Wall Clock      | Graphic    | Wikimedia         | Ikescs         | [🔗](https://commons.wikimedia.org/wiki/File:Wall_clock.jpg)
+| Detailed Trophy | Graphic    | IndiaMart         | Sportline      | [](https://www.indiamart.com/proddetail/golden-award-trophy-13111068430.html)
 | QR Example      | Graphic    | QR Code Generator | DENSO WAVE INC | [🔗](https://www.qrcode-generator.de/)
 | Discord         | Graphic    | Google Image      | Discord        | [🔗](https://www.google.de/search?sca_esv=2a63e8a7ece273e3&sxsrf=ADLYWIJPF24pqKKWUVqwaFsc_H_L7m6-pQ:1732299117407&q=discord&udm=2&fbs=AEQNm0A6bwEop21ehxKWq5cj-cHa02QUie7apaStVTrDAEoT1CkRGSL-1wA3X2bR5dRYtRELv2nVM6XpZ_f_zLfBr8ZfFDo4-AC-M6UQA9qap38PVEs-C6Cbkgx-SskggRAQ5m4cab5KHWfkrrH_uftZO5ZDbOMYA6CsHvklBX5x_L_SvJp7IjI50wj2moCd25JNohuOGDIG&sa=X&ved=2ahUKEwjLnaaMxfCJAxWY87sIHXSoLfYQtKgLegQIHxAB&biw=2560&bih=1279&dpr=1)
 | YouTube         | Graphic    | Google Image      | YouTube        | [🔗](https://www.google.de/search?q=youtube&sca_esv=2a63e8a7ece273e3&udm=2&biw=2560&bih=1279&sxsrf=ADLYWIKA7c5FIjpSEj_p3LbXC7ozuueZ-w%3A1732299118554&ei=bslAZ-a-IeaQ9u8PxL2KqQY&ved=0ahUKEwjmreyMxfCJAxVmiP0HHcSeImUQ4dUDCBA&uact=5&oq=youtube&gs_lp=EgNpbWciB3lvdXR1YmUyBBAjGCcyEBAAGIAEGLEDGEMYgwEYigUyChAAGIAEGEMYigUyCBAAGIAEGLEDMgoQABiABBhDGIoFMgoQABiABBhDGIoFMgoQABiABBhDGIoFMgoQABiABBhDGIoFMgoQABiABBhDGIoFMgsQABiABBixAxiDAUjcBVAAWOMEcAB4AJABAJgBTqABzQOqAQE3uAEDyAEA-AEBmAIHoALdA8ICBRAAGIAEmAMAkgcBN6AH4S0&sclient=img)
