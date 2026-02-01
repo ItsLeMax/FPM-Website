@@ -8,7 +8,7 @@
 
 body {
     height: 100vh;
-    margin: 0 3rem;
+    margin: unset;
 
     flex-direction: unset;
     justify-content: center;
@@ -64,6 +64,36 @@ body>*:not(#navigator):hover {
 #countdown,
 #password,
 #winrate {
-    background-size: 30rem;
+    background-size: calc(var(--box-size) * 2);
     background-blend-mode: multiply;
+}
+
+@media (max-width: 1080px) {
+    body {
+        display: grid;
+        grid-template-columns: auto auto;
+        align-content: center;
+    }
+
+}
+
+@media (max-width: 800px) {
+    body>*:not(#navigator) {
+        --box-size: 30vw;
+    }
+}
+
+@media (max-width: 1080px) and (max-height: 520px) {
+    body {
+        display: flex;
+    }
+
+    body>*:not(#navigator) {
+        --box-size: 15vw;
+    }
+
+    .box,
+    .settings {
+        font-size: 2vw !important;
+    }
 }
