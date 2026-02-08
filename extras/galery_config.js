@@ -1,4 +1,4 @@
-const Dora_und_die_albanische_Staatsgrenze = {
+const Dora_Und_Die_Albanische_Staatsgrenze = {
     1: "Das Erste, womit ich bei diesem Projekt angefangen habe.",
     2: "thicc Taubsi",
     3: "._.",
@@ -29,7 +29,7 @@ const Dora_und_die_albanische_Staatsgrenze = {
     35: "Hier noch mal mit 1000-facher Größe.",
     36: "Der finale Film in Premiere. Die Sequenz, wo Taubsi und Ich über mögliche Fortsetzungen geschwärmt haben (der letzte Teil des Kurzfilmes) entstand extern. Die verwendete 40GB AVI wurde gelöscht (siehe rote Farbe)."
 };
-const Weihnachtsmann_und_KoksKG = {
+const Weihnachtsmann_Und_KoksKG = {
     1: "Alles auf Anfang (fast)",
     2: "Hat man leider nicht gesehen. 💔",
     3: "So asozial. Ich liebe es.",
@@ -55,5 +55,3 @@ const Weihnachtsmann_und_KoksKG = {
     32: "Der Film in Premiere (Stand: 21.12.2021, nicht final).",
     33: "Ich kann das Video nicht monetarisieren! So ein Scheiß!1! 😡😡😡"
 };
-const Dora_und_Micky_im_Bandenkrieg = {};
-const Outer_Space = {};
