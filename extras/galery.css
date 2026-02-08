@@ -118,8 +118,12 @@ button:disabled {
 #caption {
     display: none;
 
-    height: 8rem;
-    padding-left: .5rem;
+    overflow: scroll;
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    min-height: 4rem;
+    padding: 0 .5rem .5rem .5rem;
 
     background-color: var(--gray10);
 }
@@ -141,7 +145,7 @@ button:disabled {
     }
 
     #caption {
-        height: 16vw;
+        height: 8vw;
     }
 
     #selector div {
@@ -203,7 +207,7 @@ button:disabled {
     }
 
     #caption {
-        height: 16vmin;
+        height: 8vmin;
     }
 
     #selector div {
