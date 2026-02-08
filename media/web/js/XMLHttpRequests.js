@@ -6,7 +6,7 @@
  * @param { Function | undefined | null } callbacks.error Error code in the case of an error
  * @param { Object } url URL data for the domain
  * @param { String } url.subdomain Subdomain of the targeted website
- * @param { String } url.sentData Sent Data to said domain (API path or sub directory)
+ * @param { String? } url.sentData Sent Data to said domain (API path or sub directory)
  */
 function XMLHttpRequests(callbacks, url) {
 
