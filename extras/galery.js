@@ -6,6 +6,25 @@ document.addEventListener("DOMContentLoaded", () => {
     const loading = document.getElementById("loading");
     const caption = document.getElementById("caption");
 
+    // Gets and sets the movies to choose from
+
+    XMLHttpRequests({
+        readystate: (xhr) => {
+
+            const response = JSON.parse(xhr.responseText);
+
+            for (const movie of response) {
+                const text = movie.split("_").map(word => word.charAt(0).toUpperCase() + word.substring(1)).join(" ");
+                select.add(new Option(text));
+            }
+
+        },
+
+    }, {
+        subdomain: "extras",
+        sentData: null
+    });
+
     // Change of project
 
     select.addEventListener("change", () => {
@@ -52,6 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Image switcher logic
 
     updateButtons((button) => {
+
         button.addEventListener("click", () => {
 
             const pageNumbers = getPageCount().pageNumbers;
@@ -77,6 +97,7 @@ document.addEventListener("DOMContentLoaded", () => {
             updateImage();
 
         })
+
     });
 
     // Change of image
@@ -92,8 +113,6 @@ document.addEventListener("DOMContentLoaded", () => {
             // Allow page switching again after image is loaded
 
             button.disabled = false;
-
-
             image.style.filter = "unset";
 
             // Remove loading animation
