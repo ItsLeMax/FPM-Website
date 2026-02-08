@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     select.addEventListener("change", () => {
 
-        // Show caption only if the buttons are disabled (I forgot the reason why I did this)
+        // Shows the text block (caption) if a movie is selected
 
         updateButtons((button) => {
             if (button.disabled) {
