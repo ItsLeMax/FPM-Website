@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Gather selected jobs from checkboxes
 
-        const jobs = new Array;
+        const jobs = [];
 
         for (const checkbox of checkboxes) {
 

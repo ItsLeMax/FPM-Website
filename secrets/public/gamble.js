@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 
-    let cache = new Object;
+    let cache = {};
 
     const cashSelection = document.querySelectorAll(".balance button");
     const cash = document.querySelector("#gamble-navigator b");
@@ -122,7 +122,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Initialize prizes
 
-        const prizes = new Array;
+        const prizes = [];
 
         for (const rarity of Object.values(inventory))
             prizes.push(...rarity.drops);

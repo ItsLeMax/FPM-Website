@@ -25,7 +25,7 @@ function generateNavigator() {
 
         navigator.append(navigatorButton);
 
-        const navigatorPages = new Array;
+        const navigatorPages = [];
         navigatorPages.push(navigatorButton);
 
         let selectedPage = 0;
