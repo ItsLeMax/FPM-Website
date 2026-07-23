@@ -124,7 +124,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const prizes = [];
 
-        for (const rarity of Object.values(inventory))
+        for (const rarity of Object.values(INVENTORY))
             prizes.push(...rarity.drops);
 
         // Add prizes to the gambling pool
@@ -154,7 +154,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 const probability = Math.floor(Math.random() * 100);
 
-                for (const rarity of Object.keys(inventory).reverse()) {
+                for (const rarity of Object.keys(INVENTORY).reverse()) {
 
                     // Debug on test
 
@@ -163,12 +163,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     // Allow only the closest/best rarity
 
-                    if (probability > inventory[rarity].chance[selectedChestPrice])
+                    if (probability > INVENTORY[rarity].chance[selectedChestPrice])
                         continue;
 
                     // Determine prize
 
-                    const pricesOfRarity = inventory[rarity].drops;
+                    const pricesOfRarity = INVENTORY[rarity].drops;
                     const prize = pricesOfRarity[Math.floor(Math.random() * pricesOfRarity.length)];
                     image.src = `../hidden-media/img/gambling/loot/${toFileName(prize.title)}.webp`;
 
@@ -177,7 +177,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     cache = {
                         prize: prize,
                         rarity: rarity,
-                        float: float[Math.floor(Math.random() * float.length)]
+                        float: FLOAT[Math.floor(Math.random() * FLOAT.length)]
                     };
 
                     break;
@@ -404,7 +404,7 @@ function logger(probability, rarity, selectedChestName, selectedChestPrice) {
 
     console.log(
         `Vergleich: ${rarity.toUpperCase()}` + "\n" +
-        `Rarität (${selectedChestName}): ${inventory[rarity].chance[selectedChestPrice]}%` + "\n" +
+        `Rarität (${selectedChestName}): ${INVENTORY[rarity].chance[selectedChestPrice]}%` + "\n" +
         `Zufallswert: ${probability}%` + "\n" +
         "Gut 0 >-----------< 100 Schlecht".replaceAt(7 + (Math.floor(probability / 10)), "*")
     );
