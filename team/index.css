@@ -79,6 +79,10 @@ hr {
 
 /* Specific containers */
 
+#start {
+    background-color: #3c2aa5;
+}
+
 #direct {
     border-left: .4rem solid var(--saturatedblue);
 }
