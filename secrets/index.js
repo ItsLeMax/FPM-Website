@@ -1,70 +1,81 @@
 document.addEventListener("DOMContentLoaded", () => {
+    useHash();
+    registerButtonListeners();
+});
 
-    const codeURL = document.location.hash.substring(1);
+/**
+ * @description Retrieves any possible code after a `#` symbol from within the url and puts it into the text input element
+ * @author ItsLeMax
+ */
+function useHash() {
+    document.querySelector("input").value = document.location.hash.substring(1) || "";
+}
 
-    if (codeURL)
-        document.querySelector("input").value = codeURL;
+/**
+ * @description Registers the listeners of the page buttons
+ * @author ItsLeMax
+ */
+function registerButtonListeners() {
 
     document.querySelector("button").addEventListener("click", () => {
         validateInput();
     });
 
     document.addEventListener("keypress", (e) => {
-
-        if (e.key == "Enter")
+        if (e.key == "Enter") {
             validateInput();
-
+        }
     });
 
-    /**
-     * @description Checks after an interaction with the button whether the code of the input is valid
-     * @author ItsLeMax
-     */
-    function validateInput() {
+}
 
-        const code = document.querySelector("input").value;
+/**
+ * @description Checks after an interaction with the button whether the code of the input is valid
+ * @author ItsLeMax
+ */
+function validateInput() {
 
-        if (!code)
-            return;
+    const code = document.querySelector("input").value;
 
-        XMLHttpRequests({
-            readystate: (xhr) => {
+    if (!code)
+        return;
 
-                const response = JSON.parse(xhr.responseText);
+    XMLHttpRequests({
+        readystate: (xhr) => {
 
-                if (response) {
-                    window.location.href = `${response}/${code}.html`;
-                    return;
-                }
+            const response = JSON.parse(xhr.responseText);
 
-                const button = document.querySelector("button");
-                const input = document.querySelector("input");
-
-                button.disabled = true;
-                input.disabled = true;
-
-                setTimeout(() => {
-                    button.disabled = false;
-                    input.disabled = false;
-                }, 2000);
-
-            },
-            error: () => {
-
-                const button = document.querySelector("button");
-
-                button.disabled = true;
-                button.innerText = "Serverfehler!";
-                button.style.backgroundColor = "rgb(255, 95, 60)";
-
-                document.querySelector("input").disabled = true;
-
+            if (response) {
+                window.location.href = `${response}/${code}.html`;
+                return;
             }
-        }, {
-            subdomain: "secrets",
-            sentData: code
-        });
 
-    }
+            const button = document.querySelector("button");
+            const input = document.querySelector("input");
 
-})
+            button.disabled = true;
+            input.disabled = true;
+
+            setTimeout(() => {
+                button.disabled = false;
+                input.disabled = false;
+            }, 2000);
+
+        },
+        error: () => {
+
+            const button = document.querySelector("button");
+
+            button.disabled = true;
+            button.innerText = "Serverfehler!";
+            button.style.backgroundColor = "rgb(255, 95, 60)";
+
+            document.querySelector("input").disabled = true;
+
+        }
+    }, {
+        subdomain: "secrets",
+        sentData: code
+    });
+
+}
