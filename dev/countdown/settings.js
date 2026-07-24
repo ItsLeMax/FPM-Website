@@ -1,3 +1,5 @@
+const ALIGNMENTS = ["left", "center", "right"];
+
 document.addEventListener("DOMContentLoaded", () => {
 
     const time = document.getElementById("minutes");
@@ -7,124 +9,116 @@ document.addEventListener("DOMContentLoaded", () => {
     const initialText = start.innerText;
     const initialColor = start.style.backgroundColor;
 
-    const alignments = ["left", "center", "right"];
+    time.addEventListener("input", () => handleTimeInput());
+    start.addEventListener("click", () => handleStartPress());
+    update.addEventListener("click", () => handleUpdatePress());
 
-    time.addEventListener("input", () => handleTimeInput(time, start));
-    start.addEventListener("click", () => handleStartPress(time, start, initialText, initialColor));
-    update.addEventListener("click", () => handleUpdatePress(alignments));
+    registerAlignmentInput();
 
-    registerAlignmentInput(alignments);
+    /**
+     * @description Checks if the input time is valid and acts accordingly
+     * @author ItsLeMax
+     */
+    function handleTimeInput() {
 
-});
+        // Disallow negative numbers
 
-/**
- * @description Checks if the input time is valid and acts accordingly
- * @author ItsLeMax
- * @param { HTMLElement } time
- * @param { HTMLButtonElement } start
- */
-function handleTimeInput(time, start) {
+        if (time.value < 0)
+            time.value = 0;
 
-    // Disallow negative numbers
+        // Disallow beyond 99 minutes (Who tf needs that shit)
 
-    if (time.value < 0)
-        time.value = 0;
+        if (time.value == 100)
+            time.value = 99;
 
-    // Disallow beyond 99 minutes (Who tf needs that shit)
+        // Disallow adding a third number (restricted to two digits)
 
-    if (time.value == 100)
-        time.value = 99;
+        if (time.value.length > 2)
+            time.value = time.value.slice(0, 2);
 
-    // Disallow adding a third number (restricted to two digits)
+        // Disallow beyond 60 and 0 minutes but highlight text in that case instead of restricting it
 
-    if (time.value.length > 2)
-        time.value = time.value.slice(0, 2);
+        const exceedsLimit = time.value > 60 || time.value < 1;
 
-    // Disallow beyond 60 and 0 minutes but highlight text in that case instead of restricting it
-
-    const exceedsLimit = time.value > 60 || time.value < 1;
-
-    time.style.color = exceedsLimit ? "red" : "black";
-    start.disabled = time.value ? exceedsLimit : false;
-
-}
-
-/**
- * @description Registers the listeners of the alignment input fields
- * @author ItsLeMax
- * @param { Array<String> } alignments
- */
-function registerAlignmentInput(alignments) {
-
-    for (const alignment_a of alignments) {
-
-        // Add click listener for each alignment checkbox
-
-        document.getElementById(alignment_a).addEventListener("click", () => {
-
-            // If the checkbox is not checked: check the first checkbox (left) as default
-
-            if (!document.getElementById(alignment_a).checked) {
-                document.getElementById(alignments[0]).checked = true;
-                return;
-            }
-
-            // Uncheck all other checkboxes
-
-            for (const alignment_b of alignments) {
-                if (alignment_a != alignment_b) {
-                    document.getElementById(alignment_b).checked = false;
-                }
-            }
-
-        });
+        time.style.color = exceedsLimit ? "red" : "black";
+        start.disabled = time.value ? exceedsLimit : false;
 
     }
 
-}
+    /**
+     * @description Registers the listeners of the alignment input fields
+     * @author ItsLeMax
+     */
+    function registerAlignmentInput() {
 
-/**
- * @description Handles the press of the start button
- * @param { HTMLElement } time
- * @param { HTMLButtonElement  } start
- * @param { String } initialText
- * @param { String } initialColor
- */
-function handleStartPress(time, start, initialText, initialColor) {
+        for (const alignment_a of alignments) {
 
-    // Update start button depending on state
+            // Add click listener for each alignment checkbox
 
-    start.style.backgroundColor = start.innerText == initialText ? "rgb(255, 110, 110)" : initialColor;
-    start.innerText = start.innerText == initialText ? "Stop" : initialText;
+            document.getElementById(alignment_a).addEventListener("click", () => {
 
-    // Cache settings to use in the separate overlay
+                // If the checkbox is not checked: check the first checkbox (left) as default
 
-    localStorage.setItem("toggle", JSON.stringify({
-        init: start.innerText != initialText,
-        time: parseInt(time.value) || 10,
-    }));
-
-}
-
-/**
- * @description Handles the press of the update button
- * @param { Array<String> } alignments
- * @summary
- * Click on `update` will update the cache.
- * `align` executes an inlined function immediately to look for and return the checked alignment as value.
- */
-function handleUpdatePress(alignments) {
-
-    localStorage.setItem("update", JSON.stringify({
-        color: document.getElementById("picker").value,
-        align: (() => {
-            for (const alignment of alignments) {
-                if (document.getElementById(alignment).checked) {
-                    return alignment;
+                if (!document.getElementById(alignment_a).checked) {
+                    document.getElementById(alignments[0]).checked = true;
+                    return;
                 }
-            }
-        })(),
-        font: document.getElementsByTagName("select")[0].value
-    }));
 
-}
+                // Uncheck all other checkboxes
+
+                for (const alignment_b of alignments) {
+                    if (alignment_a != alignment_b) {
+                        document.getElementById(alignment_b).checked = false;
+                    }
+                }
+
+            });
+
+        }
+
+    }
+
+    /**
+     * @description Handles the press of the start button
+     * @author ItsLeMax
+     */
+    function handleStartPress() {
+
+        // Update start button depending on state
+
+        start.style.backgroundColor = start.innerText == initialText ? "rgb(255, 110, 110)" : initialColor;
+        start.innerText = start.innerText == initialText ? "Stop" : initialText;
+
+        // Cache settings to use in the separate overlay
+
+        localStorage.setItem("toggle", JSON.stringify({
+            init: start.innerText != initialText,
+            time: parseInt(time.value) || 10,
+        }));
+
+    }
+
+    /**
+     * @description Handles the press of the update button
+     * @author ItsLeMax
+     * @summary
+     * Click on `update` will update the cache.
+     * `align` executes an inlined function immediately to look for and return the checked alignment as value.
+     */
+    function handleUpdatePress() {
+
+        localStorage.setItem("update", JSON.stringify({
+            color: document.getElementById("picker").value,
+            align: (() => {
+                for (const alignment of alignments) {
+                    if (document.getElementById(alignment).checked) {
+                        return alignment;
+                    }
+                }
+            })(),
+            font: document.getElementsByTagName("select")[0].value
+        }));
+
+    }
+
+});
