@@ -4,6 +4,8 @@
     --transition: .2s ease;
 }
 
+/* General declarations */
+
 body {
     height: 100vh;
     margin: 0;
@@ -48,7 +50,7 @@ select:focus {
     background: #222533;
 }
 
-/* Checkbox optisch kleiner und klarer */
+/* Checkbox smaller and more clear */
 
 input[type="checkbox"] {
     width: 1.2rem;
@@ -117,7 +119,7 @@ button:active {
     font-weight: 500;
 }
 
-/* Farbakzente */
+/* Color accents */
 
 #toggle {
     background: #e4c65a;
@@ -127,6 +129,8 @@ button:active {
 #toggle:hover {
     background: #f0d96b;
 }
+
+/* Screen queries */
 
 @media (max-height: 840px) {
     body {

@@ -22,14 +22,13 @@
         z.B. mit dem Klick auf <i>Interagieren</i>.
     </p>
 
-    <!-- Main Boxes -->
+    <!-- Container with settings -->
     <div class="container">
         <div>
             <p>Minuten</p>
             <input id="minutes" type="number" minlength="5" placeholder="&lt;=60 || 10">
         </div>
 
-        <!-- Sub containers with text and settings -->
         <div>
             <p>Farbe (Hex)</p>
             <input id="picker" maxlength="6" placeholder="ffffff">
@@ -39,12 +38,13 @@
             <p>Ausrichtung</p>
             <div>
                 <input type="checkbox" id="left">
-                <input type="checkbox" id="center">
-                <input type="checkbox" id="right" checked>
+                <input type="checkbox" id="center" checked>
+                <input type="checkbox" id="right">
             </div>
         </div>
     </div>
 
+    <!-- Special container for font -->
     <div class="container">
         <p>Schriftfamilie (Auswahl mit Linksklick>Pfeiltasten)</p>
         <select>
@@ -58,6 +58,7 @@
         </select>
     </div>
 
+    <!-- Container for buttons -->
     <div class="container">
         <button id="toggle">Start</button>
         <button id="update">Update</button>
