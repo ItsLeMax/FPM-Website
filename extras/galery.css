@@ -1,3 +1,5 @@
+/* Compatibility */
+
 ::-webkit-scrollbar {
     width: 1rem;
 }
@@ -15,6 +17,8 @@
     cursor: pointer;
     background: rgb(145, 125, 25);
 }
+
+/* General */
 
 body {
     height: 100vh;
@@ -91,6 +95,7 @@ button:disabled {
 }
 
 /* Image specifically */
+
 #image {
     max-width: calc(16rem * 3);
     min-height: calc(9rem * 3);
@@ -127,6 +132,8 @@ button:disabled {
 
     background-color: var(--gray10);
 }
+
+/* Screen queries */
 
 @media (max-width: 800px) {
     select {
