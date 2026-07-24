@@ -1,3 +1,5 @@
+/* Basics */
+
 :root {
     --blue: rgb(74, 177, 208);
     --transition: .15s;
@@ -91,6 +93,8 @@ body {
     width: 100%;
     height: 100%;
 }
+
+/* Screen query */
 
 @media (max-width: 600px) {
     body {

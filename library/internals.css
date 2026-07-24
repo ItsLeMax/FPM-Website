@@ -1,3 +1,5 @@
+/* Simple style declarations */
+
 body {
     gap: 3rem;
 }
@@ -22,6 +24,8 @@ h6 {
 img {
     width: 30rem;
 }
+
+/* Screen query */
 
 @media (max-width: 800px) {
     * {

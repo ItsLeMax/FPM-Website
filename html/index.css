@@ -3,6 +3,8 @@
     --soft-black: rgba(0, 0, 0, .25);
 }
 
+/* General declarations */
+
 body {
     margin: unset !important;
     gap: unset;
@@ -234,6 +236,8 @@ span {
 #links img {
     width: 3rem;
 }
+
+/* Screen queries */
 
 @media (max-width: 1420px) {
     #team img {

@@ -1,3 +1,5 @@
+/* General declarations */
+
 p {
     color: #555;
 }
@@ -53,6 +55,8 @@ span {
 #progress-bar {
     display: none;
 }
+
+/* Screen query */
 
 @media (max-width: 1180px) {
     form {

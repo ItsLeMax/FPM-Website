@@ -14,6 +14,8 @@ body {
     padding: 2rem;
 }
 
+/* Query for low width screens */
+
 @media (max-width: 800px) {
     body {
         width: 85%;
