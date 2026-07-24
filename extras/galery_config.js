@@ -29,7 +29,7 @@ const Dora_Und_Die_Albanische_Staatsgrenze = {
     35: "Hier noch mal mit 1000-facher Größe.",
     36: "Der finale Film in Premiere. Die Sequenz, wo Taubsi und Ich über mögliche Fortsetzungen geschwärmt haben (der letzte Teil des Kurzfilmes) entstand extern. Die verwendete 40GB AVI wurde gelöscht (siehe rote Farbe)."
 };
-const Weihnachtsmann_Und_KoksKG = {
+const Weihnachtsmann_Und_Kokskg = {
     1: "Alles auf Anfang (fast)",
     2: "Hat man leider nicht gesehen. 💔",
     3: "So asozial. Ich liebe es.",
