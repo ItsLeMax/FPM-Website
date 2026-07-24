@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
      */
     function registerAlignmentInput() {
 
-        for (const alignment_a of alignments) {
+        for (const alignment_a of ALIGNMENTS) {
 
             // Add click listener for each alignment checkbox
 
@@ -60,13 +60,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 // If the checkbox is not checked: check the first checkbox (left) as default
 
                 if (!document.getElementById(alignment_a).checked) {
-                    document.getElementById(alignments[0]).checked = true;
+                    document.getElementById(ALIGNMENTS[0]).checked = true;
                     return;
                 }
 
                 // Uncheck all other checkboxes
 
-                for (const alignment_b of alignments) {
+                for (const alignment_b of ALIGNMENTS) {
                     if (alignment_a != alignment_b) {
                         document.getElementById(alignment_b).checked = false;
                     }
@@ -110,7 +110,7 @@ document.addEventListener("DOMContentLoaded", () => {
         localStorage.setItem("update", JSON.stringify({
             color: document.getElementById("picker").value,
             align: (() => {
-                for (const alignment of alignments) {
+                for (const alignment of ALIGNMENTS) {
                     if (document.getElementById(alignment).checked) {
                         return alignment;
                     }
