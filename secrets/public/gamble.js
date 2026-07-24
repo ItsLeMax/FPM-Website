@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
         navigator.addEventListener("click", () => handleNavigatorPress(navigator));
 
     for (const button of cashSelection)
-        button.addEventListener("click", async () => await handleCashButtonPress());
+        button.addEventListener("click", async () => await handleCashButtonPress(button));
 
     gamePlayButton.addEventListener("click", async () => await handleGamblingProcess());
 
@@ -57,9 +57,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     /**
      * @description Acts on pressing any +cash button
+     * @param { Element } button
      * @author ItsLeMax
      */
-    async function handleCashButtonPress() {
+    async function handleCashButtonPress(button) {
 
         const updatedCash = parseFloat(cash.innerText) + parseFloat(button.innerText);
 
