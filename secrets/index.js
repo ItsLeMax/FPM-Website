@@ -40,42 +40,40 @@ function validateInput() {
     if (!code)
         return;
 
-    XMLHttpRequests({
-        readystate: (xhr) => {
+    const readystate = (xhr) => {
 
-            const response = JSON.parse(xhr.responseText);
+        const response = JSON.parse(xhr.responseText);
 
-            if (response) {
-                window.location.href = `${response}/${code}.html`;
-                return;
-            }
-
-            const button = document.querySelector("button");
-            const input = document.querySelector("input");
-
-            button.disabled = true;
-            input.disabled = true;
-
-            setTimeout(() => {
-                button.disabled = false;
-                input.disabled = false;
-            }, 2000);
-
-        },
-        error: () => {
-
-            const button = document.querySelector("button");
-
-            button.disabled = true;
-            button.innerText = "Serverfehler!";
-            button.style.backgroundColor = "rgb(255, 95, 60)";
-
-            document.querySelector("input").disabled = true;
-
+        if (response) {
+            window.location.href = `${response}/${code}.html`;
+            return;
         }
-    }, {
-        subdomain: "secrets",
-        sentData: code
-    });
+
+        const button = document.querySelector("button");
+        const input = document.querySelector("input");
+
+        button.disabled = true;
+        input.disabled = true;
+
+        setTimeout(() => {
+            button.disabled = false;
+            input.disabled = false;
+        }, 2000);
+
+    };
+
+    const error = () => {
+
+        const button = document.querySelector("button");
+
+        button.disabled = true;
+        button.innerText = "Serverfehler!";
+        button.style.backgroundColor = "rgb(255, 95, 60)";
+
+        document.querySelector("input").disabled = true;
+
+    }
+
+    new RequestToFPM({ subdomain: Subdomain.SECRETS, sentData: code }, { readystate, error });
 
 }
