@@ -28,278 +28,291 @@ document.addEventListener("DOMContentLoaded", () => {
         navigator.addEventListener("click", () => handleNavigatorPress(navigator));
 
     for (const button of cashSelection)
-        button.addEventListener("click", async () => await handleCashButtonPress(button, cashSelection, gamePlayButton, cash));
+        button.addEventListener("click", async () => await handleCashButtonPress());
 
-    gamePlayButton.addEventListener("click", async () => await handleGamblingProcess(cashSelection, gamePlayButton, cash));
+    gamePlayButton.addEventListener("click", async () => await handleGamblingProcess());
 
-});
+    /**
+     * @description Acts on a navigator page button press
+     * @author ItsLeMax
+     * @param { Element } navigator
+     */
+    function handleNavigatorPress(navigator) {
 
-/**
- * @description Acts on a navigator page button press
- * @author ItsLeMax
- * @param { Element } navigator
- */
-function handleNavigatorPress(navigator) {
+        for (const page of document.querySelectorAll("body>div")) {
 
-    for (const page of document.querySelectorAll("body>div")) {
+            if (page.id || !navigator.className)
+                continue;
 
-        if (page.id || !navigator.className)
-            continue;
+            if (navigator.className == page.className) {
+                page.style.display = "flex";
+                continue;
+            }
 
-        if (navigator.className == page.className) {
-            page.style.display = "flex";
-            continue;
+            page.style.display = "none";
+
         }
-
-        page.style.display = "none";
 
     }
 
-}
+    /**
+     * @description Acts on pressing any +cash button
+     * @author ItsLeMax
+     */
+    async function handleCashButtonPress() {
 
-/**
- * @description Acts on pressing any +cash button
- * @author ItsLeMax
- * @param { Element } button
- * @param { NodeListOf<Element> } cashSelection
- * @param { Element } gamePlayButton
- * @param { Element } cash
- */
-async function handleCashButtonPress(button, cashSelection, gamePlayButton, cash) {
+        const updatedCash = parseFloat(cash.innerText) + parseFloat(button.innerText);
 
-    const updatedCash = parseFloat(cash.innerText) + parseFloat(button.innerText);
+        await updateCash(updatedCash);
+        CASH_REGISTER_AUDIO.play();
 
-    await updateCash(updatedCash);
-    CASH_REGISTER_AUDIO.play();
+        toggleButtons();
 
-    toggleButtons(cash, cashSelection, gamePlayButton);
+    }
 
-}
+    /**
+     * @description Handles the gambling from start to finish
+     * @author ItsLeMax
+     */
+    async function handleGamblingProcess() {
 
-/**
- * @description Handles the gambling from start to finish
- * @author ItsLeMax
- * @param { NodeListOf<Element> } cashSelection
- * @param { Element } gamePlayButton
- * @param { Element } cash
- */
-async function handleGamblingProcess(cashSelection, gamePlayButton, cash) {
+        const selectedChest = document.getElementById("chests");
+        const selectedChestPrice = parseInt(selectedChest.value);
 
-    const selectedChest = document.getElementById("chests");
-    const selectedChestPrice = parseInt(selectedChest.value);
+        // Update UI elements
 
-    // Update UI elements
+        await updateCash(parseFloat(cash.innerText) - selectedChestPrice);
+        toggleButtons();
+        toggleNavigator(true);
 
-    await updateCash(parseFloat(cash.innerText) - selectedChestPrice);
-    toggleButtons(cash, cashSelection, gamePlayButton);
-    toggleNavigator(true);
+        gamePlayButton.style.setProperty("display", "none");
 
-    gamePlayButton.style.setProperty("display", "none");
+        const spinner = document.createElement("div");
+        spinner.className = "spinner";
 
-    const spinner = document.createElement("div");
-    spinner.className = "spinner";
+        // Initialize prizes
 
-    // Initialize prizes
+        const prizes = [];
 
-    const prizes = [];
+        for (const rarity of Object.values(INVENTORY))
+            prizes.push(...rarity.drops);
 
-    for (const rarity of Object.values(INVENTORY))
-        prizes.push(...rarity.drops);
+        // Add 60 possible prizes to the gambling pool
 
-    // Add 60 possible prizes to the gambling pool
+        for (let prize = 0; prize < 59; prize++) {
 
-    for (let prize = 0; prize < 59; prize++) {
+            const image = document.createElement("img");
+            image.className = "image";
 
-        const image = document.createElement("img");
-        image.className = "image";
+            // In case the image doesn't load
 
-        // In case the image doesn't load
+            image.addEventListener("error", () => {
+                image.src = "../hidden-media/img/gambling/misc/placeholder.png";
+                console.warn(
+                    `Fehlendes Bild! ItsLeMax ist wahrscheinlich zu Faul gewesen, das ` +
+                    "entsprechende Bild zu erstellen. Schande!"
+                );
+            });
 
-        image.addEventListener("error", () => {
-            image.src = "../hidden-media/img/gambling/misc/placeholder.png";
-            console.warn(
-                `Fehlendes Bild! ItsLeMax ist wahrscheinlich zu Faul gewesen, das ` +
-                "entsprechende Bild zu erstellen. Schande!"
-            );
-        });
+            // Every prize is random except the one that you win (pre-determined; the last index after is the last item you see on the right)
 
-        // Every prize is random except the one that you win (pre-determined; the last index after is the last item you see on the right)
+            if (prize != 57) {
+                image.src = `../hidden-media/img/gambling/loot/${toFileName(prizes[Math.floor(Math.random() * prizes.length)].title)}.webp`;
+            } else {
 
-        if (prize != 57) {
-            image.src = `../hidden-media/img/gambling/loot/${toFileName(prizes[Math.floor(Math.random() * prizes.length)].title)}.webp`;
-        } else {
+                // The prize will be set here; Probability/Rarity check first
 
-            // The prize will be set here; Probability/Rarity check first
+                const probability = Math.floor(Math.random() * 100);
 
-            const probability = Math.floor(Math.random() * 100);
+                for (const rarity of Object.keys(INVENTORY).reverse()) {
 
-            for (const rarity of Object.keys(INVENTORY).reverse()) {
+                    // Debug on test
 
-                // Debug on test
+                    if (DEV_ENV.test_enabled)
+                        logger(probability, rarity, selectedChest.options[selectedChest.selectedIndex].text, selectedChestPrice);
 
-                if (DEV_ENV.test_enabled)
-                    logger(probability, rarity, selectedChest.options[selectedChest.selectedIndex].text, selectedChestPrice);
+                    // Allow only the closest/best rarity
 
-                // Allow only the closest/best rarity
+                    if (probability > INVENTORY[rarity].chance[selectedChestPrice])
+                        continue;
 
-                if (probability > INVENTORY[rarity].chance[selectedChestPrice])
-                    continue;
+                    // Determine prize
 
-                // Determine prize
+                    const pricesOfRarity = INVENTORY[rarity].drops;
+                    const prize = pricesOfRarity[Math.floor(Math.random() * pricesOfRarity.length)];
+                    image.src = `../hidden-media/img/gambling/loot/${toFileName(prize.title)}.webp`;
 
-                const pricesOfRarity = INVENTORY[rarity].drops;
-                const prize = pricesOfRarity[Math.floor(Math.random() * pricesOfRarity.length)];
-                image.src = `../hidden-media/img/gambling/loot/${toFileName(prize.title)}.webp`;
+                    // Store temporarily for later
 
-                // Store temporarily for later
+                    cache = {
+                        prize: prize,
+                        rarity: rarity,
+                        float: FLOAT[Math.floor(Math.random() * FLOAT.length)]
+                    };
 
-                cache = {
-                    prize: prize,
-                    rarity: rarity,
-                    float: FLOAT[Math.floor(Math.random() * FLOAT.length)]
-                };
+                    break;
 
-                break;
+                }
 
             }
 
+            spinner.appendChild(image);
+
         }
 
-        spinner.appendChild(image);
+        // Trigger spinner animation
+
+        document.getElementById("game").appendChild(spinner);
+
+        const animationEndPoint = parseFloat(getComputedStyle(document.body).getPropertyValue("--endpoint"));
+        const nearMissIllusion = Math.floor(Math.random() * 20);
+
+        const animationOptions = {
+            duration: DEFAULT_SPIN_TIME,
+            easing: "ease-out",
+            fill: "forwards"
+        };
+
+        const firstKeyframe = { right: "0rem" };
+        const lastKeyframe = { right: animationEndPoint + nearMissIllusion + "rem" };
+
+        spinner.animate([firstKeyframe, lastKeyframe], animationOptions);
+        CSGO_GAMBLE_AUDIO.play();
+
+        setTimeout(async () => {
+
+            // Create default prize popup
+
+            gamePlayButton.style.display = null;
+            document.querySelector(".spinner")?.remove();
+
+            const popup = spinner.getElementsByTagName("img")[57];
+
+            const dialog = document.createElement("dialog");
+            dialog.appendChild(popup);
+
+            const button = document.createElement("button");
+            button.innerText = "✅";
+            dialog.appendChild(button);
+
+            const info = document.createElement("div");
+
+            const title = document.createElement("b");
+            title.innerText = cache.prize.title;
+            info.appendChild(title);
+
+            const description = document.createElement("p");
+            description.innerText = cache.prize.description;
+            info.appendChild(description);
+
+            // Special descriptions for certain items
+
+            if (cache.rarity != "niete" && !cache.prize.title.endsWith("€")) {
+
+                const rarity = document.createElement("p");
+                rarity.innerText = `Rarität: ${cache.rarity.toUpperCase()}`;
+                info.appendChild(rarity);
+
+                const floatValue = document.createElement("p");
+                floatValue.innerText = `Qualität: ${cache.float.type}`;
+                info.appendChild(floatValue);
+
+                const sellValue = document.createElement("p");
+                sellValue.innerText = `Verkaufswert: ${(cache.prize.sellValue * cache.float.sellValueMultiplier).toFixed(2)}€`;
+                info.appendChild(sellValue);
+
+            }
+
+            // Dialog logic
+
+            dialog.appendChild(info);
+            document.getElementsByClassName("gamble")[1].prepend(dialog);
+            dialog.showModal();
+
+            // Close button
+
+            dialog.querySelector("button").addEventListener("click", () => {
+                dialog.close();
+            });
+
+            if (DEV_ENV.test_enabled)
+                dialog.close();
+
+            // Update history page here
+
+            dialog.addEventListener("close", () => {
+
+                // Increase total prize amount
+
+                const itemAmount = document.getElementById("itemAmount");
+                itemAmount.innerText = parseInt(itemAmount.innerText) + 1;
+
+                // If you have too many prizes, the first one will be sold
+
+                const history = document.querySelectorAll(".inventory div");
+
+                if (history[MAXIMUM_ITEMS - 1])
+                    sellPrize(history[0].querySelector("button"), cash);
+
+                // Add image and sell button to the history page
+
+                const image = dialog.querySelector("img");
+                image.className = "";
+                info.appendChild(image);
+
+                const sellButton = document.createElement("button");
+                sellButton.innerText = "♻";
+                sellButton.addEventListener("click", () => {
+                    sellPrize(sellButton, cash);
+                })
+                info.prepend(sellButton);
+
+                document.getElementsByClassName("inventory")[1].append(info);
+
+                // Unlock again
+
+                dialog.remove();
+                toggleNavigator();
+
+            })
+
+            // Update cash on cash prizes
+
+            if (cache.prize.title.endsWith("€")) {
+                updateCash(parseFloat(cash.innerText) + parseFloat(cache.prize.title), true);
+                toggleButtons();
+            }
+
+            // Special sound for legendary prizes
+
+            if (cache.rarity == "legendär" && !DEV_ENV.test_enabled)
+                JACKPOT_AUDIO.play();
+
+        }, DEFAULT_SPIN_TIME + DEFAULT_HOLD_TIME);
 
     }
 
-    // Trigger spinner animation
+    /**
+     * @description Activates or deactivates buttons depending on your money, taking debt into account (haha)
+     * @author ItsLeMax
+     */
+    function toggleButtons() {
 
-    document.getElementById("game").appendChild(spinner);
+        // Disallow balance increase if the money is over 100.000 bucks
 
-    const animationEndPoint = parseFloat(getComputedStyle(document.body).getPropertyValue("--endpoint"));
-    const nearMissIllusion = Math.floor(Math.random() * 20);
+        for (const balance of cashSelection)
+            balance.disabled = parseFloat(cash.innerText) >= 100000;
 
-    const animationOptions = {
-        duration: DEFAULT_SPIN_TIME,
-        easing: "ease-out",
-        fill: "forwards"
-    };
+        // Disallow gamble if you have debt
 
-    const firstKeyframe = { right: "0rem" };
-    const lastKeyframe = { right: animationEndPoint + nearMissIllusion + "rem" };
+        const balanceTooLow = parseFloat(cash.innerText) <= -800;
 
-    spinner.animate([firstKeyframe, lastKeyframe], animationOptions);
-    CSGO_GAMBLE_AUDIO.play();
+        gamePlayButton.style.setProperty("font-size", balanceTooLow ? "0rem" : null, "important");
+        document.querySelector("#gamble-navigator b").style.color = balanceTooLow ? "var(--danger)" : null;
 
-    setTimeout(async () => {
+    }
 
-        // Create default prize popup
-
-        gamePlayButton.style.display = null;
-        document.querySelector(".spinner")?.remove();
-
-        const popup = spinner.getElementsByTagName("img")[57];
-
-        const dialog = document.createElement("dialog");
-        dialog.appendChild(popup);
-
-        const button = document.createElement("button");
-        button.innerText = "✅";
-        dialog.appendChild(button);
-
-        const info = document.createElement("div");
-
-        const title = document.createElement("b");
-        title.innerText = cache.prize.title;
-        info.appendChild(title);
-
-        const description = document.createElement("p");
-        description.innerText = cache.prize.description;
-        info.appendChild(description);
-
-        // Special descriptions for certain items
-
-        if (cache.rarity != "niete" && !cache.prize.title.endsWith("€")) {
-
-            const rarity = document.createElement("p");
-            rarity.innerText = `Rarität: ${cache.rarity.toUpperCase()}`;
-            info.appendChild(rarity);
-
-            const floatValue = document.createElement("p");
-            floatValue.innerText = `Qualität: ${cache.float.type}`;
-            info.appendChild(floatValue);
-
-            const sellValue = document.createElement("p");
-            sellValue.innerText = `Verkaufswert: ${(cache.prize.sellValue * cache.float.sellValueMultiplier).toFixed(2)}€`;
-            info.appendChild(sellValue);
-
-        }
-
-        // Dialog logic
-
-        dialog.appendChild(info);
-        document.getElementsByClassName("gamble")[1].prepend(dialog);
-        dialog.showModal();
-
-        // Close button
-
-        dialog.querySelector("button").addEventListener("click", () => {
-            dialog.close();
-        });
-
-        if (DEV_ENV.test_enabled)
-            dialog.close();
-
-        // Update history page here
-
-        dialog.addEventListener("close", () => {
-
-            // Increase total prize amount
-
-            const itemAmount = document.getElementById("itemAmount");
-            itemAmount.innerText = parseInt(itemAmount.innerText) + 1;
-
-            // If you have too many prizes, the first one will be sold
-
-            const history = document.querySelectorAll(".inventory div");
-
-            if (history[MAXIMUM_ITEMS - 1])
-                sellPrize(history[0].querySelector("button"), cash);
-
-            // Add image and sell button to the history page
-
-            const image = dialog.querySelector("img");
-            image.className = "";
-            info.appendChild(image);
-
-            const sellButton = document.createElement("button");
-            sellButton.innerText = "♻";
-            sellButton.addEventListener("click", () => {
-                sellPrize(sellButton, cash);
-            })
-            info.prepend(sellButton);
-
-            document.getElementsByClassName("inventory")[1].append(info);
-
-            // Unlock again
-
-            dialog.remove();
-            toggleNavigator();
-
-        })
-
-        // Update cash on cash prizes
-
-        if (cache.prize.title.endsWith("€")) {
-            updateCash(parseFloat(cash.innerText) + parseFloat(cache.prize.title), true);
-            toggleButtons(cash, cashSelection, gamePlayButton);
-        }
-
-        // Special sound for legendary prizes
-
-        if (cache.rarity == "legendär" && !DEV_ENV.test_enabled)
-            JACKPOT_AUDIO.play();
-
-    }, DEFAULT_SPIN_TIME + DEFAULT_HOLD_TIME);
-
-}
+});
 
 /**
  * @description Sells a prize from the inventory
@@ -352,29 +365,6 @@ function toggleNavigator(toggle) {
 }
 
 /**
- * @description Activates or deactivates buttons depending on your money, taking debt into account (haha)
- * @author ItsLeMax
- * @param { Element } cash Cash element, whose content is needed for validation
- * @param { NodeListOf<Element> } cashSelection Cash selection, i.e. all cash up buttons
- * @param { Element } gamePlayButton Game play button for the case of being too much in the negatives
- */
-function toggleButtons(cash, cashSelection, gamePlayButton) {
-
-    // Disallow balance increase if the money is over 100.000 bucks
-
-    for (const balance of cashSelection)
-        balance.disabled = parseFloat(cash.innerText) >= 100000;
-
-    // Disallow gamble if you have debt
-
-    const balanceTooLow = parseFloat(cash.innerText) <= -800;
-
-    gamePlayButton.style.setProperty("font-size", balanceTooLow ? "0rem" : null, "important");
-    document.querySelector("#gamble-navigator b").style.color = balanceTooLow ? "var(--danger)" : null;
-
-}
-
-/**
  * @description Creates a `console.log()` with focus on the determined object from gambling
  * @author ItsLeMax
  * @param { Number } probability Probability, randomly determined
@@ -395,22 +385,10 @@ function logger(probability, rarity, selectedChestName, selectedChestPrice) {
 }
 
 /**
- * @description Replaces a character at a specific index
- * @author StackOverflow
- * @param { Number } index Index of the character to be replaced
- * @param { String } replacement Replacement of the index character
- * @returns String with replacement
- * @see [StackOverflow](https://stackoverflow.com/questions/1431094/how-do-i-replace-a-character-at-a-specific-index-in-javascript)
- */
-String.prototype.replaceAt = function (index, replacement) {
-    return this.substring(0, index) + replacement + this.substring(index + replacement.length);
-}
-
-/**
  * @description Updates the owned money
  * @author ItsLeMax
  * @param { Number } newCash New cash value of the user
- * @param { Boolean } skipWindow Should the pseudo pay window be skipped?
+ * @param { Boolean? } skipWindow Should the pseudo pay window be skipped?
  */
 async function updateCash(newCash, skipWindow) {
 
@@ -467,6 +445,16 @@ async function updateCash(newCash, skipWindow) {
 }
 
 /**
+ * @description Changes a text to a file name
+ * @author ItsLeMax
+ * @param { String } name Name of the planned file
+ * @returns String with file name
+ */
+function toFileName(name) {
+    return name.replaceAll(" ", "_").toLowerCase();
+}
+
+/**
  * @description Causes a delay
  * @author StackOverflow
  * @param { Number } milliseconds Milliseconds of the delay
@@ -477,11 +465,13 @@ function sleep(milliseconds) {
 }
 
 /**
- * @description Changes a text to a file name
- * @author ItsLeMax
- * @param { String } name Name of the planned file
- * @returns String with file name
+ * @description Replaces a character at a specific index
+ * @author StackOverflow
+ * @param { Number } index Index of the character to be replaced
+ * @param { String } replacement Replacement of the index character
+ * @returns String with replacement
+ * @see [StackOverflow](https://stackoverflow.com/questions/1431094/how-do-i-replace-a-character-at-a-specific-index-in-javascript)
  */
-function toFileName(name) {
-    return name.replaceAll(" ", "_").toLowerCase();
+String.prototype.replaceAt = function (index, replacement) {
+    return this.substring(0, index) + replacement + this.substring(index + replacement.length);
 }
