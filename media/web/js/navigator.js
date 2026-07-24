@@ -28,9 +28,9 @@ function generateNavigator() {
         const navigatorPages = [];
         navigatorPages.push(navigatorButton);
 
-        let selectedPage = 0;
-
         // Loop with a new page each iteration
+
+        let selectedPage = 0;
 
         while (selectedPage !== false) {
 
@@ -110,46 +110,62 @@ function generateNavigator() {
         // Toggle navigator on or off
 
         navigatorButton.addEventListener("click", async () => {
+            await toggleNavigator({ navigatorButton, navigatorButtonInitial, navigatorPages, navigatorPagesReversed });
+        });
 
-            navigatorOpen = !navigatorOpen;
+    });
 
-            // Toggle navigator off
+}
 
-            if (!navigatorOpen) {
+/**
+ * @typedef { Object } param0
+ * @property { HTMLAnchorElement } navigatorButton 
+ * @property { HTMLAnchorElement } navigatorButtonInitial 
+ * @property { Array<HTMLAnchorElement | HTMLDivElement> } navigatorPages 
+ * @property { Array<HTMLAnchorElement | HTMLDivElement> } navigatorPagesReversed 
+ */
+/**
+ * @description Enables or disables the navigator, inverting its current state
+ * @author ItsLeMax
+ * @param { param0 } 
+ */
+async function toggleNavigator({ navigatorButton, navigatorButtonInitial, navigatorPages, navigatorPagesReversed }) {
 
-                navigatorButton.innerText = navigatorButtonInitial;
+    navigatorOpen = !navigatorOpen;
 
-                // Close pages in reverse order by updating its boolean
+    // Toggle navigator off
 
-                for (const navigatorPage of navigatorPagesReversed)
-                    await setNaviAttributes(navigatorPage);
+    if (!navigatorOpen) {
 
-                return;
+        navigatorButton.innerText = navigatorButtonInitial;
 
-            }
+        // Close pages in reverse order by updating its boolean
 
-            // Toggle navigator on
+        for (const navigatorPage of navigatorPagesReversed)
+            await setNaviAttributes(navigatorPage);
 
-            navigatorButton.innerText = "✖";
+        return;
 
-            // Open pages in normal order by updating its boolean
+    }
 
-            for (const navigatorPage of navigatorPages)
-                await setNaviAttributes(navigatorPage);
+    // Toggle navigator on
 
-        })
+    navigatorButton.innerText = "✖";
 
-        /**
-         * @description Activates or deactivates the single navigator pages
-         * @author ItsLeMax
-         * @param { HTMLAnchorElement } navigatorPage Navigator page to update
-         * @summary Uses a small delay to create a smooth animation effect
-         */
-        async function setNaviAttributes(navigatorPage) {
-            navigatorPage.setAttribute("open", navigatorOpen);
-            await new Promise(resolve => setTimeout(resolve, 35));
-        }
+    // Open pages in normal order by updating its boolean
 
-    })
+    for (const navigatorPage of navigatorPages)
+        await setNaviAttributes(navigatorPage);
 
+}
+
+/**
+ * @description Activates or deactivates the single navigator pages
+ * @author ItsLeMax
+ * @param { HTMLAnchorElement } navigatorPage Navigator page to update
+ * @summary Uses a small delay to create a smooth animation effect
+ */
+async function setNaviAttributes(navigatorPage) {
+    navigatorPage.setAttribute("open", navigatorOpen);
+    await new Promise(resolve => setTimeout(resolve, 35));
 }

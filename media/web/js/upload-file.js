@@ -14,7 +14,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let xhr;
 
-    formContainer.addEventListener("submit", (event) => {
+    formContainer.addEventListener("submit", (event) => upload(event));
+    formAbort.addEventListener("click", () => abort);
+
+    /**
+     * @description Uploads a file
+     * @author ItsLeMax
+     * @param { SubmitEvent } event
+     */
+    function upload(event) {
 
         event.preventDefault();
 
@@ -35,27 +43,26 @@ document.addEventListener("DOMContentLoaded", () => {
 
         xhr.upload.addEventListener("progress", (event) => {
 
-            if (event.lengthComputable) {
+            if (!event.lengthComputable)
+                return;
 
-                // Update page content on upload
+            // Update page content on upload
 
-                const elapsedTime = (Date.now() - startTime) / 1000;
-                const uploadProgress = Math.round((event.loaded / event.total) * 100);
-                const uploadSpeed = (event.loaded / 1024 / 1024 / elapsedTime).toFixed(2);
+            const elapsedTime = (Date.now() - startTime) / 1000;
+            const uploadProgress = Math.round((event.loaded / event.total) * 100);
+            const uploadSpeed = (event.loaded / 1024 / 1024 / elapsedTime).toFixed(2);
 
-                infoContainer.style.display = "block";
-                progressBarContainer.style.display = "block";
+            infoContainer.style.display = "block";
+            progressBarContainer.style.display = "block";
 
-                infoStatus.textContent = "Daten werden hochgeladen...";
-                infoProgress.textContent = `Fortschritt: ${uploadProgress}%`;
-                infoSpeed.textContent = `Beanspruchte Bandbreite: ${uploadSpeed} MB/s`;
+            infoStatus.textContent = "Daten werden hochgeladen...";
+            infoProgress.textContent = `Fortschritt: ${uploadProgress}%`;
+            infoSpeed.textContent = `Beanspruchte Bandbreite: ${uploadSpeed} MB/s`;
 
-                progressBarElement.style.width = uploadProgress + "%";
+            progressBarElement.style.width = uploadProgress + "%";
 
-                formUpload.disabled = true;
-                formAbort.disabled = false;
-
-            }
+            formUpload.disabled = true;
+            formAbort.disabled = false;
 
         });
 
@@ -77,22 +84,25 @@ document.addEventListener("DOMContentLoaded", () => {
         xhr.open("POST", "/private/upload");
         xhr.send(formData);
 
-    });
+    }
 
-    formAbort.addEventListener("click", () => {
+    /**
+     * @description Aborts the upload process
+     * @author ItsLeMax
+     */
+    function abort() {
+
+        if (!xhr)
+            return;
 
         // Manual cancellation handling
 
-        if (xhr) {
+        xhr.abort();
+        resetUi();
 
-            xhr.abort();
-            resetUi();
+        infoStatus.textContent = "Upload abgebrochen";
 
-            infoStatus.textContent = "Upload abgebrochen";
-
-        }
-
-    });
+    }
 
     /**
      * @description Finishes the upload process by resetting the UI elements
