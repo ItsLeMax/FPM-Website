@@ -1,36 +1,59 @@
 /**
- * @description Sends a request to the webserver
- * @author Kurty00, ItsLeMax
- * @param { Object } callbacks Callback code on callback of the webserver
- * @param { Function } callbacks.readystate ReadyStateChange code, that is supposed to be executed
- * @param { Function | undefined | null } callbacks.error Error code in the case of an error
- * @param { Object } url URL data for the domain
- * @param { String } url.subdomain Subdomain of the targeted website
- * @param { String? } url.sentData Sent Data to said domain (API path or sub directory)
+ * @description Lists all subdomain keys
+ * @author ItsLeMax
+ * @readonly
+ * @enum { String }
  */
-function XMLHttpRequests(callbacks, url) {
+const Subdomain = Object.freeze({
+    SECRETS: "secrets",
+    EXTRAS: "extras"
+});
 
-    const xhr = new XMLHttpRequest();
+class RequestToFPM extends XMLHttpRequest {
 
-    xhr.onreadystatechange = () => {
+    /**
+     * @typedef { Object } url URL data for the domain
+     * @property { String } subdomain Subdomain of the targeted website
+     * @property { String? } sentData Sent Data to said domain (API path or sub directory)
+     */
+    /**
+     * @typedef { Object } callbacks Callback functions that should be executed
+     * @property { (xhr: XMLHttpRequest) => void } readystate ReadyStateChange code, that is supposed to be executed
+     * @property { (() => void)? } error Error code in the case of an error
+     */
+    /**
+     * @param { url } param0
+     * @param { callbacks } param1
+     */
+    constructor({ subdomain, sentData }, { readystate, error }) {
 
-        if (xhr.readyState != XMLHttpRequest.DONE || !xhr.responseText.length)
-            return;
+        super();
 
-        // Execute the given readystate function
+        // Execute custom code that got passed
 
-        callbacks.readystate(xhr);
+        this.onreadystatechange = () => {
 
-    };
+            if (this.readyState != XMLHttpRequest.DONE || !this.responseText.length)
+                return;
 
-    if (callbacks.error)
-        xhr.onerror = () => { callbacks.error(); }
+            // Execute the given readystate function
 
-    // Localhost for testing purposes, else the real domain
+            readystate(this);
 
-    const target = window.location.protocol.includes("file") ? "http://localhost:3000" : `https://${url.subdomain}.fpm-studio.de`;
+        };
 
-    xhr.open("GET", target + `/api/${url.subdomain}/${url.sentData}`, true);
-    xhr.send(null);
+        // Add custom error listener from arguments
 
-}
+        if (error)
+            this.onerror = () => error();
+
+        // Localhost for testing purposes, else the real domain
+
+        const target = window.location.protocol.includes("file") ? "http://localhost:3000" : `https://${subdomain}.fpm-studio.de`;
+
+        this.open("GET", target + `/api/${subdomain}/${sentData}`, true);
+        this.send(null);
+
+    }
+
+};
