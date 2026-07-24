@@ -52,21 +52,13 @@ body>*:not(#navigator):hover {
     background-image: url("https://media.fpm-studio.de/assets/graphics/wall_clock.webp");
 }
 
-#password {
-    background-image: url("https://media.fpm-studio.de/assets/graphics/loading.gif");
-}
-
-#winrate {
-    background-image: url("https://media.fpm-studio.de/assets/graphics/detailed_trophy.webp");
-}
-
 #github,
-#countdown,
-#password,
-#winrate {
+#countdown {
     background-size: calc(var(--box-size) * 2);
     background-blend-mode: multiply;
 }
+
+/* Screen size queries */
 
 @media (max-width: 1080px) {
     body {
