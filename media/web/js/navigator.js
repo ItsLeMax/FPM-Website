@@ -65,7 +65,7 @@ function generateNavigator() {
                 case 4:
                     navigatorPageImage.src = "https://media.fpm-studio.de/assets/icons/plus.webp";
                     navigatorPageButton.innerText = "Extras";
-                    navigatorPageButton.href = "https://extras.fpm-studio.de/";
+                    navigatorPageButton.href = "https://extras.fpm-studio.de/galery.html";
                     break;
 
                 case 5:
