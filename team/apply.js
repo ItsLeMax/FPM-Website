@@ -61,11 +61,11 @@ function toggleMailButton(checkboxes, createButton) {
     for (const checkbox of checkboxes) {
 
         if (checkbox.checked) {
-            create.disabled = false;
+            createButton.disabled = false;
             break;
         }
 
-        create.disabled = true;
+        createButton.disabled = true;
 
     }
 
