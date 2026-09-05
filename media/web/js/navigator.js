@@ -80,6 +80,12 @@ function generateNavigator() {
                     navigatorPageButton.href = "https://dev.fpm-studio.de/";
                     break;
 
+                case 7:
+                    navigatorPageImage.src = "https://media.fpm-studio.de/assets/icons/imprint.webp";
+                    navigatorPageButton.innerText = "Impressum";
+                    navigatorPageButton.href = "https://flexdienst.de/impressumseite-von-21812/";
+                    break;
+
                 default:
                     selectedPage = false;
                     break;
