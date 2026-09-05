@@ -1,6 +1,8 @@
 :root {
     --padding: 5vh;
+
     --soft-black: rgba(0, 0, 0, .25);
+    --background-gradient: linear-gradient(rgba(0, 0, 0, .25), rgba(0, 0, 0, .75));
 }
 
 /* General declarations */
@@ -70,19 +72,23 @@ span {
     padding: var(--padding);
 }
 
+#summary h4 {
+    color: #eba64d;
+}
+
 #quality {
-    background-image: linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)), url("https://media.fpm-studio.de/assets/background-image/oasis.webp");
+    background-image: var(--background-gradient), url("https://media.fpm-studio.de/assets/background-image/oasis.webp");
 }
 
 #passion {
     object-fit: cover;
 
     background-position: center;
-    background-image: linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)), url("https://media.fpm-studio.de/movies/dora_und_die_albanische_staatsgrenze/36.png");
+    background-image: var(--background-gradient), url("https://media.fpm-studio.de/movies/dora_und_die_albanische_staatsgrenze/36.png");
 }
 
 #improvement {
-    background-image: url("https://media.fpm-studio.de/assets/background-image/construction.webp");
+    background-image: var(--background-gradient), url("https://media.fpm-studio.de/assets/background-image/construction.webp");
 }
 
 #passion,
@@ -93,7 +99,7 @@ span {
 /* Leaders of production */
 
 #team {
-    height: 85vh;
+    height: 75vh;
     min-height: 55rem;
 
     display: flex;
